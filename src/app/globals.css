@@ -1,26 +1,390 @@
 @import "tailwindcss";
 
+/* ARKAN Design System — Master Brief §5–9 */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f3f5f8;
+  --foreground: #12141a;
+  --muted: #5a6475;
+
+  --surface: #ffffff;
+  --surface-2: #e5ebf3;
+
+  --navy: #0b1f3a;
+  --navy-soft: #163456;
+
+  --signal: #d7042a;
+  --signal-hot: #ff2748;
+  --signal-soft: #ffd6de;
+
+  --ok: #0f7b5a;
+  --danger: #c62828;
+
+  --line: rgba(18, 20, 26, 0.1);
+  --line-strong: rgba(18, 20, 26, 0.18);
+  --line-signal: rgba(215, 4, 42, 0.55);
+
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+
+  --motion-fast: 160ms;
+  --motion-base: 280ms;
+  --motion-slow: 520ms;
+  --motion-scene: 800ms;
+
+  --ease-standard: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-enter: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-exit: cubic-bezier(0.7, 0, 0.84, 0);
+
+  --focus-ring: 0 0 0 3px rgba(215, 4, 42, 0.22);
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+
+  /* font stacks — resolve next/font + geist variables (never self-referential) */
+  --font-body: var(--font-geist-sans), var(--font-arabic), system-ui, sans-serif;
+  --font-head: var(--font-geist-sans), var(--font-arabic), system-ui, sans-serif;
+  --font-tech: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+
+  /* legacy aliases */
+  --bg: var(--background);
+  --fg: var(--foreground);
+  --ink: var(--foreground);
+  --paper: var(--foreground);
+  --mist: var(--muted);
+  --graphite: var(--surface-2);
+  --slate: var(--surface);
+  --steel: #c9d2df;
+  --bronze: var(--signal);
+  --bronze-bright: var(--signal);
+  --bronze-dim: #9a0220;
+  --glow: rgba(215, 4, 42, 0.1);
+}
+
+html[lang="ar"] {
+  --font-body: var(--font-arabic), var(--font-geist-sans), system-ui, sans-serif;
+  --font-head: var(--font-arabic), var(--font-geist-sans), system-ui, sans-serif;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-muted: var(--muted);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-navy: var(--navy);
+  --color-navy-soft: var(--navy-soft);
+  --color-signal: var(--signal);
+  --color-signal-hot: var(--signal-hot);
+  --color-signal-soft: var(--signal-soft);
+  --color-ok: var(--ok);
+  --color-danger: var(--danger);
+  --color-line: var(--line);
+
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-tech);
+  --font-display: var(--font-head);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: light;
+  background: var(--background);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100%;
+  font-family: var(--font-body);
+  font-optical-sizing: auto;
+  font-feature-settings: "ss01" on, "cv11" on;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--signal) 28%, white);
+  color: var(--foreground);
+}
+
+:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.font-display {
+  font-family: var(--font-head);
+  letter-spacing: -0.035em;
+  font-weight: 600;
+}
+
+html[lang="ar"] .font-display {
+  letter-spacing: 0;
+  font-weight: 700;
+}
+
+.font-mono,
+.tech-label {
+  font-family: var(--font-tech);
+  font-feature-settings: "tnum" 1, "ss01" 0;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.site-shell {
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  background: var(--background);
+}
+
+.site-shell::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.28;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.4), transparent 50%);
+}
+
+.section-pad {
+  padding-inline: clamp(1.25rem, 4vw, 3.5rem);
+}
+
+.grid-12 {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(0.75rem, 2vw, 1.5rem);
+}
+
+.signal-rule,
+.bronze-rule {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--signal),
+    transparent
+  );
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: var(--radius-sm);
+  background: var(--signal);
+  color: #fff;
+  padding: 0.85rem 1.35rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  transition:
+    background var(--motion-fast) var(--ease-standard),
+    transform var(--motion-fast) var(--ease-standard);
+}
+
+.btn-primary:hover {
+  background: var(--signal-hot);
+}
+
+.btn-primary:disabled {
+  background: var(--surface-2);
+  color: var(--muted);
+  cursor: not-allowed;
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid color-mix(in oklab, #fff 35%, transparent);
+  color: inherit;
+  padding: 0.85rem 1.35rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition:
+    background var(--motion-fast) var(--ease-standard),
+    border-color var(--motion-fast) var(--ease-standard);
+}
+
+.btn-ghost:hover {
+  background: color-mix(in oklab, #fff 10%, transparent);
+  border-color: #fff;
+}
+
+.btn-ghost-dark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  color: var(--foreground);
+  padding: 0.85rem 1.35rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  background: var(--surface);
+  transition: border-color var(--motion-fast) var(--ease-standard);
+}
+
+.btn-ghost-dark:hover {
+  border-color: var(--signal);
+}
+
+.field-input {
+  width: 100%;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--line);
+  background: var(--surface);
+  padding: 0.8rem 0.95rem;
+  color: var(--foreground);
+  font-family: inherit;
+  outline: none;
+  transition:
+    border-color var(--motion-fast) var(--ease-standard),
+    box-shadow var(--motion-fast) var(--ease-standard);
+}
+
+.field-input:focus {
+  border-color: var(--signal);
+  box-shadow: var(--focus-ring);
+}
+
+.field-input option {
+  background: var(--surface);
+  color: var(--foreground);
+}
+
+.skeleton-pulse {
+  background: linear-gradient(
+    90deg,
+    var(--surface-2) 0%,
+    #f8fafc 50%,
+    var(--surface-2) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.4s var(--ease-standard) infinite;
+}
+
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton-pulse {
+    animation: none;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.focus\:not-sr-only:focus {
+  position: fixed;
+  width: auto;
+  height: auto;
+  padding: 0.5rem 1rem;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  z-index: 100;
+  background: var(--signal);
+  color: white;
+  border-radius: var(--radius-sm);
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--line);
+  background: var(--surface);
+  padding: 0.35rem 0.8rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.pill[data-active="true"] {
+  background: var(--signal);
+  border-color: var(--signal);
+  color: #fff;
+}
+
+.panel {
+  border-block: 1px solid var(--line);
+  background: transparent;
+}
+
+.structural-row {
+  display: grid;
+  border-bottom: 1px solid var(--line);
+  transition: background var(--motion-base) var(--ease-standard);
+}
+
+.structural-row:hover,
+.structural-row[data-active="true"] {
+  background: color-mix(in oklab, var(--signal-soft) 35%, transparent);
 }

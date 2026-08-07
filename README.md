@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ARKAN / أركان
 
-## Getting Started
+Digital flagship — bilingual (AR/EN), Systems Atlas, Control Rooms with System X-Ray, and interactive Project Builder.
 
-First, run the development server:
+**Concept:** SYSTEMS, EXPOSED.  
+**Promise:** نبني أنظمة تشغّل شغلك / Systems that run the business.
+
+## Stack
+
+- Next.js 16 (App Router) + React 19 + TypeScript
+- Tailwind CSS 4
+- next-intl (Arabic default + English, RTL)
+- Framer Motion
+- Zod-validated contact/blueprint API with honeypot, origin check, webhook SSRF guard, and rate limit
+- Supabase persistence for leads + admin dashboard at `/admin`
+- Security headers (CSP, HSTS, frame deny, Permissions-Policy)
+
+## Develop
 
 ```bash
+npm install
+cp .env.example .env.local
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) — redirects to `/ar`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command | Purpose |
+|---------|---------|
+| `npm run dev` | Local development |
+| `npm run build` | Production build |
+| `npm run start` | Serve production build |
+| `npm run lint` | ESLint |
 
-## Learn More
+## Information architecture
 
-To learn more about Next.js, take a look at the following resources:
+- `/` — 12-section home narrative
+- `/work` — Systems Atlas
+- `/work/[slug]` — System Control Room + X-Ray
+- `/capabilities` — Capability anatomy
+- `/approach` — How a system becomes operational
+- `/studio` — Six Arkan + team network
+- `/start` — Project Builder + live blueprint
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Content
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Projects: [`src/content/projects.ts`](src/content/projects.ts)
+- Team: [`src/content/team.ts`](src/content/team.ts)
+- Copy: [`messages/ar.json`](messages/ar.json), [`messages/en.json`](messages/en.json)
 
-## Deploy on Vercel
+## Brand
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Light architectural editorial interface (`#F3F5F8` / navy `#0B1F3A` / signal `#D7042A`)
+- Typography: Geist Sans + IBM Plex Sans Arabic + Geist Mono
+- Signal red = action / selection / flow — not decoration

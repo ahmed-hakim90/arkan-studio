@@ -1,0 +1,765 @@
+{
+  "Meta": {
+    "title": "ARKAN — Systems that run the business",
+    "description": "Arkan architects, designs, builds, integrates and evolves digital systems that businesses operate on."
+  },
+  "Nav": {
+    "work": "Work",
+    "capabilities": "Capabilities",
+    "approach": "Approach",
+    "studio": "Studio",
+    "start": "Build with us",
+    "home": "Home"
+  },
+  "Hero": {
+    "brand": "ARKAN",
+    "tagline": "Systems that run the business.",
+    "supporting": "From idea to operation — we build the product, experience, engineering and integrations your business runs on.",
+    "ctaPrimary": "Explore Systems",
+    "ctaSecondary": "Start a Project"
+  },
+  "Atlas": {
+    "eyebrow": "Systems Atlas",
+    "title": "Explore operating systems",
+    "subtitle": "Filter by sector, type, status and capability. Mass shows verified structural dimensions — not fake scores.",
+    "filterAll": "All",
+    "filters": {
+      "sector": "Sector",
+      "type": "System type",
+      "status": "Status",
+      "capability": "Capability"
+    },
+    "sectors": {
+      "mobility": "Mobility",
+      "healthcare": "Healthcare",
+      "commerce": "Commerce",
+      "operations": "Operations",
+      "services": "Services",
+      "ventures": "Ventures",
+      "other": "Other"
+    },
+    "types": {
+      "erp": "ERP",
+      "operations": "Operations",
+      "platform": "Platform",
+      "commerce": "Commerce",
+      "ai": "AI",
+      "experience": "Experience"
+    },
+    "statuses": {
+      "operating": "Operating",
+      "deployed": "Deployed",
+      "evolving": "Evolving",
+      "building": "Building",
+      "venture": "Venture",
+      "concept": "Concept"
+    },
+    "capabilities": {
+      "product": "Product",
+      "ux": "UX",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "data": "Data",
+      "ai": "AI",
+      "integrations": "Integrations",
+      "operations": "Operations"
+    },
+    "openRoom": "Enter system",
+    "systemMass": "System Mass",
+    "modules": "Modules",
+    "roles": "Roles",
+    "workflows": "Workflows",
+    "interfaces": "Interfaces",
+    "integrations": "Integrations",
+    "automations": "Automations",
+    "empty": "NO SYSTEMS MATCH THIS FILTER",
+    "reset": "Reset filters",
+    "complexity": "Complexity",
+    "scale": "System Mass"
+  },
+  "Home": {
+    "reframe": {
+      "a": "A website?",
+      "b": "A platform.",
+      "c": "An operating system.",
+      "final": "The real system is bigger than the screen you see."
+    },
+    "whatWeBuild": {
+      "eyebrow": "WHAT WE BUILD",
+      "title": "Operational digital systems",
+      "items": {
+        "business": {
+          "title": "Business Systems",
+          "hint": "ERP · internal tools · approvals",
+          "body": "ERP extensions, internal tools, dashboards, approvals, finance workflows and management systems.",
+          "nodes": ["ERP", "RBAC", "REPORTING", "APPROVALS"]
+        },
+        "operations": {
+          "title": "Operations",
+          "hint": "Field · dispatch · control",
+          "body": "Systems that coordinate people, locations, assets, requests and workflows in real time.",
+          "nodes": ["INTAKE", "DISPATCH", "FIELD", "CONTROL"]
+        },
+        "platforms": {
+          "title": "Platforms",
+          "hint": "Multi-role · SaaS",
+          "body": "Multi-role products, subscriptions, portals, administration and tenant models.",
+          "nodes": ["TENANTS", "ROLES", "PORTALS", "BILLING"]
+        },
+        "commerce": {
+          "title": "Commerce",
+          "hint": "Catalog · checkout · delivery",
+          "body": "Catalogs, ordering, checkout, payments, inventory, delivery and merchant systems.",
+          "nodes": ["CATALOG", "CHECKOUT", "PAY", "FULFILL"]
+        },
+        "ai": {
+          "title": "AI + Automation",
+          "hint": "Inside real workflows",
+          "body": "Document extraction, image understanding, assistants, workflow automation and decision support.",
+          "nodes": ["EXTRACT", "CLASSIFY", "AUTOMATE", "ASSIST"]
+        },
+        "experiences": {
+          "title": "Digital Experiences",
+          "hint": "Interfaces with systems beneath",
+          "body": "High-end websites, product experiences, portals and interactive interfaces — backed by real systems.",
+          "nodes": ["UX", "UI", "PORTAL", "MOTION"]
+        }
+      }
+    },
+    "featured": {
+      "body": "The interface is only the visible layer. Below it: intake, operations, staff, parking, dispatch, payment, management and accounting.",
+      "cta": "ENTER SYSTEM →",
+      "nodes": {
+        "customer": "CUSTOMER",
+        "intake": "INTAKE",
+        "operations": "OPERATIONS",
+        "staff": "STAFF",
+        "parking": "PARKING",
+        "dispatch": "DISPATCH",
+        "payment": "PAYMENT",
+        "management": "MANAGEMENT",
+        "accounting": "ACCOUNTING"
+      }
+    },
+    "invisible": {
+      "title": "The interface is only the visible layer.",
+      "footer": "We build what runs underneath it.",
+      "layers": {
+        "interface": "INTERFACE",
+        "workflow": "WORKFLOW",
+        "application": "APPLICATION",
+        "data": "DATA",
+        "automation": "AUTOMATION",
+        "integrations": "INTEGRATIONS",
+        "infrastructure": "INFRASTRUCTURE"
+      }
+    },
+    "selected": {
+      "eyebrow": "SELECTED SYSTEMS",
+      "title": "Systems, not screenshots",
+      "explore": "Explore system"
+    },
+    "oneTeam": {
+      "lines": [
+        "Strategy isn't outsourced.",
+        "Design isn't outsourced.",
+        "Engineering isn't outsourced.",
+        "Delivery isn't outsourced."
+      ],
+      "final": "One accountable team."
+    },
+    "six": {
+      "eyebrow": "THE SIX ARKAN",
+      "title": "Six disciplines. One system.",
+      "subtitle": "Hover a pillar — each one carries a layer of how systems get built."
+    },
+    "how": {
+      "eyebrow": "HOW WE BUILD",
+      "title": "From discovery to evolution",
+      "stages": {
+        "discover": {
+          "title": "DISCOVER",
+          "body": "We map the business process, constraints and users before interface production begins."
+        },
+        "architect": {
+          "title": "ARCHITECT",
+          "body": "We define roles, workflows, modules, data relationships, integrations and technical boundaries."
+        },
+        "design": {
+          "title": "DESIGN",
+          "body": "We turn complexity into understandable workflows and a coherent experience system."
+        },
+        "build": {
+          "title": "BUILD",
+          "body": "Frontend and backend ship against the architecture — incremental, testable, operational."
+        },
+        "integrate": {
+          "title": "INTEGRATE",
+          "body": "ERP, payments, messaging and existing APIs connect with clear ownership of each flow."
+        },
+        "launch": {
+          "title": "LAUNCH",
+          "body": "Deployment, handover and readiness for real users — not a demo that dies after the meeting."
+        },
+        "evolve": {
+          "title": "EVOLVE",
+          "body": "Systems keep growing: modules, roles, automations and operational feedback."
+        }
+      }
+    },
+    "spectrum": {
+      "title": "FROM ZERO TO OPERATING.",
+      "claim": "You don't need six vendors.",
+      "claimSub": "You need one accountable system partner.",
+      "items": {
+        "idea": "IDEA",
+        "strategy": "PRODUCT STRATEGY",
+        "ux": "UX",
+        "designSystem": "DESIGN SYSTEM",
+        "frontend": "FRONTEND",
+        "backend": "BACKEND",
+        "data": "DATA",
+        "infrastructure": "INFRASTRUCTURE",
+        "integrations": "INTEGRATIONS",
+        "ai": "AI",
+        "deployment": "DEPLOYMENT",
+        "operations": "OPERATIONS",
+        "growth": "GROWTH"
+      }
+    },
+    "builder": {
+      "eyebrow": "PROJECT BUILDER",
+      "title": "What are you trying to build?",
+      "cta": "Build your project blueprint →",
+      "hint": "Selecting a type starts forming a tiny architecture — the full builder continues on the next page.",
+      "options": {
+        "business": "Business System",
+        "platform": "Platform",
+        "commerce": "Commerce",
+        "operations": "Operations",
+        "ai": "AI / Automation",
+        "experience": "Digital Experience"
+      }
+    },
+    "finalCta": {
+      "title": "Have a complex operation?",
+      "subtitle": "Let's turn it into a system.",
+      "cta": "Build Your Project"
+    }
+  },
+  "ControlRoom": {
+    "eyebrow": "CONTROL ROOM",
+    "overview": "Overview",
+    "context": "Business context",
+    "challenge": "Challenge",
+    "architecture": "System architecture",
+    "experience": "Experience",
+    "xray": "System X-Ray",
+    "experienceMode": "EXPERIENCE",
+    "systemMode": "SYSTEM",
+    "modules": "Modules",
+    "roles": "User roles",
+    "workflows": "Workflows",
+    "integrations": "Integrations",
+    "technology": "Technology",
+    "systemMass": "System Mass",
+    "outcomes": "Outcomes",
+    "scope": "What Arkan did",
+    "next": "Next system",
+    "enter": "ENTER →",
+    "viewExperience": "VIEW EXPERIENCE",
+    "viewSystem": "VIEW SYSTEM",
+    "problem": "Problem",
+    "solution": "Solution",
+    "impact": "Impact",
+    "buildSimilar": "Build something similar",
+    "backToAtlas": "Back to atlas",
+    "liveDemo": "Live demo",
+    "surfaces": "System surfaces",
+    "scaleMeter": "System Mass",
+    "stack": "Tech layers",
+    "markets": "Region"
+  },
+  "Pillars": {
+    "product": "Product",
+    "experience": "Experience",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "operations": "Operations",
+    "growth": "Growth",
+    "design": "Experience",
+    "ops": "Operations",
+    "productDesc": "Turns business problems into product structure.",
+    "experienceDesc": "Turns complexity into understandable workflows.",
+    "frontendDesc": "Builds the interaction layer.",
+    "backendDesc": "Builds logic, services and data foundations.",
+    "operationsDesc": "Connects software to real business execution.",
+    "growthDesc": "Ensures the system can support adoption and scale.",
+    "designDesc": "Turns complexity into understandable workflows.",
+    "opsDesc": "Connects software to real business execution."
+  },
+  "Capabilities": {
+    "title": "Capabilities",
+    "subtitle": "What Arkan can build — explained as systems, not service cards.",
+    "exploreWork": "Explore related systems",
+    "startWith": "Start with this",
+    "whatSolves": "What it solves",
+    "whatWeBuild": "What we build",
+    "whoUses": "Who uses it",
+    "commonModules": "Common modules",
+    "commonIntegrations": "Common integrations",
+    "related": "Related systems",
+    "items": {
+      "business": {
+        "title": "Business Systems",
+        "solves": "Fragmented finance, inventory, approvals and management tools.",
+        "builds": "ERP extensions, internal tools, dashboards, approval and finance workflows.",
+        "users": "Managers, finance, admins, department operators",
+        "modules": ["Roles", "Approvals", "Reporting", "Finance flows"],
+        "integrations": ["ERP", "Accounting", "Identity"]
+      },
+      "operations": {
+        "title": "Operations",
+        "solves": "Field teams, locations and requests running without a shared system.",
+        "builds": "Dispatch, tickets, assets, status flows and operational control.",
+        "users": "Field staff, supervisors, operations, customers",
+        "modules": ["Intake", "Dispatch", "Locations", "Status"],
+        "integrations": ["Messaging", "Payments", "Maps"]
+      },
+      "platforms": {
+        "title": "Platforms & SaaS",
+        "solves": "Multi-role products that need tenancy, portals and administration.",
+        "builds": "Subscriptions, portals, admin surfaces and tenant models.",
+        "users": "End users, tenants, platform admins",
+        "modules": ["Tenancy", "Billing", "Portals", "Admin"],
+        "integrations": ["Payments", "Auth", "APIs"]
+      },
+      "commerce": {
+        "title": "Commerce",
+        "solves": "Catalog, checkout and fulfillment split across tools.",
+        "builds": "Ordering, payments, inventory, delivery and merchant systems.",
+        "users": "Customers, merchants, couriers, ops",
+        "modules": ["Catalog", "Checkout", "Inventory", "Delivery"],
+        "integrations": ["Payment gateway", "Logistics", "POS"]
+      },
+      "ai": {
+        "title": "AI & Automation",
+        "solves": "Repetitive work and unstructured documents blocking operations.",
+        "builds": "Extraction, assistants, workflow automation and decision support.",
+        "users": "Ops teams, support, intake staff",
+        "modules": ["Extraction", "Assistants", "Automation", "Review"],
+        "integrations": ["Vision", "Messaging", "Internal APIs"]
+      },
+      "experiences": {
+        "title": "Digital Experiences",
+        "solves": "Interfaces that need to feel intentional while connecting to real systems.",
+        "builds": "Product experiences, portals and interactive interfaces.",
+        "users": "Customers, operators, public visitors",
+        "modules": ["UX", "UI system", "Portals", "Content"],
+        "integrations": ["CMS", "Auth", "Analytics"]
+      }
+    }
+  },
+  "Approach": {
+    "title": "How a system becomes operational.",
+    "subtitle": "Each stage has input, activity, output and a decision gate.",
+    "input": "Input",
+    "activity": "Activity",
+    "output": "Output",
+    "gate": "Decision gate",
+    "stages": {
+      "discover": {
+        "title": "Discover",
+        "input": "Business problem, constraints, stakeholders",
+        "activity": "Process interviews, friction mapping, success criteria",
+        "output": "Problem brief and operating context",
+        "gate": "Is the problem clear enough to architect?"
+      },
+      "map": {
+        "title": "Map",
+        "input": "Current workflows and systems",
+        "activity": "Role maps, as-is flows, integration inventory",
+        "output": "Operational map",
+        "gate": "Do we know who does what, and where it breaks?"
+      },
+      "architect": {
+        "title": "Architect",
+        "input": "Operational map",
+        "activity": "Modules, data, boundaries, integration plan",
+        "output": "System architecture",
+        "gate": "Are boundaries and ownership explicit?"
+      },
+      "prototype": {
+        "title": "Prototype",
+        "input": "Critical flows",
+        "activity": "Interactive prototypes of high-risk journeys",
+        "output": "Validated flow assumptions",
+        "gate": "Do users understand the core journeys?"
+      },
+      "design": {
+        "title": "Design",
+        "input": "Validated flows",
+        "activity": "Experience system, UI, content structure",
+        "output": "Design system and screens",
+        "gate": "Is the experience coherent enough to build?"
+      },
+      "build": {
+        "title": "Build",
+        "input": "Architecture + design",
+        "activity": "Frontend, backend, data, tests",
+        "output": "Working increments",
+        "gate": "Does each increment run operationally?"
+      },
+      "integrate": {
+        "title": "Integrate",
+        "input": "External systems and contracts",
+        "activity": "API wiring, mapping, failure handling",
+        "output": "Connected flows",
+        "gate": "Are integrations reliable under failure?"
+      },
+      "validate": {
+        "title": "Validate",
+        "input": "Built system",
+        "activity": "UAT, edge cases, permissions review",
+        "output": "Go / no-go evidence",
+        "gate": "Is the system safe to launch?"
+      },
+      "launch": {
+        "title": "Launch",
+        "input": "Validated release",
+        "activity": "Deploy, train, monitor",
+        "output": "Live operating system",
+        "gate": "Are real users succeeding?"
+      },
+      "evolve": {
+        "title": "Evolve",
+        "input": "Operational feedback",
+        "activity": "Modules, automation, scale changes",
+        "output": "Next system increment",
+        "gate": "What should grow next?"
+      }
+    }
+  },
+  "Studio": {
+    "title": "The system behind the systems.",
+    "subtitle": "A coordinated multidisciplinary unit — not a portfolio of freelancers.",
+    "body": "Arkan owns product, experience, engineering, operations and growth under one accountable team.",
+    "teamTitle": "Capability network",
+    "methodTitle": "How we work",
+    "network": {
+      "client": "CLIENT",
+      "product": "PRODUCT",
+      "ux": "UX",
+      "engineering": "ENGINEERING",
+      "operations": "OPERATIONS",
+      "delivery": "DELIVERY"
+    },
+    "steps": {
+      "discover": {
+        "title": "Discover",
+        "body": "We learn the business process before writing a line of code."
+      },
+      "architect": {
+        "title": "Architect",
+        "body": "Modules, permissions, and integrations become a fixed foundation."
+      },
+      "build": {
+        "title": "Build",
+        "body": "Incremental delivery with interfaces ready for daily use."
+      },
+      "operate": {
+        "title": "Operate",
+        "body": "Deploy, monitor, and support until the system runs in the real world."
+      }
+    }
+  },
+  "Start": {
+    "title": "Build with Arkan",
+    "subtitle": "Configure a project in a few minutes. Every answer shapes a live system blueprint.",
+    "progress": "Step {current} of {total}",
+    "back": "Back",
+    "next": "Continue",
+    "skip": "Skip",
+    "submit": "Send my blueprint to Arkan",
+    "sending": "Sending…",
+    "successTitle": "BLUEPRINT RECEIVED",
+    "successBody": "We'll review your system brief and respond with next steps.",
+    "error": "Couldn't send. Try again or contact us directly.",
+    "architecting": "ARCHITECTING YOUR BRIEF...",
+    "blueprintTitle": "YOUR SYSTEM BLUEPRINT",
+    "matched": "You should explore",
+    "matchedBody": "A system with similar operational layers.",
+    "exploreRelated": "Explore related architecture →",
+    "privacy": "Your answers are used only to prepare a project brief for Arkan. No account required.",
+    "liveBlueprint": "Live blueprint",
+    "complexity": "Complexity",
+    "complexityLevels": {
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High"
+    },
+    "steps": {
+      "type": {
+        "title": "What are we building together?",
+        "options": {
+          "business": "Business System",
+          "operations": "Operations System",
+          "platform": "Platform / SaaS",
+          "commerce": "E-commerce",
+          "mobile": "Mobile Product",
+          "ai": "AI / Automation",
+          "experience": "Website / Digital Experience",
+          "unsure": "I'm not sure yet"
+        }
+      },
+      "stage": {
+        "title": "Where are you now?",
+        "options": {
+          "idea": "Idea",
+          "new": "New business",
+          "existing": "Existing business",
+          "system": "Existing system",
+          "replace": "Replacing old software",
+          "scale": "Scaling an operation"
+        }
+      },
+      "roles": {
+        "title": "Who will use it?",
+        "options": {
+          "customers": "Customers",
+          "employees": "Employees",
+          "managers": "Managers",
+          "admins": "Admins",
+          "vendors": "Vendors",
+          "partners": "Partners",
+          "field": "Drivers / field staff",
+          "finance": "Finance",
+          "custom": "Custom role"
+        }
+      },
+      "workflows": {
+        "title": "What needs to happen?",
+        "options": {
+          "orders": "Orders",
+          "payments": "Payments",
+          "bookings": "Bookings",
+          "inventory": "Inventory",
+          "approvals": "Approvals",
+          "field": "Field operations",
+          "tracking": "Tracking",
+          "notifications": "Notifications",
+          "reporting": "Reporting",
+          "crm": "CRM",
+          "accounting": "Accounting",
+          "documents": "Documents",
+          "support": "Customer support",
+          "scheduling": "Scheduling",
+          "custom": "Custom workflow"
+        }
+      },
+      "integrations": {
+        "title": "What should it connect to?",
+        "hint": "Selecting none is fine — you can continue without integrations.",
+        "empty": "NO INTEGRATIONS SELECTED",
+        "options": {
+          "erp": "Existing ERP",
+          "odoo": "Odoo",
+          "sap": "SAP",
+          "payments": "Payment gateway",
+          "pos": "POS",
+          "whatsapp": "WhatsApp",
+          "google": "Google services",
+          "apis": "Existing APIs",
+          "gov": "Government services",
+          "logistics": "Logistics provider",
+          "other": "Other",
+          "unsure": "Not sure"
+        }
+      },
+      "intelligence": {
+        "title": "Where could intelligence help?",
+        "options": {
+          "automate": "Automate repetitive work",
+          "documents": "Understand documents",
+          "images": "Understand images",
+          "support": "Customer support",
+          "forecast": "Forecasting",
+          "recommend": "Recommendations",
+          "decide": "Decision assistance",
+          "search": "Search / knowledge",
+          "unsure": "Not sure"
+        }
+      },
+      "scale": {
+        "title": "Scale signals",
+        "users": "Expected users",
+        "locations": "Locations",
+        "languages": "Languages",
+        "usersOptions": {
+          "lt50": "Under 50",
+          "50to500": "50–500",
+          "500to5k": "500–5,000",
+          "5kplus": "5,000+"
+        },
+        "locationsOptions": {
+          "one": "One location",
+          "multi": "Multi-location",
+          "multiCountry": "Multi-country"
+        },
+        "languagesOptions": {
+          "ar": "Arabic",
+          "en": "English",
+          "both": "Arabic + English"
+        }
+      },
+      "priorities": {
+        "title": "What matters most?",
+        "options": {
+          "speed": "Speed to launch",
+          "scalability": "Scalability",
+          "automation": "Automation",
+          "control": "Operational control",
+          "cx": "Customer experience",
+          "cost": "Cost reduction",
+          "integration": "Integration",
+          "reliability": "Reliability",
+          "growth": "Growth"
+        }
+      },
+      "delivery": {
+        "title": "Delivery reality",
+        "launch": "Target launch",
+        "budget": "Budget range (optional)",
+        "decision": "Decision stage",
+        "launchOptions": {
+          "asap": "ASAP",
+          "3m": "Within 3 months",
+          "6m": "Within 6 months",
+          "explore": "Still exploring"
+        },
+        "budgetOptions": {
+          "tbd": "Prefer not to say",
+          "starter": "Starter",
+          "growth": "Growth",
+          "enterprise": "Enterprise"
+        },
+        "decisionOptions": {
+          "exploring": "Exploring",
+          "comparing": "Comparing partners",
+          "ready": "Ready to start"
+        }
+      },
+      "contact": {
+        "title": "How should we reach you?",
+        "name": "Name",
+        "company": "Company",
+        "email": "Work email",
+        "phone": "Phone / WhatsApp",
+        "country": "Country",
+        "channel": "Preferred contact method",
+        "notes": "Anything else?",
+        "channels": {
+          "email": "Email",
+          "whatsapp": "WhatsApp",
+          "either": "Either"
+        }
+      }
+    },
+    "blueprint": {
+      "project": "PROJECT",
+      "stage": "STAGE",
+      "users": "USERS",
+      "flows": "CORE FLOWS",
+      "integrations": "INTEGRATIONS",
+      "intelligence": "INTELLIGENCE",
+      "scale": "SCALE",
+      "priority": "PRIORITY",
+      "complexity": "COMPLEXITY"
+    },
+    "errorName": "Enter a valid name (at least 2 characters).",
+    "errorEmail": "Enter a valid work email.",
+    "whatsapp": "Chat on WhatsApp",
+    "emailCta": "Email us"
+  },
+  "Footer": {
+    "rights": "All rights reserved.",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "cookies": "Cookies",
+    "email": "Email",
+    "built": "SYSTEM STATUS / READY"
+  },
+  "Legal": {
+    "privacyTitle": "Privacy policy",
+    "privacyIntro": "This policy explains how Arkan handles data on this website. Contact: {email}.",
+    "dataTitle": "Data we collect",
+    "dataBody": "We only collect what you submit via the project builder: name, email, and project configuration — to process your request and reply.",
+    "cookiesTitle": "Cookies",
+    "cookiesBody": "We use an essential cookie (arkan_cookie_consent) for one year to store your consent choice, scoped to this site, with SameSite=Lax. We do not enable analytics or tracking before your explicit consent.",
+    "cookiesCategories": "Categories: essential (always on), preferences (optional), and analytics (optional — not loaded until a vetted tool is added and you opt in).",
+    "retentionTitle": "Retention & sharing",
+    "retentionBody": "We do not sell your data or share it for marketing. If a webhook is configured for form delivery, it is used only to route your request to our team over a secured channel.",
+    "rightsTitle": "Your rights",
+    "rightsBody": "You may request access, correction, or deletion of contact data via the email above. You can also change cookie consent anytime from the site footer or cookies page.",
+    "privacyBody": "We only collect data you submit through the project builder to process your request. We do not sell your data. Contact: {email}.",
+    "termsTitle": "Terms",
+    "termsIntro": "By using the Arkan website you agree to the following terms. Project engagements are governed by a separate agreement.",
+    "termsUseTitle": "Use of the site",
+    "termsUseBody": "Content is provided to explain our services and projects. Commercial copying or republication requires written permission.",
+    "termsIpTitle": "Intellectual property",
+    "termsIpBody": "The Arkan mark, copy, designs, and system descriptions are owned by or licensed to Arkan unless noted otherwise.",
+    "termsEngageTitle": "Engagement & delivery",
+    "termsEngageBody": "Submitting a blueprint does not create a contract. Scope, pricing, and timeline are defined in a written agreement before work begins.",
+    "termsLiabilityTitle": "Liability",
+    "termsLiabilityBody": "We take reasonable care with marketing accuracy but do not warrant error-free materials. We are not liable for losses from relying on showcase content alone.",
+    "termsBody": "Site content and project showcases are for marketing clarity. Scope, pricing, and delivery terms are defined in a separate agreement before any engagement begins."
+  },
+  "Cookies": {
+    "title": "Privacy control",
+    "body": "Essential cookies keep the site working. Analytics stay optional.",
+    "privacyLink": "Cookie details",
+    "pageTitle": "Cookie policy",
+    "pageIntro": "This page explains the cookie categories this site may use and how you control them.",
+    "required": "ON",
+    "optional": "OPTIONAL",
+    "acceptAll": "Accept all",
+    "reject": "Essential only",
+    "customize": "Customize",
+    "save": "Save configuration",
+    "manage": "Cookie settings",
+    "essential": "Essential",
+    "essentialDesc": "Required for security, locale, and storing your consent — cannot be disabled.",
+    "preferences": "Preferences",
+    "preferencesDesc": "Remember non-essential UI choices to improve your experience.",
+    "analytics": "Analytics",
+    "analyticsDesc": "Help us understand usage in aggregate. Loaded only after you opt in."
+  },
+  "Splash": {
+    "brand": "ARKAN",
+    "mark": "أركان",
+    "initializing": "INITIALIZING SYSTEM",
+    "aria": "Loading Arkan"
+  },
+  "A11y": {
+    "skipToContent": "Skip to content",
+    "primaryNav": "Primary navigation",
+    "mobileNav": "Mobile menu",
+    "footerNav": "Footer links",
+    "menu": "Open menu",
+    "newTab": " (opens in a new tab)"
+  },
+  "Errors": {
+    "eyebrow": "Error",
+    "title": "Something went wrong",
+    "body": "This page could not be shown. Try again or return home.",
+    "retry": "Try again",
+    "home": "Home",
+    "notFoundTitle": "SYSTEM NODE NOT FOUND",
+    "notFoundBody": "The requested node is outside the current network.",
+    "notFoundCta": "RETURN TO ARKAN"
+  },
+  "Work": {
+    "title": "Systems Atlas",
+    "subtitle": "Range, relationships and project scale — explore before you enter a control room."
+  }
+}
