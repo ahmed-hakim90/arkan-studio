@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Figtree, Readex_Pro } from "next/font/google";
 import "../globals.css";
+import { AdminShell } from "./AdminShell";
 
 const figtree = Figtree({
   subsets: ["latin"],
@@ -36,7 +37,7 @@ export default function AdminLayout({
   return (
     <html lang="ar" dir="rtl" className={`${figtree.variable} ${readex.variable} h-full`}>
       <body className="min-h-full bg-[var(--bg)] text-[var(--fg)] antialiased">
-        <div className="site-shell min-h-full">{children}</div>
+        <AdminShell>{children}</AdminShell>
       </body>
     </html>
   );

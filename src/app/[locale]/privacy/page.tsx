@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { getSiteConfig } from "@/lib/content/settings";
 import { pageMetadata } from "@/lib/seo";
-import { siteConfig } from "@/lib/site";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -12,11 +12,12 @@ export async function generateMetadata({
 }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Legal" });
+  const site = await getSiteConfig();
   return pageMetadata({
     locale,
     path: "/privacy",
     title: t("privacyTitle"),
-    description: t("privacyIntro", { email: siteConfig.email }),
+    description: t("privacyIntro", { email: site.email }),
   });
 }
 
@@ -24,6 +25,7 @@ export default async function PrivacyPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("Legal");
+  const site = await getSiteConfig();
 
   const sections = [
     { title: t("dataTitle"), body: t("dataBody") },
@@ -40,7 +42,7 @@ export default async function PrivacyPage({ params }: Props) {
       <div className="mx-auto max-w-3xl">
         <h1 className="font-display text-4xl md:text-5xl">{t("privacyTitle")}</h1>
         <p className="mt-6 text-[var(--muted)]">
-          {t("privacyIntro", { email: siteConfig.email })}
+          {t("privacyIntro", { email: site.email })}
         </p>
         <div className="mt-10 space-y-8">
           {sections.map((section) => (

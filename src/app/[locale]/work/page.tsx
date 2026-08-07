@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { SystemsAtlas } from "@/components/atlas/SystemsAtlas";
+import { getProjects } from "@/lib/content/projects";
 import { pageMetadata } from "@/lib/seo";
 
 type Props = {
@@ -24,6 +25,7 @@ export default async function WorkPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("Atlas");
+  const projects = await getProjects();
 
   return (
     <section className="section-pad py-12 md:py-16">
@@ -34,7 +36,7 @@ export default async function WorkPage({ params }: Props) {
         <h1 className="font-display mt-3 text-5xl md:text-6xl">{t("title")}</h1>
         <p className="mt-3 max-w-2xl text-[var(--muted)]">{t("subtitle")}</p>
         <div className="mt-10">
-          <SystemsAtlas />
+          <SystemsAtlas projects={projects} />
         </div>
       </div>
     </section>

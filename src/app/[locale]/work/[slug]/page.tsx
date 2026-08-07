@@ -2,24 +2,25 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getLocale, setRequestLocale } from "next-intl/server";
 import { ControlRoom } from "@/components/project/ControlRoom";
-import { getProject, projects } from "@/content/projects";
+import { getNextProject, getProject, getProjects } from "@/lib/content/projects";
+import { getSiteConfig } from "@/lib/content/settings";
 import { pageMetadata } from "@/lib/seo";
 import type { LocaleKey } from "@/lib/site";
-import { siteConfig } from "@/lib/site";
+import { projects as fileProjects } from "@/content/projects";
 
 type Props = {
   params: Promise<{ locale: string; slug: string }>;
 };
 
 export function generateStaticParams() {
-  return projects.flatMap((project) =>
+  return fileProjects.flatMap((project) =>
     ["ar", "en"].map((locale) => ({ locale, slug: project.slug })),
   );
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug, locale } = await params;
-  const project = getProject(slug);
+  const project = await getProject(slug);
   if (!project) return {};
   const loc = locale as LocaleKey;
   return pageMetadata({
@@ -34,20 +35,28 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function ProjectPage({ params }: Props) {
   const { locale, slug } = await params;
   setRequestLocale(locale);
-  const project = getProject(slug);
+  const project = await getProject(slug);
   if (!project) notFound();
 
-  const loc = (await getLocale()) as LocaleKey;
+  const [loc, site, nextProject] = await Promise.all([
+    getLocale() as Promise<LocaleKey>,
+    getSiteConfig(),
+    getNextProject(slug),
+  ]);
+
+  // Warm full list for cache coherence when navigating atlas.
+  await getProjects();
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
     name: project.title[loc],
     description: project.summary[loc],
-    url: `${siteConfig.url}/${loc}/work/${slug}`,
+    url: `${site.url}/${loc}/work/${slug}`,
     creator: {
       "@type": "Organization",
-      name: siteConfig.legalName,
-      url: siteConfig.url,
+      name: site.legalName,
+      url: site.url,
     },
   };
 
@@ -57,7 +66,7 @@ export default async function ProjectPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <ControlRoom project={project} />
+      <ControlRoom project={project} nextProject={nextProject} />
     </>
   );
 }

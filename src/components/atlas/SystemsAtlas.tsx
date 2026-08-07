@@ -8,10 +8,10 @@ import {
   STATUSES,
   SYSTEM_TYPES,
   massTotal,
-  projects,
 } from "@/content/projects";
 import type {
   CapabilityId,
+  Project,
   ProjectStatus,
   Sector,
   SystemType,
@@ -20,9 +20,10 @@ import { Link } from "@/i18n/navigation";
 
 type Props = {
   preview?: boolean;
+  projects: Project[];
 };
 
-export function SystemsAtlas({ preview = false }: Props) {
+export function SystemsAtlas({ preview = false, projects }: Props) {
   const t = useTranslations("Atlas");
   const locale = useLocale() as "ar" | "en";
   const [sector, setSector] = useState<Sector | "all">("all");
@@ -40,7 +41,7 @@ export function SystemsAtlas({ preview = false }: Props) {
       list = list.filter((p) => p.capabilities.includes(capability));
     list.sort((a, b) => massTotal(b) - massTotal(a));
     return preview ? list.slice(0, 4) : list;
-  }, [sector, systemType, status, capability, preview]);
+  }, [projects, sector, systemType, status, capability, preview]);
 
   const reset = () => {
     setSector("all");

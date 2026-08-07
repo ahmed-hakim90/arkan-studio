@@ -1,12 +1,12 @@
 import { getLocale, getTranslations } from "next-intl/server";
-import { getFeaturedProjects } from "@/content/projects";
 import { Link } from "@/i18n/navigation";
+import { getFeaturedProjects } from "@/lib/content/projects";
 import type { LocaleKey } from "@/lib/site";
 
 export async function SelectedSystems() {
   const t = await getTranslations("Home.selected");
   const locale = (await getLocale()) as LocaleKey;
-  const featured = getFeaturedProjects().slice(0, 3);
+  const featured = (await getFeaturedProjects()).slice(0, 3);
 
   return (
     <section className="section-pad border-y border-[var(--line)] py-20 md:py-28">

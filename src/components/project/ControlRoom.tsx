@@ -2,12 +2,12 @@
 
 import { useLocale, useTranslations } from "next-intl";
 import { useMemo, useState } from "react";
-import { getNextProject } from "@/content/projects";
 import type { Project } from "@/content/types";
 import { Link } from "@/i18n/navigation";
 
 type Props = {
   project: Project;
+  nextProject?: Project;
 };
 
 const xrayLayers = [
@@ -19,13 +19,13 @@ const xrayLayers = [
   "INTEGRATIONS",
 ] as const;
 
-export function ControlRoom({ project }: Props) {
+export function ControlRoom({ project, nextProject }: Props) {
   const t = useTranslations("ControlRoom");
   const tAtlas = useTranslations("Atlas");
   const locale = useLocale() as "ar" | "en";
   const [mode, setMode] = useState<"experience" | "system">("experience");
   const [roleId, setRoleId] = useState(project.roles[0]?.id ?? "");
-  const next = getNextProject(project.slug);
+  const next = nextProject;
 
   const activeRole = useMemo(
     () => project.roles.find((r) => r.id === roleId),

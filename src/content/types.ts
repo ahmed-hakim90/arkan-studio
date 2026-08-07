@@ -75,17 +75,35 @@ export type TechLayer = {
   responsibility?: LocalizedString;
 };
 
+export type TechRationale = {
+  why: LocalizedString;
+  detail?: LocalizedString;
+  tech?: string[];
+};
+
+export type BehindInterface = {
+  surfaceAction: LocalizedString;
+  chain: LocalizedString[];
+  punchline: LocalizedString;
+};
+
 export type Role = {
   id: string;
   name: LocalizedString;
   modules?: string[];
   workflows?: string[];
+  needs?: LocalizedString;
+  sees?: LocalizedString;
+  can?: LocalizedString;
 };
 
 export type Module = {
   id: string;
   name: LocalizedString;
   description: LocalizedString;
+  solves?: LocalizedString;
+  how?: LocalizedString;
+  connects?: LocalizedString;
 };
 
 export type Workflow = {
@@ -121,8 +139,11 @@ export type Project = {
   summary: LocalizedString;
   context: LocalizedString;
   challenge: LocalizedString;
+  thinking?: LocalizedString;
   solution: LocalizedString;
   impact: LocalizedString;
+  behindInterface?: BehindInterface;
+  techRationale?: TechRationale[];
 
   sector: Sector;
   systemType: SystemType;

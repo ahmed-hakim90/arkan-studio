@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { getLocale, getTranslations, setRequestLocale } from "next-intl/server";
 import { PillarsGrid } from "@/components/studio/PillarsGrid";
-import { team } from "@/content/team";
+import { getTeam } from "@/lib/content/team";
 import { pageMetadata } from "@/lib/seo";
 import type { LocaleKey } from "@/lib/site";
 
@@ -28,6 +28,7 @@ export default async function StudioPage({ params }: Props) {
   const t = await getTranslations("Studio");
   const tp = await getTranslations("Pillars");
   const loc = (await getLocale()) as LocaleKey;
+  const team = await getTeam();
 
   return (
     <section className="section-pad py-12 md:py-16">

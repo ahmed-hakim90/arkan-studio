@@ -2,9 +2,10 @@
 
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useId, useMemo, useState } from "react";
-import { matchProjectsByBrief } from "@/content/projects";
+import type { Project } from "@/content/types";
 import { Link } from "@/i18n/navigation";
-import { siteConfig, type LocaleKey } from "@/lib/site";
+import { matchProjectsByBriefFromList } from "@/lib/content/match";
+import type { LocaleKey } from "@/lib/site";
 
 const STORAGE_KEY = "arkan_project_brief_v1";
 
@@ -91,7 +92,17 @@ function complexityOf(state: BriefState): "low" | "medium" | "high" {
   return "low";
 }
 
-export function BriefIntake() {
+type Props = {
+  projects: Project[];
+  whatsapp: string;
+  contactEmail: string;
+};
+
+export function BriefIntake({
+  projects,
+  whatsapp,
+  contactEmail: _contactEmail,
+}: Props) {
   const t = useTranslations("Start");
   const locale = useLocale() as LocaleKey;
   const baseId = useId();
@@ -139,7 +150,8 @@ export function BriefIntake() {
 
   const matched = useMemo(
     () =>
-      matchProjectsByBrief(
+      matchProjectsByBriefFromList(
+        projects,
         {
           projectTypes: state.projectTypes,
           workflows: state.workflows,
@@ -148,7 +160,7 @@ export function BriefIntake() {
         },
         2,
       ),
-    [state],
+    [projects, state],
   );
 
   const complexity = complexityOf(state);
@@ -372,7 +384,7 @@ export function BriefIntake() {
             ))}
           </div>
           <a
-            href={siteConfig.whatsapp}
+            href={whatsapp}
             className="btn-ghost-dark mt-6 w-full"
             target="_blank"
             rel="noopener noreferrer"

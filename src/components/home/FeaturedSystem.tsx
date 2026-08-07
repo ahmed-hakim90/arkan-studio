@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useLocale, useTranslations } from "next-intl";
-import { getProject } from "@/content/projects";
+import type { Project } from "@/content/types";
 import { Link } from "@/i18n/navigation";
 import { usePrefersReducedMotion } from "@/lib/motion";
 
@@ -18,10 +18,13 @@ const tree = [
   { id: "accounting", level: 6 },
 ] as const;
 
-export function FeaturedSystem() {
+type Props = {
+  project?: Project | null;
+};
+
+export function FeaturedSystem({ project }: Props) {
   const t = useTranslations("Home.featured");
   const locale = useLocale() as "ar" | "en";
-  const project = getProject("masar-valet");
   const reduced = usePrefersReducedMotion();
 
   if (!project) return null;

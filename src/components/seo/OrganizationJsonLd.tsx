@@ -1,24 +1,21 @@
-import { siteConfig } from "@/lib/site";
+import { getSiteConfig } from "@/lib/content/settings";
 
-export function OrganizationJsonLd() {
+export async function OrganizationJsonLd() {
+  const site = await getSiteConfig();
   const data = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: siteConfig.legalName,
+    name: site.legalName,
     alternateName: ["Arkan", "أركان"],
-    url: siteConfig.url,
-    email: siteConfig.email,
-    telephone: siteConfig.phone,
+    url: site.url,
+    email: site.email,
+    telephone: site.phone,
     address: {
       "@type": "PostalAddress",
       addressLocality: "Cairo",
       addressCountry: "EG",
     },
-    sameAs: [
-      siteConfig.social.github,
-      siteConfig.social.linkedin,
-      siteConfig.social.x,
-    ],
+    sameAs: [site.social.github, site.social.linkedin, site.social.x],
   };
 
   return (
