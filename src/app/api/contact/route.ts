@@ -10,7 +10,7 @@ import { createAnonClient } from "@/lib/supabase/server";
 const contactSchema = z.object({
   name: z.string().trim().min(2).max(100),
   email: z.string().trim().email().max(200),
-  message: z.string().trim().max(8000).optional().default(""),
+  message: z.string().trim().max(12000).optional().default(""),
   systemType: z.enum(["erp", "pos", "ops", "commerce", "ai", "other"]),
   market: z.enum(["egypt", "saudi", "gulf", "global"]).optional().default("egypt"),
   scale: z.enum(["mvp", "growth", "enterprise"]).optional().default("growth"),

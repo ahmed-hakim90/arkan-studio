@@ -10,12 +10,9 @@ type Props = {
 const stages = [
   "discover",
   "map",
-  "architect",
-  "prototype",
   "design",
   "build",
   "integrate",
-  "validate",
   "launch",
   "evolve",
 ] as const;

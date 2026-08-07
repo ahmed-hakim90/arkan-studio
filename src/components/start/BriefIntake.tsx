@@ -7,7 +7,7 @@ import { Link } from "@/i18n/navigation";
 import { matchProjectsByBriefFromList } from "@/lib/content/match";
 import type { LocaleKey } from "@/lib/site";
 
-const STORAGE_KEY = "arkan_project_brief_v1";
+const STORAGE_KEY = "arkan_project_brief_v2";
 
 const STEP_IDS = [
   "type",
@@ -18,6 +18,7 @@ const STEP_IDS = [
   "intelligence",
   "scale",
   "priorities",
+  "problem",
   "delivery",
   "contact",
 ] as const;
@@ -37,9 +38,13 @@ type BriefState = {
     languages: string;
   };
   priorities: string[];
+  problemNarrative: string;
   targetLaunch: string;
   budget: string;
-  decision: string;
+  existingTeam: string;
+  existingSoftware: string;
+  hasDoc: boolean;
+  docNote: string;
   contact: {
     name: string;
     company: string;
@@ -60,9 +65,13 @@ const initialState: BriefState = {
   intelligence: [],
   scale: { users: "", locations: "", languages: "both" },
   priorities: [],
+  problemNarrative: "",
   targetLaunch: "",
   budget: "tbd",
-  decision: "",
+  existingTeam: "",
+  existingSoftware: "",
+  hasDoc: false,
+  docNote: "",
   contact: {
     name: "",
     company: "",
@@ -86,10 +95,27 @@ function complexityOf(state: BriefState): "low" | "medium" | "high" {
     state.workflows.length +
     state.integrations.filter((i) => i !== "unsure").length +
     state.intelligence.filter((i) => i !== "unsure").length +
-    (state.scale.locations === "multiCountry" ? 2 : state.scale.locations === "multi" ? 1 : 0);
+    (state.scale.locations === "multiCountry"
+      ? 2
+      : state.scale.locations === "multi"
+        ? 1
+        : 0);
   if (score >= 12) return "high";
   if (score >= 6) return "medium";
   return "low";
+}
+
+function readingKey(state: BriefState): string {
+  const primary = state.projectTypes[0] ?? "default";
+  if (
+    ["operations", "business", "platform", "commerce", "ai", "experience"].includes(
+      primary,
+    )
+  ) {
+    return primary;
+  }
+  if (primary === "mobile") return "platform";
+  return "default";
 }
 
 type Props = {
@@ -164,42 +190,72 @@ export function BriefIntake({
   );
 
   const complexity = complexityOf(state);
+  const readKey = readingKey(state);
 
   function OptionGrid({
     options,
     values,
     onToggle,
     single,
+    descriptions,
   }: {
     options: string[];
     values: string[];
     onToggle: (value: string) => void;
     single?: boolean;
+    descriptions?: boolean;
   }) {
     return (
-      <div className="flex flex-wrap gap-2">
+      <div className={descriptions ? "grid gap-3" : "flex flex-wrap gap-2"}>
         {options.map((option) => {
           const active = values.includes(option);
           return (
             <button
               key={option}
               type="button"
-              onClick={() => {
-                if (single) onToggle(option);
-                else onToggle(option);
-              }}
-              className={`rounded-[var(--radius-sm)] border px-3 py-2 text-sm font-medium transition ${
-                active
-                  ? "border-[var(--signal)] bg-[var(--signal)] text-white"
-                  : "border-[var(--line)] bg-[var(--surface)] hover:border-[var(--signal)]"
-              }`}
+              onClick={() => onToggle(option)}
+              className={
+                descriptions
+                  ? `rounded-[var(--radius-sm)] border px-4 py-3 text-start transition ${
+                      active
+                        ? "border-[var(--signal)] bg-[var(--signal)] text-white"
+                        : "border-[var(--line)] bg-[var(--surface)] hover:border-[var(--signal)]"
+                    }`
+                  : `rounded-[var(--radius-sm)] border px-3 py-2 text-sm font-medium transition ${
+                      active
+                        ? "border-[var(--signal)] bg-[var(--signal)] text-white"
+                        : "border-[var(--line)] bg-[var(--surface)] hover:border-[var(--signal)]"
+                    }`
+              }
             >
-              {t(`steps.${step}.options.${option}` as never)}
+              <span className={descriptions ? "block font-medium" : undefined}>
+                {t(`steps.${step}.options.${option}` as never)}
+              </span>
+              {descriptions ? (
+                <span
+                  className={`mt-1 block text-sm ${
+                    active ? "text-white/80" : "text-[var(--muted)]"
+                  }`}
+                >
+                  {t(`steps.stage.descriptions.${option}` as never)}
+                </span>
+              ) : null}
+              {single ? null : null}
             </button>
           );
         })}
       </div>
     );
+  }
+
+  function canAdvance(): boolean {
+    if (step === "type") return state.projectTypes.length > 0;
+    if (step === "stage") return Boolean(state.stage);
+    if (step === "roles") return state.roles.length > 0;
+    if (step === "workflows") return state.workflows.length > 0;
+    if (step === "priorities") return state.priorities.length > 0;
+    if (step === "problem") return state.problemNarrative.trim().length >= 20;
+    return true;
   }
 
   function showBlueprint() {
@@ -208,6 +264,10 @@ export function BriefIntake({
       return;
     }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(state.contact.email)) {
+      setStatus("error");
+      return;
+    }
+    if (state.problemNarrative.trim().length < 20) {
       setStatus("error");
       return;
     }
@@ -224,7 +284,7 @@ export function BriefIntake({
     setStatus("sending");
 
     const briefMessage = [
-      `BLUEPRINT / ${blueprintId}`,
+      `PROJECT / ${blueprintId}`,
       `Types: ${state.projectTypes.join(", ")}`,
       `Stage: ${state.stage}`,
       `Roles: ${state.roles.join(", ")}`,
@@ -233,7 +293,10 @@ export function BriefIntake({
       `Intelligence: ${state.intelligence.join(", ")}`,
       `Scale: users=${state.scale.users}; locations=${state.scale.locations}; languages=${state.scale.languages}`,
       `Priorities: ${state.priorities.join(", ")}`,
-      `Launch: ${state.targetLaunch}; budget=${state.budget}; decision=${state.decision}`,
+      `Problem: ${state.problemNarrative}`,
+      `Launch: ${state.targetLaunch}; budget=${state.budget}`,
+      `Existing team: ${state.existingTeam}; software: ${state.existingSoftware}`,
+      state.hasDoc ? `Has document: yes; note=${state.docNote}` : "Has document: no",
       `Company: ${state.contact.company}`,
       `Phone: ${state.contact.phone}`,
       `Country: ${state.contact.country}`,
@@ -311,19 +374,18 @@ export function BriefIntake({
       <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
         <div>
           <p className="tech-label text-[11px] text-[var(--signal)]">
-            BLUEPRINT / {blueprintId}
+            PROJECT / {blueprintId}
           </p>
           <h2 className="font-display mt-3 text-4xl">{t("blueprintTitle")}</h2>
+          <p className="mt-3 max-w-2xl text-[var(--muted)]">{t("blueprintLead")}</p>
+
           <dl className="mt-8 divide-y divide-[var(--line)] border-y border-[var(--line)]">
             {(
               [
                 ["project", state.projectTypes.join(" / ")],
-                ["stage", state.stage],
                 ["users", state.roles.join(" / ")],
                 ["flows", state.workflows.join(" / ")],
                 ["integrations", state.integrations.join(" / ") || "—"],
-                ["intelligence", state.intelligence.join(" / ")],
-                ["scale", state.scale.locations || state.scale.users],
                 ["priority", state.priorities.join(" + ")],
                 ["complexity", t(`complexityLevels.${complexity}`)],
               ] as const
@@ -337,21 +399,43 @@ export function BriefIntake({
             ))}
           </dl>
 
+          <div className="mt-10 border border-[var(--line)] bg-[var(--surface)] px-5 py-6">
+            <p className="tech-label text-[10px] text-[var(--signal)]">
+              {t("interpretationTitle")}
+            </p>
+            <p className="mt-3 text-[var(--muted)]">
+              {t(`interpretations.${readKey}` as never)}
+            </p>
+          </div>
+
+          <div className="mt-6 border border-[var(--line)] px-5 py-6">
+            <p className="tech-label text-[10px] text-[var(--signal)]">
+              {t("recommendationTitle")}
+            </p>
+            <p className="mt-3 text-[var(--muted)]">
+              {t(`recommendations.${readKey}` as never)}
+            </p>
+          </div>
+
           {phase === "blueprint" ? (
-            <button
-              type="button"
-              className="btn-primary mt-8"
-              disabled={status === "sending"}
-              onClick={submitBlueprint}
-            >
-              {status === "sending" ? t("sending") : `${t("submit")} →`}
-            </button>
+            <div className="mt-10">
+              <h3 className="font-display text-2xl">{t("convertTitle")}</h3>
+              <p className="mt-2 text-sm text-[var(--muted)]">{t("convertBody")}</p>
+              <button
+                type="button"
+                className="btn-primary mt-6"
+                disabled={status === "sending"}
+                onClick={submitBlueprint}
+              >
+                {status === "sending" ? t("sending") : `${t("submit")} →`}
+              </button>
+            </div>
           ) : (
             <div className="mt-8 border border-[var(--ok)]/30 bg-[color-mix(in_oklab,var(--ok)_8%,white)] px-5 py-4">
               <p className="font-semibold text-[var(--ok)]">{t("successTitle")}</p>
               <p className="mt-1 text-sm text-[var(--muted)]">{t("successBody")}</p>
               <p className="mt-3 tech-label text-[10px] text-[var(--muted)]">
-                BLUEPRINT / {blueprintId} · RECEIVED
+                PROJECT / {blueprintId}
               </p>
             </div>
           )}
@@ -375,7 +459,7 @@ export function BriefIntake({
               >
                 <p className="font-display text-2xl">{project.title[locale]}</p>
                 <p className="mt-1 text-sm text-[var(--muted)]">
-                  {t("matchedBody")}
+                  {project.descriptor[locale]}
                 </p>
                 <p className="mt-2 text-sm font-semibold text-[var(--signal)]">
                   {t("exploreRelated")}
@@ -389,7 +473,7 @@ export function BriefIntake({
             target="_blank"
             rel="noopener noreferrer"
           >
-            {t("whatsapp")}
+            WhatsApp
           </a>
         </aside>
       </div>
@@ -414,6 +498,11 @@ export function BriefIntake({
         <h2 className="font-display mt-8 text-3xl md:text-4xl">
           {t(`steps.${step}.title`)}
         </h2>
+        {["type", "roles", "scale", "problem"].includes(step) ? (
+          <p className="mt-3 max-w-2xl text-sm text-[var(--muted)]">
+            {t(`steps.${step}.helper` as never)}
+          </p>
+        ) : null}
 
         <div className="mt-8">
           {step === "type" ? (
@@ -440,9 +529,10 @@ export function BriefIntake({
 
           {step === "stage" ? (
             <OptionGrid
-              options={["idea", "new", "existing", "system", "replace", "scale"]}
+              options={["idea", "existing", "system", "replace", "scale"]}
               values={state.stage ? [state.stage] : []}
               single
+              descriptions
               onToggle={(value) => setState((s) => ({ ...s, stage: value }))}
             />
           ) : null}
@@ -453,11 +543,11 @@ export function BriefIntake({
                 "customers",
                 "employees",
                 "managers",
-                "admins",
-                "vendors",
-                "partners",
                 "field",
+                "partners",
+                "vendors",
                 "finance",
+                "admins",
                 "custom",
               ]}
               values={state.roles}
@@ -475,15 +565,15 @@ export function BriefIntake({
                 "bookings",
                 "inventory",
                 "approvals",
-                "field",
                 "tracking",
-                "notifications",
+                "field",
+                "accounting",
                 "reporting",
                 "crm",
-                "accounting",
                 "documents",
-                "support",
+                "notifications",
                 "scheduling",
+                "support",
                 "custom",
               ]}
               values={state.workflows}
@@ -511,13 +601,13 @@ export function BriefIntake({
                   "erp",
                   "odoo",
                   "sap",
-                  "payments",
                   "pos",
+                  "payments",
                   "whatsapp",
                   "google",
+                  "logistics",
                   "apis",
                   "gov",
-                  "logistics",
                   "other",
                   "unsure",
                 ]}
@@ -535,14 +625,14 @@ export function BriefIntake({
           {step === "intelligence" ? (
             <OptionGrid
               options={[
-                "automate",
                 "documents",
                 "images",
+                "extract",
                 "support",
-                "forecast",
-                "recommend",
-                "decide",
+                "automate",
                 "search",
+                "decide",
+                "forecast",
                 "unsure",
               ]}
               values={state.intelligence}
@@ -597,15 +687,14 @@ export function BriefIntake({
           {step === "priorities" ? (
             <OptionGrid
               options={[
-                "speed",
-                "scalability",
-                "automation",
+                "lessTime",
+                "fewerErrors",
                 "control",
                 "cx",
+                "scale",
+                "sales",
                 "cost",
-                "integration",
-                "reliability",
-                "growth",
+                "launch",
               ]}
               values={state.priorities}
               onToggle={(value) =>
@@ -617,13 +706,39 @@ export function BriefIntake({
             />
           ) : null}
 
+          {step === "problem" ? (
+            <label className="block text-sm">
+              <textarea
+                className="field-input min-h-40"
+                value={state.problemNarrative}
+                placeholder={t("steps.problem.placeholder")}
+                onChange={(e) =>
+                  setState((s) => ({
+                    ...s,
+                    problemNarrative: e.target.value.slice(0, 4000),
+                  }))
+                }
+                maxLength={4000}
+              />
+            </label>
+          ) : null}
+
           {step === "delivery" ? (
             <div className="space-y-6">
               {(
                 [
                   ["targetLaunch", "launch", ["asap", "3m", "6m", "explore"]],
                   ["budget", "budget", ["tbd", "starter", "growth", "enterprise"]],
-                  ["decision", "decision", ["exploring", "comparing", "ready"]],
+                  [
+                    "existingTeam",
+                    "existingTeam",
+                    ["none", "partial", "full"],
+                  ],
+                  [
+                    "existingSoftware",
+                    "existingSoftware",
+                    ["none", "partial", "system"],
+                  ],
                 ] as const
               ).map(([field, labelKey, options]) => (
                 <div key={field}>
@@ -650,6 +765,35 @@ export function BriefIntake({
                   </div>
                 </div>
               ))}
+              <label className="flex items-start gap-3 text-sm">
+                <input
+                  type="checkbox"
+                  className="mt-1"
+                  checked={state.hasDoc}
+                  onChange={(e) =>
+                    setState((s) => ({ ...s, hasDoc: e.target.checked }))
+                  }
+                />
+                <span>{t("steps.delivery.hasDoc")}</span>
+              </label>
+              {state.hasDoc ? (
+                <label className="block text-sm">
+                  <span className="mb-1.5 block font-medium">
+                    {t("steps.delivery.docNote")}
+                  </span>
+                  <input
+                    className="field-input"
+                    value={state.docNote}
+                    onChange={(e) =>
+                      setState((s) => ({
+                        ...s,
+                        docNote: e.target.value.slice(0, 500),
+                      }))
+                    }
+                    maxLength={500}
+                  />
+                </label>
+              ) : null}
             </div>
           ) : null}
 
@@ -660,7 +804,7 @@ export function BriefIntake({
                   ["name", "name", true],
                   ["company", "company", false],
                   ["email", "email", true],
-                  ["phone", "phone", false],
+                  ["phone", "phone", true],
                   ["country", "country", false],
                 ] as const
               ).map(([field, label, required]) => (
@@ -779,6 +923,7 @@ export function BriefIntake({
             <button
               type="button"
               className="btn-primary"
+              disabled={!canAdvance()}
               onClick={() =>
                 setStepIndex((i) => Math.min(STEP_IDS.length - 1, i + 1))
               }
@@ -826,24 +971,14 @@ export function BriefIntake({
               value={state.integrations.join(" · ") || "—"}
             />
             <BlueprintNode
-              label={t("blueprint.intelligence")}
-              value={state.intelligence.join(" · ") || "—"}
+              label={t("blueprint.priority")}
+              value={state.priorities.join(" · ") || "—"}
             />
             <BlueprintNode
               label={t("blueprint.complexity")}
               value={t(`complexityLevels.${complexity}`)}
               signal
             />
-          </div>
-          <div className="mt-6 flex flex-wrap gap-2">
-            {state.roles.slice(0, 6).map((role) => (
-              <span
-                key={role}
-                className="rounded-[var(--radius-xs)] border border-[var(--line-signal)] px-2 py-1 tech-label text-[9px] text-[var(--signal)]"
-              >
-                {role.toUpperCase()}
-              </span>
-            ))}
           </div>
         </div>
       </aside>

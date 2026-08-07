@@ -34,7 +34,7 @@ export function Hero() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.45 }}
         >
-          SYSTEMS, EXPOSED.
+          {t("eyebrow")}
         </motion.p>
 
         <motion.h1
@@ -70,10 +70,10 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.38, duration: 0.45 }}
         >
-          <Link href="/work" className="btn-primary">
+          <Link href="/start" className="btn-primary">
             {t("ctaPrimary")}
           </Link>
-          <Link href="/start" className="btn-ghost">
+          <Link href="/work" className="btn-ghost">
             {t("ctaSecondary")}
           </Link>
         </motion.div>

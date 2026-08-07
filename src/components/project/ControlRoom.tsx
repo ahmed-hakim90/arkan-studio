@@ -2,7 +2,7 @@
 
 import { useLocale, useTranslations } from "next-intl";
 import { useMemo, useState } from "react";
-import type { Project } from "@/content/types";
+import type { Project, TechRationale } from "@/content/types";
 import { Link } from "@/i18n/navigation";
 
 type Props = {
@@ -34,6 +34,20 @@ export function ControlRoom({ project, nextProject }: Props) {
 
   const highlightedModules = new Set(activeRole?.modules ?? []);
   const highlightedWorkflows = new Set(activeRole?.workflows ?? []);
+  const thinking = project.thinking;
+  const behindInterface = project.behindInterface;
+  const techItems: TechRationale[] =
+    project.techRationale ??
+    project.stack.map((layer) => ({
+      why: {
+        ar: layer.layer,
+        en: layer.layer.toUpperCase(),
+      },
+      tech: layer.items,
+    }));
+  const roleNeeds = activeRole?.needs;
+  const roleSees = activeRole?.sees;
+  const roleCan = activeRole?.can;
 
   return (
     <article>
@@ -110,10 +124,10 @@ export function ControlRoom({ project, nextProject }: Props) {
           </p>
         </Chapter>
 
-        {project.thinking ? (
+        {thinking ? (
           <Chapter title={t("thinking")}>
             <p className="max-w-3xl text-lg leading-relaxed text-[var(--foreground)]">
-              {project.thinking[locale]}
+              {thinking[locale]}
             </p>
           </Chapter>
         ) : null}
@@ -239,16 +253,16 @@ export function ControlRoom({ project, nextProject }: Props) {
               </button>
             ))}
           </div>
-          {activeRole?.needs || activeRole?.sees || activeRole?.can ? (
+          {roleNeeds || roleSees || roleCan ? (
             <div className="mt-8 grid gap-4 md:grid-cols-3">
-              {activeRole.needs ? (
-                <RoleFacet label={t("roleNeeds")} value={activeRole.needs[locale]} />
+              {roleNeeds ? (
+                <RoleFacet label={t("roleNeeds")} value={roleNeeds[locale]} />
               ) : null}
-              {activeRole.sees ? (
-                <RoleFacet label={t("roleSees")} value={activeRole.sees[locale]} />
+              {roleSees ? (
+                <RoleFacet label={t("roleSees")} value={roleSees[locale]} />
               ) : null}
-              {activeRole.can ? (
-                <RoleFacet label={t("roleCan")} value={activeRole.can[locale]} />
+              {roleCan ? (
+                <RoleFacet label={t("roleCan")} value={roleCan[locale]} />
               ) : null}
             </div>
           ) : activeRole ? (
@@ -279,40 +293,46 @@ export function ControlRoom({ project, nextProject }: Props) {
                   <p className="mt-2 max-w-2xl text-[var(--muted)]">
                     {module.description[locale]}
                   </p>
-                  {module.solves || module.how || module.connects ? (
-                    <dl className="mt-6 grid gap-4 sm:grid-cols-3">
-                      {module.solves ? (
-                        <div>
-                          <dt className="tech-label text-[10px] text-[var(--signal)]">
-                            {t("moduleSolves")}
-                          </dt>
-                          <dd className="mt-1 text-sm text-[var(--muted)]">
-                            {module.solves[locale]}
-                          </dd>
-                        </div>
-                      ) : null}
-                      {module.how ? (
-                        <div>
-                          <dt className="tech-label text-[10px] text-[var(--signal)]">
-                            {t("moduleHow")}
-                          </dt>
-                          <dd className="mt-1 text-sm text-[var(--muted)]">
-                            {module.how[locale]}
-                          </dd>
-                        </div>
-                      ) : null}
-                      {module.connects ? (
-                        <div>
-                          <dt className="tech-label text-[10px] text-[var(--signal)]">
-                            {t("moduleConnects")}
-                          </dt>
-                          <dd className="mt-1 text-sm text-[var(--muted)]">
-                            {module.connects[locale]}
-                          </dd>
-                        </div>
-                      ) : null}
-                    </dl>
-                  ) : null}
+                  {(() => {
+                    const solves = module.solves;
+                    const how = module.how;
+                    const connects = module.connects;
+                    if (!solves && !how && !connects) return null;
+                    return (
+                      <dl className="mt-6 grid gap-4 sm:grid-cols-3">
+                        {solves ? (
+                          <div>
+                            <dt className="tech-label text-[10px] text-[var(--signal)]">
+                              {t("moduleSolves")}
+                            </dt>
+                            <dd className="mt-1 text-sm text-[var(--muted)]">
+                              {solves[locale]}
+                            </dd>
+                          </div>
+                        ) : null}
+                        {how ? (
+                          <div>
+                            <dt className="tech-label text-[10px] text-[var(--signal)]">
+                              {t("moduleHow")}
+                            </dt>
+                            <dd className="mt-1 text-sm text-[var(--muted)]">
+                              {how[locale]}
+                            </dd>
+                          </div>
+                        ) : null}
+                        {connects ? (
+                          <div>
+                            <dt className="tech-label text-[10px] text-[var(--signal)]">
+                              {t("moduleConnects")}
+                            </dt>
+                            <dd className="mt-1 text-sm text-[var(--muted)]">
+                              {connects[locale]}
+                            </dd>
+                          </div>
+                        ) : null}
+                      </dl>
+                    );
+                  })()}
                 </div>
               </div>
             ))}
@@ -350,16 +370,16 @@ export function ControlRoom({ project, nextProject }: Props) {
           </div>
         </Chapter>
 
-        {project.behindInterface ? (
+        {behindInterface ? (
           <Chapter title={t("behindInterface")}>
             <p className="tech-label text-[11px] text-[var(--signal)]">
               {t("surfaceAction")}
             </p>
             <p className="font-display mt-3 text-3xl md:text-4xl">
-              {project.behindInterface.surfaceAction[locale]}
+              {behindInterface.surfaceAction[locale]}
             </p>
             <ol className="mt-8 max-w-xl space-y-3 border-s border-[var(--line)] ps-5">
-              {project.behindInterface.chain.map((step, index) => (
+              {behindInterface.chain.map((step, index) => (
                 <li key={step.en} className="text-[var(--muted)]">
                   <span className="tech-label me-2 text-[10px] text-[var(--signal)]">
                     {String(index + 1).padStart(2, "0")}
@@ -369,7 +389,7 @@ export function ControlRoom({ project, nextProject }: Props) {
               ))}
             </ol>
             <p className="font-display mt-10 max-w-2xl text-2xl text-[var(--navy)]">
-              {project.behindInterface.punchline[locale]}
+              {behindInterface.punchline[locale]}
             </p>
           </Chapter>
         ) : null}
@@ -379,14 +399,7 @@ export function ControlRoom({ project, nextProject }: Props) {
             {t("technologyWhy")}
           </p>
           <div className="divide-y divide-[var(--line)] border-y border-[var(--line)]">
-            {(project.techRationale ?? project.stack.map((layer) => ({
-              why: {
-                ar: layer.layer,
-                en: layer.layer.toUpperCase(),
-              },
-              detail: undefined,
-              tech: layer.items,
-            }))).map((item) => (
+            {techItems.map((item) => (
               <div key={item.why.en} className="grid gap-2 py-5 md:grid-cols-[1fr_auto]">
                 <div>
                   <p className="font-medium">{item.why[locale]}</p>

@@ -82,6 +82,41 @@ export default async function StudioPage({ params }: Props) {
             <PillarsGrid />
           </div>
         </div>
+
+        <div>
+          <h2 className="font-display text-3xl md:text-4xl">
+            {t("methodTitle")}
+          </h2>
+          <div className="mt-10 divide-y divide-[var(--line)] border-y border-[var(--line)]">
+            {(
+              [
+                "workFirst",
+                "systemBeforeScreens",
+                "whatIsNeeded",
+                "operations",
+                "oneResponsibility",
+                "afterLaunch",
+              ] as const
+            ).map((key, index) => (
+              <div
+                key={key}
+                className="grid gap-4 py-8 md:grid-cols-[5rem_1fr]"
+              >
+                <p className="tech-label text-[11px] text-[var(--muted)]">
+                  {String(index + 1).padStart(2, "0")}
+                </p>
+                <div>
+                  <h3 className="font-display text-2xl">
+                    {t(`why.${key}.title`)}
+                  </h3>
+                  <p className="mt-2 max-w-2xl text-[var(--muted)]">
+                    {t(`why.${key}.body`)}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

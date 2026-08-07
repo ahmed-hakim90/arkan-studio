@@ -60,6 +60,9 @@ export function InvisibleLayer() {
         <h2 className="font-display max-w-3xl text-4xl md:text-6xl">
           {t("title")}
         </h2>
+        <p className="mt-8 max-w-3xl text-lg leading-relaxed text-[var(--muted)] md:text-xl">
+          {t("body")}
+        </p>
 
         <div className="mt-16 space-y-0 border-y border-[var(--line)]">
           {layers.map((layer, index) => (

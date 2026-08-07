@@ -95,7 +95,7 @@ CTA: ابدأ مشروعك → / Start your project →
 
 Slugs: masar-valet · nexora-erp · souqna · velora-pos · rentara · qr-menu · hakimo-production · sokany-commerce · cairo-quarantine · noxus-whatsapp-ai
 
-Full bilingual narratives live in `src/content/systems/*.ts` (synced from this architecture).
+Full bilingual narratives live in [`src/content/systems/`](../../src/content/systems/) (one file per slug), assembled by [`src/content/projects.ts`](../../src/content/projects.ts). Each project includes: One Line, Context, Problem, Thinking, System, Users (needs/sees/can), Modules (solves/how/connects), Workflow, Behind the Interface, Technology (why-first), Impact, Arkan Scope.
 
 ---
 

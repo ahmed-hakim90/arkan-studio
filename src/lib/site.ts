@@ -5,12 +5,12 @@ export const siteConfig = {
   },
   legalName: "Arkan Studio",
   tagline: {
-    ar: "نبني أنظمة تشغّل شغلك",
-    en: "We build systems that run the business",
+    ar: "من الفكرة إلى نظام يعمل",
+    en: "From idea to a working system",
   },
   description: {
-    ar: "استوديو أنظمة رقمية يبني منصات ERP وPOS وتشغيل وتجارة إلكترونية بفريق متكامل.",
-    en: "A digital systems studio building ERP, POS, operations, and commerce platforms with a full team.",
+    ar: "أركان استوديو لبناء الأنظمة والمنتجات الرقمية — نحوّل الأفكار والعمليات المعقدة إلى أنظمة واضحة ومترابطة وقابلة للنمو.",
+    en: "Arkan is a studio for building digital systems and products — turning complex ideas and operations into clear, connected, scalable systems.",
   },
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://arkan.studio",
   email: "ahmedabdulhakim90@gmail.com",

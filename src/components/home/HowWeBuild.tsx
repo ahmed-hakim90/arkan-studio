@@ -7,7 +7,7 @@ import { usePrefersReducedMotion } from "@/lib/motion";
 
 const stages = [
   "discover",
-  "architect",
+  "map",
   "design",
   "build",
   "integrate",
@@ -17,7 +17,7 @@ const stages = [
 
 export function HowWeBuild() {
   const t = useTranslations("Home.how");
-  const [active, setActive] = useState<(typeof stages)[number]>("architect");
+  const [active, setActive] = useState<(typeof stages)[number]>("map");
   const reduced = usePrefersReducedMotion();
   const activeIndex = stages.indexOf(active);
 

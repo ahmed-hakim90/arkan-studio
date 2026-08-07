@@ -12,7 +12,7 @@ Digital flagship — bilingual (AR/EN), Systems Atlas, Control Rooms with System
 - next-intl (Arabic default + English, RTL)
 - Framer Motion
 - Zod-validated contact/blueprint API with honeypot, origin check, webhook SSRF guard, and rate limit
-- Supabase persistence for leads + admin dashboard at `/admin`
+- Supabase CMS: projects, team, settings, site copy, media + leads at `/admin`
 - Security headers (CSP, HSTS, frame deny, Permissions-Policy)
 
 ## Develop
@@ -33,6 +33,11 @@ Open [http://localhost:3000](http://localhost:3000) — redirects to `/ar`.
 | `npm run build` | Production build |
 | `npm run start` | Serve production build |
 | `npm run lint` | ESLint |
+| `npm run seed:cms` | Reseed Supabase CMS from file content |
+
+## Admin
+
+Open `/admin` after setting Supabase env vars. Sections: leads, projects (rich model), team, site settings, copy, media.
 
 ## Information architecture
 
@@ -46,9 +51,8 @@ Open [http://localhost:3000](http://localhost:3000) — redirects to `/ar`.
 
 ## Content
 
-- Projects: [`src/content/projects.ts`](src/content/projects.ts)
-- Team: [`src/content/team.ts`](src/content/team.ts)
-- Copy: [`messages/ar.json`](messages/ar.json), [`messages/en.json`](messages/en.json)
+Live source of truth: Supabase (`projects`, `team_members`, `site_settings`, `site_copy`, `media_assets`).  
+File fallbacks: [`src/content/projects.ts`](src/content/projects.ts), [`src/content/team.ts`](src/content/team.ts), [`messages/*.json`](messages/).
 
 ## Brand
 

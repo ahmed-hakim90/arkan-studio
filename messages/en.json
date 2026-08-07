@@ -1,27 +1,28 @@
 {
   "Meta": {
-    "title": "ARKAN — Systems that run the business",
-    "description": "Arkan architects, designs, builds, integrates and evolves digital systems that businesses operate on."
+    "title": "Arkan — From idea to a working system",
+    "description": "Arkan is a studio for building digital systems and products — from project discovery and product design to engineering, integrations, AI, and operations."
   },
   "Nav": {
-    "work": "Work",
+    "work": "Systems",
     "capabilities": "Capabilities",
     "approach": "Approach",
     "studio": "Studio",
-    "start": "Build with us",
+    "start": "Start your project",
     "home": "Home"
   },
   "Hero": {
+    "eyebrow": "From problem to system",
     "brand": "ARKAN",
-    "tagline": "Systems that run the business.",
-    "supporting": "From idea to operation — we build the product, experience, engineering and integrations your business runs on.",
-    "ctaPrimary": "Explore Systems",
-    "ctaSecondary": "Start a Project"
+    "tagline": "Your idea is bigger than a website.",
+    "supporting": "We turn complex ideas and operations into clear, connected, scalable digital systems. From project discovery and product design to interfaces, engineering, integrations, AI, and operations — one team owns the full picture.",
+    "ctaPrimary": "Start your project",
+    "ctaSecondary": "Explore what we’ve built"
   },
   "Atlas": {
     "eyebrow": "Systems Atlas",
-    "title": "Explore operating systems",
-    "subtitle": "Filter by sector, type, status and capability. Mass shows verified structural dimensions — not fake scores.",
+    "title": "Systems we’ve built.",
+    "subtitle": "Different industries. Different scales. One common starting point: a real business problem that needed a real system.",
     "filterAll": "All",
     "filters": {
       "sector": "Sector",
@@ -79,55 +80,90 @@
   },
   "Home": {
     "reframe": {
-      "a": "A website?",
-      "b": "A platform.",
-      "c": "An operating system.",
-      "final": "The real system is bigger than the screen you see."
+      "a": "A business problem?",
+      "b": "A clear system.",
+      "c": "That works.",
+      "final": "From problem to a working system — under one team’s responsibility."
     },
     "whatWeBuild": {
-      "eyebrow": "WHAT WE BUILD",
-      "title": "Operational digital systems",
+      "eyebrow": "What we build",
+      "title": "Business systems — not a services menu",
       "items": {
         "business": {
           "title": "Business Systems",
-          "hint": "ERP · internal tools · approvals",
-          "body": "ERP extensions, internal tools, dashboards, approvals, finance workflows and management systems.",
-          "nodes": ["ERP", "RBAC", "REPORTING", "APPROVALS"]
+          "hint": "ERP · Internal tools · Finance · CRM",
+          "body": "We build systems that connect a company’s internal operations in one place — finance, sales, inventory, approvals, reporting, and team operations. The solution may be a new system, an ops layer on an existing ERP, or integrations that turn separate tools into one organism.",
+          "nodes": [
+            "ERP",
+            "Finance",
+            "CRM",
+            "Approvals",
+            "Reporting"
+          ]
         },
         "operations": {
-          "title": "Operations",
-          "hint": "Field · dispatch · control",
-          "body": "Systems that coordinate people, locations, assets, requests and workflows in real time.",
-          "nodes": ["INTAKE", "DISPATCH", "FIELD", "CONTROL"]
+          "title": "Operations Systems",
+          "hint": "Field · Dispatch · Assets · Tracking",
+          "body": "When work happens in the field, the system must be there too. We build systems for people, sites, vehicles, requests, assets, and tasks — turning daily movement into a workflow you can follow, measure, and manage.",
+          "nodes": [
+            "Dispatch",
+            "Locations",
+            "Assets",
+            "Tickets",
+            "Workforce"
+          ]
         },
         "platforms": {
-          "title": "Platforms",
-          "hint": "Multi-role · SaaS",
-          "body": "Multi-role products, subscriptions, portals, administration and tenant models.",
-          "nodes": ["TENANTS", "ROLES", "PORTALS", "BILLING"]
+          "title": "Platforms & SaaS",
+          "hint": "Multi-role · Subscriptions · Admin",
+          "body": "One idea. Multiple roles. A product built to scale. We design roles, permissions, subscriptions, operations, and administration from the start so the platform is ready to grow.",
+          "nodes": [
+            "SaaS",
+            "Marketplaces",
+            "Portals",
+            "Subscriptions",
+            "Admin"
+          ]
         },
         "commerce": {
           "title": "Commerce",
-          "hint": "Catalog · checkout · delivery",
-          "body": "Catalogs, ordering, checkout, payments, inventory, delivery and merchant systems.",
-          "nodes": ["CATALOG", "CHECKOUT", "PAY", "FULFILL"]
+          "hint": "Order · Pay · Stock · Fulfil",
+          "body": "Selling is not just checkout. We build commerce as a full system — product, order, payment, inventory, merchant, delivery, support, and reporting — from the customer journey to back-office operations.",
+          "nodes": [
+            "Ordering",
+            "Payments",
+            "Inventory",
+            "Merchants",
+            "Delivery"
+          ]
         },
         "ai": {
-          "title": "AI + Automation",
-          "hint": "Inside real workflows",
-          "body": "Document extraction, image understanding, assistants, workflow automation and decision support.",
-          "nodes": ["EXTRACT", "CLASSIFY", "AUTOMATE", "ASSIST"]
+          "title": "AI & Automation",
+          "hint": "When it does real work",
+          "body": "We don’t add AI for its own sake. We use it when it removes a manual step, reads a document, understands an image, extracts data, assists staff, or improves a decision. AI is not the product. Sometimes it’s the part that makes the product smarter.",
+          "nodes": [
+            "Documents",
+            "Vision",
+            "Assistants",
+            "Extraction",
+            "Automation"
+          ]
         },
         "experiences": {
           "title": "Digital Experiences",
-          "hint": "Interfaces with systems beneath",
-          "body": "High-end websites, product experiences, portals and interactive interfaces — backed by real systems.",
-          "nodes": ["UX", "UI", "PORTAL", "MOTION"]
+          "hint": "Impression · Content · Interaction",
+          "body": "Sometimes the experience is the product. We build websites and digital experiences when impression, content, and interaction are part of the project’s value — with strategy, design systems, engineering, and performance.",
+          "nodes": [
+            "Corporate",
+            "Product sites",
+            "Portals",
+            "Design systems"
+          ]
         }
       }
     },
     "featured": {
-      "body": "The interface is only the visible layer. Below it: intake, operations, staff, parking, dispatch, payment, management and accounting.",
+      "body": "The interface is only what you see. Under it: intake, operations, teams, parking, dispatch, payment, management, and accounting.",
       "cta": "ENTER SYSTEM →",
       "nodes": {
         "customer": "CUSTOMER",
@@ -142,8 +178,9 @@
       }
     },
     "invisible": {
-      "title": "The interface is only the visible layer.",
-      "footer": "We build what runs underneath it.",
+      "title": "We don’t only build what the user sees.",
+      "body": "Behind every good screen sits a system the user never sees. Business rules. Permissions. Data. Processes. Integrations. Automation. Decisions. So we don’t treat a project as a set of pages. We treat it as a system. We map how work starts, how data moves, who decides, what can be automated, and what must happen when the project grows. Then we build the interface on a foundation that can run it.",
+      "footer": "The interface is what you see. The system is what makes it work.",
       "layers": {
         "interface": "INTERFACE",
         "workflow": "WORKFLOW",
@@ -155,62 +192,65 @@
       }
     },
     "selected": {
-      "eyebrow": "SELECTED SYSTEMS",
-      "title": "Systems, not screenshots",
-      "explore": "Explore system"
+      "eyebrow": "Selected systems",
+      "title": "Systems we’ve built",
+      "explore": "Explore the system"
     },
     "oneTeam": {
       "lines": [
-        "Strategy isn't outsourced.",
-        "Design isn't outsourced.",
-        "Engineering isn't outsourced.",
-        "Delivery isn't outsourced."
+        "You shouldn’t need six companies to build one product.",
+        "Product thinking in one place.",
+        "Design in another.",
+        "Engineering somewhere else.",
+        "ERP with a different vendor.",
+        "AI with another team.",
+        "And operations falling between everyone."
       ],
-      "final": "One accountable team."
+      "final": "Arkan brings the whole system under one responsibility."
     },
     "six": {
-      "eyebrow": "THE SIX ARKAN",
-      "title": "Six disciplines. One system.",
-      "subtitle": "Hover a pillar — each one carries a layer of how systems get built."
+      "eyebrow": "Six Arkan",
+      "title": "Six pillars. One team.",
+      "subtitle": "Product understands the work. Experience turns complexity into clarity. Engineering turns experience into a system. Operations connects the system to reality."
     },
     "how": {
-      "eyebrow": "HOW WE BUILD",
-      "title": "From discovery to evolution",
+      "eyebrow": "Approach",
+      "title": "From a problem to a working system.",
       "stages": {
         "discover": {
-          "title": "DISCOVER",
-          "body": "We map the business process, constraints and users before interface production begins."
+          "title": "Understand",
+          "body": "We start with the work itself — the problem, users, processes, current systems, and business goal."
         },
-        "architect": {
-          "title": "ARCHITECT",
-          "body": "We define roles, workflows, modules, data relationships, integrations and technical boundaries."
+        "map": {
+          "title": "Map",
+          "body": "We turn the work into a map: roles, flows, data, modules, and integrations."
         },
         "design": {
-          "title": "DESIGN",
-          "body": "We turn complexity into understandable workflows and a coherent experience system."
+          "title": "Design",
+          "body": "We build an experience that makes the system clear for every user."
         },
         "build": {
-          "title": "BUILD",
-          "body": "Frontend and backend ship against the architecture — incremental, testable, operational."
+          "title": "Build",
+          "body": "We turn design into a real product — not a prototype."
         },
         "integrate": {
-          "title": "INTEGRATE",
-          "body": "ERP, payments, messaging and existing APIs connect with clear ownership of each flow."
+          "title": "Connect",
+          "body": "Payments. ERP. APIs. AI. Messaging. Whatever the system needs."
         },
         "launch": {
-          "title": "LAUNCH",
-          "body": "Deployment, handover and readiness for real users — not a demo that dies after the meeting."
+          "title": "Launch",
+          "body": "Testing. Data. Permissions. Deployment. Training when needed."
         },
         "evolve": {
-          "title": "EVOLVE",
-          "body": "Systems keep growing: modules, roles, automations and operational feedback."
+          "title": "Evolve",
+          "body": "We watch real usage and build the next stage from reality."
         }
       }
     },
     "spectrum": {
-      "title": "FROM ZERO TO OPERATING.",
-      "claim": "You don't need six vendors.",
-      "claimSub": "You need one accountable system partner.",
+      "title": "From idea to a working system.",
+      "claim": "You don’t need six vendors.",
+      "claimSub": "You need one team responsible for the whole system.",
       "items": {
         "idea": "IDEA",
         "strategy": "PRODUCT STRATEGY",
@@ -228,10 +268,10 @@
       }
     },
     "builder": {
-      "eyebrow": "PROJECT BUILDER",
-      "title": "What are you trying to build?",
-      "cta": "Build your project blueprint →",
-      "hint": "Selecting a type starts forming a tiny architecture — the full builder continues on the next page.",
+      "eyebrow": "Project builder",
+      "title": "Let’s understand the system you need.",
+      "cta": "Start →",
+      "hint": "Answer a few short questions. We’ll turn them into an initial picture before we talk.",
       "options": {
         "business": "Business System",
         "platform": "Platform",
@@ -242,9 +282,9 @@
       }
     },
     "finalCta": {
-      "title": "Have a complex operation?",
-      "subtitle": "Let's turn it into a system.",
-      "cta": "Build Your Project"
+      "title": "Every large system started with a problem.",
+      "subtitle": "What’s the problem you need to solve?",
+      "cta": "Start your project"
     }
   },
   "ControlRoom": {
@@ -264,21 +304,33 @@
     "technology": "Technology",
     "systemMass": "System Mass",
     "outcomes": "Outcomes",
-    "scope": "What Arkan did",
-    "next": "Next system",
+    "scope": "What Arkan built",
+    "next": "The next system",
     "enter": "ENTER →",
     "viewExperience": "VIEW EXPERIENCE",
     "viewSystem": "VIEW SYSTEM",
-    "problem": "Problem",
+    "problem": "The problem",
     "solution": "Solution",
-    "impact": "Impact",
+    "impact": "What changed",
     "buildSimilar": "Build something similar",
     "backToAtlas": "Back to atlas",
     "liveDemo": "Live demo",
     "surfaces": "System surfaces",
     "scaleMeter": "System Mass",
     "stack": "Tech layers",
-    "markets": "Region"
+    "markets": "Region",
+    "oneLine": "One line",
+    "thinking": "How we thought about it",
+    "system": "What we built",
+    "behindInterface": "Behind the interface",
+    "surfaceAction": "What the user sees",
+    "technologyWhy": "Why it was built this way",
+    "roleNeeds": "What they need",
+    "roleSees": "What they see",
+    "roleCan": "What they can do",
+    "moduleSolves": "Problem it solves",
+    "moduleHow": "How it works",
+    "moduleConnects": "What it connects to"
   },
   "Pillars": {
     "product": "Product",
@@ -289,18 +341,18 @@
     "growth": "Growth",
     "design": "Experience",
     "ops": "Operations",
-    "productDesc": "Turns business problems into product structure.",
-    "experienceDesc": "Turns complexity into understandable workflows.",
-    "frontendDesc": "Builds the interaction layer.",
-    "backendDesc": "Builds logic, services and data foundations.",
-    "operationsDesc": "Connects software to real business execution.",
-    "growthDesc": "Ensures the system can support adoption and scale.",
+    "productDesc": "We turn an idea or problem into a buildable product — users, roles, processes, priorities, MVP, and evolution map.",
+    "experienceDesc": "We turn complexity into a clear experience — journeys, interfaces, states, and a design system.",
+    "frontendDesc": "We build the layer users touch — fast, responsive, accessible, and ready to grow.",
+    "backendDesc": "We build the logic behind the product: data, permissions, APIs, processes, services, and integrations.",
+    "operationsDesc": "We connect the system to how the company actually works — because great software fails if it doesn’t work on the ground.",
+    "growthDesc": "The product’s job doesn’t end at launch. We watch usage and build what the next stage needs.",
     "designDesc": "Turns complexity into understandable workflows.",
     "opsDesc": "Connects software to real business execution."
   },
   "Capabilities": {
-    "title": "Capabilities",
-    "subtitle": "What Arkan can build — explained as systems, not service cards.",
+    "title": "What we build",
+    "subtitle": "Systems — not service cards.",
     "exploreWork": "Explore related systems",
     "startWith": "Start with this",
     "whatSolves": "What it solves",
@@ -312,140 +364,180 @@
     "items": {
       "business": {
         "title": "Business Systems",
-        "solves": "Fragmented finance, inventory, approvals and management tools.",
-        "builds": "ERP extensions, internal tools, dashboards, approval and finance workflows.",
+        "solves": "Complex operations, fragmented tools, finance/inventory/approvals without a single source of truth.",
+        "builds": "New ERP or an ops layer on an existing ERP, internal tools, reporting, permissions.",
         "users": "Managers, finance, admins, department operators",
-        "modules": ["Roles", "Approvals", "Reporting", "Finance flows"],
-        "integrations": ["ERP", "Accounting", "Identity"]
+        "modules": [
+          "Roles",
+          "Approvals",
+          "Reporting",
+          "Finance",
+          "Inventory"
+        ],
+        "integrations": [
+          "ERP",
+          "Odoo",
+          "Accounting",
+          "Identity"
+        ]
       },
       "operations": {
-        "title": "Operations",
-        "solves": "Field teams, locations and requests running without a shared system.",
-        "builds": "Dispatch, tickets, assets, status flows and operational control.",
-        "users": "Field staff, supervisors, operations, customers",
-        "modules": ["Intake", "Dispatch", "Locations", "Status"],
-        "integrations": ["Messaging", "Payments", "Maps"]
+        "title": "Operations Systems",
+        "solves": "Field work without visibility: people, sites, vehicles, requests, assets.",
+        "builds": "Dispatch, tickets, tracking, tasks, and measurable operating states.",
+        "users": "Field teams, supervisors, ops, customers",
+        "modules": [
+          "Intake",
+          "Dispatch",
+          "Locations",
+          "Assets",
+          "Tracking"
+        ],
+        "integrations": [
+          "Messaging",
+          "Payments",
+          "Maps",
+          "ERP"
+        ]
       },
       "platforms": {
         "title": "Platforms & SaaS",
-        "solves": "Multi-role products that need tenancy, portals and administration.",
-        "builds": "Subscriptions, portals, admin surfaces and tenant models.",
-        "users": "End users, tenants, platform admins",
-        "modules": ["Tenancy", "Billing", "Portals", "Admin"],
-        "integrations": ["Payments", "Auth", "APIs"]
+        "solves": "One idea that needs multiple roles, subscriptions, and scalable administration.",
+        "builds": "Multi-role platforms, portals, subscriptions, and admin systems.",
+        "users": "Customers, operators, partners, platform admins",
+        "modules": [
+          "Roles",
+          "Subscriptions",
+          "Portals",
+          "Admin"
+        ],
+        "integrations": [
+          "Payments",
+          "Auth",
+          "APIs"
+        ]
       },
       "commerce": {
         "title": "Commerce",
-        "solves": "Catalog, checkout and fulfillment split across tools.",
-        "builds": "Ordering, payments, inventory, delivery and merchant systems.",
-        "users": "Customers, merchants, couriers, ops",
-        "modules": ["Catalog", "Checkout", "Inventory", "Delivery"],
-        "integrations": ["Payment gateway", "Logistics", "POS"]
+        "solves": "Selling disconnected from inventory, delivery, and support.",
+        "builds": "A commerce system from customer journey through fulfilment and reporting.",
+        "users": "Customers, merchants, couriers, ops, finance",
+        "modules": [
+          "Catalog",
+          "Orders",
+          "Payments",
+          "Inventory",
+          "Delivery"
+        ],
+        "integrations": [
+          "Payment gateway",
+          "Logistics",
+          "POS",
+          "Accounting"
+        ]
       },
       "ai": {
         "title": "AI & Automation",
-        "solves": "Repetitive work and unstructured documents blocking operations.",
-        "builds": "Extraction, assistants, workflow automation and decision support.",
-        "users": "Ops teams, support, intake staff",
-        "modules": ["Extraction", "Assistants", "Automation", "Review"],
-        "integrations": ["Vision", "Messaging", "Internal APIs"]
+        "solves": "Manual steps, documents, images, and slow decisions inside a real process.",
+        "builds": "Extraction, vision, assistants, automation, and decision support — inside the system, not as an AI agency.",
+        "users": "Ops, support, intake, management",
+        "modules": [
+          "Documents",
+          "Vision",
+          "Assistants",
+          "Automation",
+          "Decisions"
+        ],
+        "integrations": [
+          "Vision",
+          "Messaging",
+          "Internal APIs"
+        ]
       },
       "experiences": {
         "title": "Digital Experiences",
-        "solves": "Interfaces that need to feel intentional while connecting to real systems.",
-        "builds": "Product experiences, portals and interactive interfaces.",
-        "users": "Customers, operators, public visitors",
-        "modules": ["UX", "UI system", "Portals", "Content"],
-        "integrations": ["CMS", "Auth", "Analytics"]
+        "solves": "When impression, content, and interaction are part of the project’s value.",
+        "builds": "Corporate sites, product experiences, portals, and design systems — with the same systems method.",
+        "users": "Visitors, customers, operators",
+        "modules": [
+          "Strategy",
+          "Design system",
+          "Interfaces",
+          "Performance"
+        ],
+        "integrations": [
+          "CMS",
+          "Analytics",
+          "Auth"
+        ]
       }
     }
   },
   "Approach": {
-    "title": "How a system becomes operational.",
-    "subtitle": "Each stage has input, activity, output and a decision gate.",
+    "title": "From a problem to a working system.",
+    "subtitle": "Every stage has an input, activity, output, and decision gate.",
     "input": "Input",
     "activity": "Activity",
     "output": "Output",
     "gate": "Decision gate",
     "stages": {
       "discover": {
-        "title": "Discover",
-        "input": "Business problem, constraints, stakeholders",
+        "title": "Understand",
+        "input": "Business problem, users, current systems, goal",
         "activity": "Process interviews, friction mapping, success criteria",
-        "output": "Problem brief and operating context",
-        "gate": "Is the problem clear enough to architect?"
+        "output": "Clear problem and operating context",
+        "gate": "Is the problem clear enough to map a system?"
       },
       "map": {
         "title": "Map",
-        "input": "Current workflows and systems",
-        "activity": "Role maps, as-is flows, integration inventory",
-        "output": "Operational map",
-        "gate": "Do we know who does what, and where it breaks?"
-      },
-      "architect": {
-        "title": "Architect",
-        "input": "Operational map",
-        "activity": "Modules, data, boundaries, integration plan",
-        "output": "System architecture",
-        "gate": "Are boundaries and ownership explicit?"
-      },
-      "prototype": {
-        "title": "Prototype",
-        "input": "Critical flows",
-        "activity": "Interactive prototypes of high-risk journeys",
-        "output": "Validated flow assumptions",
-        "gate": "Do users understand the core journeys?"
+        "input": "Problem understanding",
+        "activity": "Roles · Flows · Data · Modules · Integrations",
+        "output": "System map",
+        "gate": "Do we know who does what and how data moves?"
       },
       "design": {
         "title": "Design",
-        "input": "Validated flows",
-        "activity": "Experience system, UI, content structure",
-        "output": "Design system and screens",
-        "gate": "Is the experience coherent enough to build?"
+        "input": "System map",
+        "activity": "Journeys, interfaces, states, design system",
+        "output": "A clear experience for every role",
+        "gate": "Does every user understand what to do?"
       },
       "build": {
         "title": "Build",
-        "input": "Architecture + design",
+        "input": "Design and architecture",
         "activity": "Frontend, backend, data, tests",
-        "output": "Working increments",
-        "gate": "Does each increment run operationally?"
+        "output": "A real working product",
+        "gate": "Does the increment work operationally?"
       },
       "integrate": {
-        "title": "Integrate",
-        "input": "External systems and contracts",
-        "activity": "API wiring, mapping, failure handling",
-        "output": "Connected flows",
+        "title": "Connect",
+        "input": "Required external systems",
+        "activity": "Payments · ERP · APIs · AI · Messaging",
+        "output": "Connected paths",
         "gate": "Are integrations reliable under failure?"
-      },
-      "validate": {
-        "title": "Validate",
-        "input": "Built system",
-        "activity": "UAT, edge cases, permissions review",
-        "output": "Go / no-go evidence",
-        "gate": "Is the system safe to launch?"
       },
       "launch": {
         "title": "Launch",
-        "input": "Validated release",
-        "activity": "Deploy, train, monitor",
-        "output": "Live operating system",
-        "gate": "Are real users succeeding?"
+        "input": "Tested system",
+        "activity": "Testing · Data · Permissions · Deployment · Training",
+        "output": "A live system in reality",
+        "gate": "Do real users succeed?"
       },
       "evolve": {
         "title": "Evolve",
-        "input": "Operational feedback",
-        "activity": "Modules, automation, scale changes",
-        "output": "Next system increment",
+        "input": "Real usage",
+        "activity": "Watch friction and build the next stage",
+        "output": "The system’s next increment",
         "gate": "What should grow next?"
       }
     }
   },
   "Studio": {
-    "title": "The system behind the systems.",
-    "subtitle": "A coordinated multidisciplinary unit — not a portfolio of freelancers.",
-    "body": "Arkan owns product, experience, engineering, operations and growth under one accountable team.",
-    "teamTitle": "Capability network",
-    "methodTitle": "How we work",
+    "title": "The system that builds systems.",
+    "subtitle": "Arkan is not a set of specialties working side by side.",
+    "body": "We build the team around the project itself. Product understands the work. Design turns complexity into experience. Engineering turns experience into a system. Operations connects the system to reality. Every decision shapes the next — so we work as one team from the start.",
+    "teamTitle": "The team",
+    "methodTitle": "Why Arkan?",
     "network": {
       "client": "CLIENT",
       "product": "PRODUCT",
@@ -454,44 +546,75 @@
       "operations": "OPERATIONS",
       "delivery": "DELIVERY"
     },
+    "why": {
+      "workFirst": {
+        "title": "We understand the work before the technology.",
+        "body": "We don’t start by picking a framework or a dashboard look. We start by understanding the process."
+      },
+      "systemBeforeScreens": {
+        "title": "We design the system before the screens.",
+        "body": "Roles, data, and workflows come before visual detail."
+      },
+      "whatIsNeeded": {
+        "title": "We build what the project needs.",
+        "body": "Not every project needs an app. Not every project needs AI."
+      },
+      "operations": {
+        "title": "We think about operations from day one.",
+        "body": "Who will use it? Who will run it? What happens on error? How will it grow?"
+      },
+      "oneResponsibility": {
+        "title": "One responsibility.",
+        "body": "Instead of managing multiple vendors, you work with one team accountable for the whole product."
+      },
+      "afterLaunch": {
+        "title": "We stay after launch.",
+        "body": "Because the first version of a system is not its end."
+      }
+    },
     "steps": {
       "discover": {
-        "title": "Discover",
-        "body": "We learn the business process before writing a line of code."
+        "title": "Understand",
+        "body": "We learn the operating process before writing a line of code."
       },
       "architect": {
-        "title": "Architect",
-        "body": "Modules, permissions, and integrations become a fixed foundation."
+        "title": "Map",
+        "body": "Modules, permissions, and integrations become a stable foundation."
       },
       "build": {
         "title": "Build",
         "body": "Incremental delivery with interfaces ready for daily use."
       },
       "operate": {
-        "title": "Operate",
-        "body": "Deploy, monitor, and support until the system runs in the real world."
+        "title": "Connect & launch",
+        "body": "Deploy and operate until the system works in reality."
       }
     }
   },
   "Start": {
-    "title": "Build with Arkan",
-    "subtitle": "Configure a project in a few minutes. Every answer shapes a live system blueprint.",
+    "title": "Let’s understand the system you need.",
+    "subtitle": "Answer a few short questions. We’ll turn your answers into an initial project picture before we talk.",
     "progress": "Step {current} of {total}",
     "back": "Back",
     "next": "Continue",
     "skip": "Skip",
-    "submit": "Send my blueprint to Arkan",
+    "submit": "Send my project to Arkan",
     "sending": "Sending…",
-    "successTitle": "BLUEPRINT RECEIVED",
-    "successBody": "We'll review your system brief and respond with next steps.",
-    "error": "Couldn't send. Try again or contact us directly.",
-    "architecting": "ARCHITECTING YOUR BRIEF...",
-    "blueprintTitle": "YOUR SYSTEM BLUEPRINT",
-    "matched": "You should explore",
-    "matchedBody": "A system with similar operational layers.",
-    "exploreRelated": "Explore related architecture →",
-    "privacy": "Your answers are used only to prepare a project brief for Arkan. No account required.",
-    "liveBlueprint": "Live blueprint",
+    "successTitle": "We received the project.",
+    "successBody": "We won’t start from zero. The picture you built reached the team, and we’ll use it as the starting point to understand the project and review the next step.",
+    "error": "We couldn’t send that. Try again or contact us directly.",
+    "architecting": "We’ve got the picture…",
+    "blueprintTitle": "We’ve got the picture.",
+    "blueprintLead": "Based on your answers, this is an initial picture of the system you seem to need.",
+    "interpretationTitle": "How we read the project",
+    "recommendationTitle": "Where should we start?",
+    "convertTitle": "Continue from here?",
+    "convertBody": "Send the picture to Arkan and we’ll review it before the first conversation.",
+    "matched": "Closest system we’ve built",
+    "matchedBody": "A system with similar operating layers.",
+    "exploreRelated": "Explore the system ←",
+    "privacy": "Your answers are only used to prepare a project brief for Arkan. No account needed.",
+    "liveBlueprint": "Live picture",
     "complexity": "Complexity",
     "complexityLevels": {
       "low": "Low",
@@ -500,99 +623,108 @@
     },
     "steps": {
       "type": {
-        "title": "What are we building together?",
+        "title": "What do you want to build?",
+        "helper": "You don’t need the technical name. Pick the closest match.",
         "options": {
-          "business": "Business System",
-          "operations": "Operations System",
-          "platform": "Platform / SaaS",
+          "business": "Business system",
+          "operations": "Operations platform",
+          "platform": "Marketplace / platform",
           "commerce": "E-commerce",
-          "mobile": "Mobile Product",
+          "mobile": "Mobile product",
           "ai": "AI / Automation",
-          "experience": "Website / Digital Experience",
-          "unsure": "I'm not sure yet"
+          "experience": "Website / digital experience",
+          "unsure": "Not sure yet"
         }
       },
       "stage": {
-        "title": "Where are you now?",
+        "title": "Where is the project now?",
         "options": {
-          "idea": "Idea",
-          "new": "New business",
-          "existing": "Existing business",
+          "idea": "Just an idea",
+          "existing": "Running business",
           "system": "Existing system",
-          "replace": "Replacing old software",
-          "scale": "Scaling an operation"
+          "replace": "Replacing a system",
+          "scale": "Scaling up"
+        },
+        "descriptions": {
+          "idea": "I have an idea and want to turn it into a product.",
+          "existing": "The company already operates and needs a new system.",
+          "system": "I have a product or system and want to evolve it.",
+          "replace": "The current system no longer fits.",
+          "scale": "The business grew and the current system can’t carry the next stage."
         }
       },
       "roles": {
-        "title": "Who will use it?",
+        "title": "Who will use the system?",
+        "helper": "Select every party that will interact with the system.",
         "options": {
           "customers": "Customers",
           "employees": "Employees",
           "managers": "Managers",
-          "admins": "Admins",
-          "vendors": "Vendors",
+          "field": "Field staff",
           "partners": "Partners",
-          "field": "Drivers / field staff",
+          "vendors": "Vendors",
           "finance": "Finance",
-          "custom": "Custom role"
+          "admins": "Administrators",
+          "custom": "Other"
         }
       },
       "workflows": {
-        "title": "What needs to happen?",
+        "title": "What must happen inside it?",
         "options": {
           "orders": "Orders",
           "payments": "Payments",
           "bookings": "Bookings",
           "inventory": "Inventory",
           "approvals": "Approvals",
-          "field": "Field operations",
           "tracking": "Tracking",
-          "notifications": "Notifications",
+          "field": "Field operations",
+          "accounting": "Accounting",
           "reporting": "Reporting",
           "crm": "CRM",
-          "accounting": "Accounting",
           "documents": "Documents",
-          "support": "Customer support",
+          "notifications": "Notifications",
           "scheduling": "Scheduling",
-          "custom": "Custom workflow"
+          "support": "Customer support",
+          "custom": "Other"
         }
       },
       "integrations": {
         "title": "What should it connect to?",
-        "hint": "Selecting none is fine — you can continue without integrations.",
-        "empty": "NO INTEGRATIONS SELECTED",
+        "hint": "Leaving this empty is fine — you can continue without integrations.",
+        "empty": "No integrations selected",
         "options": {
-          "erp": "Existing ERP",
+          "erp": "ERP",
           "odoo": "Odoo",
           "sap": "SAP",
-          "payments": "Payment gateway",
           "pos": "POS",
+          "payments": "Payment gateway",
           "whatsapp": "WhatsApp",
           "google": "Google services",
-          "apis": "Existing APIs",
-          "gov": "Government services",
-          "logistics": "Logistics provider",
+          "logistics": "Logistics",
+          "apis": "Existing API",
+          "gov": "Government service",
           "other": "Other",
-          "unsure": "Not sure"
+          "unsure": "Not sure yet"
         }
       },
       "intelligence": {
-        "title": "Where could intelligence help?",
+        "title": "Where can intelligence help?",
         "options": {
-          "automate": "Automate repetitive work",
-          "documents": "Understand documents",
-          "images": "Understand images",
+          "documents": "Reading documents",
+          "images": "Understanding images",
+          "extract": "Extracting data",
           "support": "Customer support",
+          "automate": "Automating repetitive work",
+          "search": "Searching knowledge",
+          "decide": "Decision support",
           "forecast": "Forecasting",
-          "recommend": "Recommendations",
-          "decide": "Decision assistance",
-          "search": "Search / knowledge",
-          "unsure": "Not sure"
+          "unsure": "Not sure — suggest for us"
         }
       },
       "scale": {
-        "title": "Scale signals",
-        "users": "Expected users",
+        "title": "Roughly what scale?",
+        "helper": "You don’t need exact numbers. An initial estimate is enough.",
+        "users": "Users",
         "locations": "Locations",
         "languages": "Languages",
         "usersOptions": {
@@ -602,9 +734,9 @@
           "5kplus": "5,000+"
         },
         "locationsOptions": {
-          "one": "One location",
-          "multi": "Multi-location",
-          "multiCountry": "Multi-country"
+          "one": "One site / country",
+          "multi": "Multiple sites",
+          "multiCountry": "Multiple countries"
         },
         "languagesOptions": {
           "ar": "Arabic",
@@ -613,24 +745,31 @@
         }
       },
       "priorities": {
-        "title": "What matters most?",
+        "title": "If the project succeeds, what matters most to change?",
         "options": {
-          "speed": "Speed to launch",
-          "scalability": "Scalability",
-          "automation": "Automation",
-          "control": "Operational control",
-          "cx": "Customer experience",
-          "cost": "Cost reduction",
-          "integration": "Integration",
-          "reliability": "Reliability",
-          "growth": "Growth"
+          "lessTime": "Less time in operations",
+          "fewerErrors": "Fewer errors",
+          "control": "Better visibility and control",
+          "cx": "Better customer experience",
+          "scale": "More room to scale",
+          "sales": "More sales",
+          "cost": "Lower operating cost",
+          "launch": "Launching a new product"
         }
       },
+      "problem": {
+        "title": "Tell us the problem in your own words.",
+        "helper": "If you explain it the way you’d explain it to someone inside your company, we’ll understand it better than any checklist.",
+        "placeholder": "Describe the problem, the process, and what isn’t working today…"
+      },
       "delivery": {
-        "title": "Delivery reality",
+        "title": "Where do we need to get to?",
         "launch": "Target launch",
-        "budget": "Budget range (optional)",
-        "decision": "Decision stage",
+        "budget": "Budget range",
+        "existingTeam": "Existing team?",
+        "existingSoftware": "Existing software?",
+        "hasDoc": "I have a document or brief ready",
+        "docNote": "Link or note about the document (optional)",
         "launchOptions": {
           "asap": "ASAP",
           "3m": "Within 3 months",
@@ -643,20 +782,25 @@
           "growth": "Growth",
           "enterprise": "Enterprise"
         },
-        "decisionOptions": {
-          "exploring": "Exploring",
-          "comparing": "Comparing partners",
-          "ready": "Ready to start"
+        "existingTeamOptions": {
+          "none": "No",
+          "partial": "Partially",
+          "full": "Yes"
+        },
+        "existingSoftwareOptions": {
+          "none": "No",
+          "partial": "Scattered tools",
+          "system": "An existing system"
         }
       },
       "contact": {
-        "title": "How should we reach you?",
+        "title": "Continue from here?",
         "name": "Name",
         "company": "Company",
         "email": "Work email",
-        "phone": "Phone / WhatsApp",
+        "phone": "Phone",
         "country": "Country",
-        "channel": "Preferred contact method",
+        "channel": "Preferred channel",
         "notes": "Anything else?",
         "channels": {
           "email": "Email",
@@ -666,20 +810,34 @@
       }
     },
     "blueprint": {
-      "project": "PROJECT",
-      "stage": "STAGE",
-      "users": "USERS",
-      "flows": "CORE FLOWS",
-      "integrations": "INTEGRATIONS",
-      "intelligence": "INTELLIGENCE",
-      "scale": "SCALE",
-      "priority": "PRIORITY",
-      "complexity": "COMPLEXITY"
+      "project": "Your project",
+      "stage": "Stage",
+      "users": "Used by",
+      "flows": "Needs",
+      "integrations": "Connects to",
+      "intelligence": "Intelligence",
+      "scale": "Scale",
+      "priority": "Priority",
+      "complexity": "Complexity"
     },
-    "errorName": "Enter a valid name (at least 2 characters).",
-    "errorEmail": "Enter a valid work email.",
-    "whatsapp": "Chat on WhatsApp",
-    "emailCta": "Email us"
+    "interpretations": {
+      "operations": "This doesn’t look like a standalone app. It looks like a multi-role operating system that needs a central source of truth, clear workflows, different permissions, and operational/financial integration.",
+      "business": "You seem to need a business system that unifies processes, permissions, and reporting — not a set of disconnected screens.",
+      "platform": "The product looks like a multi-role platform that needs roles, subscriptions, and admin designed from day one.",
+      "commerce": "Commerce here is a system: order, payment, inventory, and fulfilment — not just a checkout page.",
+      "ai": "Intelligence here should live inside a real process — removing a manual step or improving a decision — not as a standalone AI product.",
+      "experience": "The experience is part of the project’s value, but it should sit on a clear product and operating foundation.",
+      "default": "Based on your answers, the project needs a system picture first: roles, data, and workflows before interface detail."
+    },
+    "recommendations": {
+      "operations": "We recommend starting phase one by defining the core operating journey, roles, and data — then building an MVP that covers the process end to end before secondary modules.",
+      "business": "We recommend starting with a module/permissions map and one end-to-end workflow before expanding modules.",
+      "platform": "We recommend locking the role model, subscriptions, and central data source before building every role surface.",
+      "commerce": "We recommend building the order→payment→fulfilment path first, then expanding catalog, loyalty, and reporting.",
+      "ai": "We recommend picking one high-impact manual step inside an existing workflow, applying intelligence there, then measuring before expanding.",
+      "experience": "We recommend defining the business goal of the experience and the content/design system before full visual build-out.",
+      "default": "We recommend a short discovery session to turn this picture into a system map and a clear MVP."
+    }
   },
   "Footer": {
     "rights": "All rights reserved.",
