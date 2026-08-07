@@ -51,7 +51,7 @@ export function ControlRoom({ project, nextProject }: Props) {
           <h1 className="font-display mt-3 text-5xl md:text-7xl">
             {project.title[locale]}
           </h1>
-          <p className="mt-3 text-xl text-white/65">
+          <p className="mt-3 max-w-3xl text-xl text-white/65">
             {project.descriptor[locale]}
           </p>
           <div className="mt-6 flex flex-wrap gap-3 tech-label text-[10px] text-white/55">
@@ -91,8 +91,11 @@ export function ControlRoom({ project, nextProject }: Props) {
       </header>
 
       <div className="section-pad mx-auto max-w-6xl space-y-20 py-16 md:py-24">
-        <Chapter title={t("overview")}>
+        <Chapter title={t("oneLine")}>
           <p className="max-w-3xl text-lg text-[var(--muted)]">
+            {project.descriptor[locale]}
+          </p>
+          <p className="mt-4 max-w-3xl text-[var(--muted)]">
             {project.summary[locale]}
           </p>
         </Chapter>
@@ -101,22 +104,21 @@ export function ControlRoom({ project, nextProject }: Props) {
           <p className="max-w-3xl text-[var(--muted)]">{project.context[locale]}</p>
         </Chapter>
 
-        <Chapter title={t("challenge")}>
+        <Chapter title={t("problem")}>
           <p className="max-w-3xl text-[var(--muted)]">
             {project.challenge[locale]}
           </p>
-          {project.workflows[0] ? (
-            <ol className="mt-8 max-w-md space-y-2 border-s border-[var(--line)] ps-5">
-              {project.workflows[0].steps.map((step) => (
-                <li key={step.en} className="tech-label text-[11px] text-[var(--muted)]">
-                  {step[locale]}
-                </li>
-              ))}
-            </ol>
-          ) : null}
         </Chapter>
 
-        <Chapter title={t("architecture")}>
+        {project.thinking ? (
+          <Chapter title={t("thinking")}>
+            <p className="max-w-3xl text-lg leading-relaxed text-[var(--foreground)]">
+              {project.thinking[locale]}
+            </p>
+          </Chapter>
+        ) : null}
+
+        <Chapter title={t("system")}>
           <p className="max-w-3xl text-[var(--muted)]">{project.solution[locale]}</p>
           <div className="mt-10 overflow-x-auto border border-[var(--line)] bg-[var(--surface)] p-6 md:p-8">
             <div className="mx-auto flex min-w-[280px] max-w-xl flex-col items-center gap-3">
@@ -147,21 +149,6 @@ export function ControlRoom({ project, nextProject }: Props) {
                 <ArchNode key={module.id} label={module.name[locale]} signal />
               ))}
             </div>
-          </div>
-        </Chapter>
-
-        <Chapter title={t("experience")}>
-          <p className="max-w-3xl text-[var(--muted)]">{project.summary[locale]}</p>
-          <div className="mt-8 grid gap-3 md:grid-cols-3">
-            {project.modules.slice(0, 3).map((module) => (
-              <div
-                key={`exp-${module.id}`}
-                className="border border-[var(--line)] bg-[linear-gradient(160deg,var(--navy),var(--navy-soft))] px-4 py-10 text-white"
-              >
-                <p className="tech-label text-[10px] text-white/45">SURFACE</p>
-                <p className="font-display mt-3 text-2xl">{module.name[locale]}</p>
-              </div>
-            ))}
           </div>
         </Chapter>
 
@@ -220,7 +207,7 @@ export function ControlRoom({ project, nextProject }: Props) {
                 mode === "experience" ? "opacity-40" : "opacity-100"
               }`}
             >
-              <p className="tech-label text-[10px] text-[var(--signal-hot)]">
+              <p className="tech-label text-[11px] text-[var(--signal-hot)]">
                 SYSTEM MODE
               </p>
               <div className="mt-6 space-y-4">
@@ -236,6 +223,41 @@ export function ControlRoom({ project, nextProject }: Props) {
               </div>
             </div>
           </div>
+        </Chapter>
+
+        <Chapter title={t("roles")}>
+          <div className="flex flex-wrap gap-2">
+            {project.roles.map((role) => (
+              <button
+                key={role.id}
+                type="button"
+                onClick={() => setRoleId(role.id)}
+                className="pill"
+                data-active={roleId === role.id}
+              >
+                {role.name[locale]}
+              </button>
+            ))}
+          </div>
+          {activeRole?.needs || activeRole?.sees || activeRole?.can ? (
+            <div className="mt-8 grid gap-4 md:grid-cols-3">
+              {activeRole.needs ? (
+                <RoleFacet label={t("roleNeeds")} value={activeRole.needs[locale]} />
+              ) : null}
+              {activeRole.sees ? (
+                <RoleFacet label={t("roleSees")} value={activeRole.sees[locale]} />
+              ) : null}
+              {activeRole.can ? (
+                <RoleFacet label={t("roleCan")} value={activeRole.can[locale]} />
+              ) : null}
+            </div>
+          ) : activeRole ? (
+            <p className="mt-6 text-sm text-[var(--muted)]">
+              {activeRole.name[locale]} → modules{" "}
+              {(activeRole.modules ?? []).join(", ") || "—"} · workflows{" "}
+              {(activeRole.workflows ?? []).join(", ") || "—"}
+            </p>
+          ) : null}
         </Chapter>
 
         <Chapter title={t("modules")}>
@@ -257,33 +279,44 @@ export function ControlRoom({ project, nextProject }: Props) {
                   <p className="mt-2 max-w-2xl text-[var(--muted)]">
                     {module.description[locale]}
                   </p>
+                  {module.solves || module.how || module.connects ? (
+                    <dl className="mt-6 grid gap-4 sm:grid-cols-3">
+                      {module.solves ? (
+                        <div>
+                          <dt className="tech-label text-[10px] text-[var(--signal)]">
+                            {t("moduleSolves")}
+                          </dt>
+                          <dd className="mt-1 text-sm text-[var(--muted)]">
+                            {module.solves[locale]}
+                          </dd>
+                        </div>
+                      ) : null}
+                      {module.how ? (
+                        <div>
+                          <dt className="tech-label text-[10px] text-[var(--signal)]">
+                            {t("moduleHow")}
+                          </dt>
+                          <dd className="mt-1 text-sm text-[var(--muted)]">
+                            {module.how[locale]}
+                          </dd>
+                        </div>
+                      ) : null}
+                      {module.connects ? (
+                        <div>
+                          <dt className="tech-label text-[10px] text-[var(--signal)]">
+                            {t("moduleConnects")}
+                          </dt>
+                          <dd className="mt-1 text-sm text-[var(--muted)]">
+                            {module.connects[locale]}
+                          </dd>
+                        </div>
+                      ) : null}
+                    </dl>
+                  ) : null}
                 </div>
               </div>
             ))}
           </div>
-        </Chapter>
-
-        <Chapter title={t("roles")}>
-          <div className="flex flex-wrap gap-2">
-            {project.roles.map((role) => (
-              <button
-                key={role.id}
-                type="button"
-                onClick={() => setRoleId(role.id)}
-                className="pill"
-                data-active={roleId === role.id}
-              >
-                {role.name[locale]}
-              </button>
-            ))}
-          </div>
-          {activeRole ? (
-            <p className="mt-6 text-sm text-[var(--muted)]">
-              {activeRole.name[locale]} → modules{" "}
-              {(activeRole.modules ?? []).join(", ") || "—"} · workflows{" "}
-              {(activeRole.workflows ?? []).join(", ") || "—"}
-            </p>
-          ) : null}
         </Chapter>
 
         <Chapter title={t("workflows")}>
@@ -302,7 +335,7 @@ export function ControlRoom({ project, nextProject }: Props) {
                 </p>
                 <div className="mt-4 flex flex-wrap items-center gap-2">
                   {workflow.steps.map((step, index) => (
-                    <div key={step.en} className="flex items-center gap-2">
+                    <div key={`${workflow.id}-${step.en}`} className="flex items-center gap-2">
                       <span className="rounded-[var(--radius-xs)] border border-[var(--line)] px-3 py-2 text-sm">
                         {step[locale]}
                       </span>
@@ -317,43 +350,100 @@ export function ControlRoom({ project, nextProject }: Props) {
           </div>
         </Chapter>
 
-        <Chapter title={t("integrations")}>
-          <div className="divide-y divide-[var(--line)] border-y border-[var(--line)]">
-            {project.integrations.map((integration) => (
-              <div key={integration.id} className="grid gap-2 py-5 md:grid-cols-[10rem_8rem_1fr]">
-                <p className="tech-label text-[10px] text-[var(--muted)]">
-                  {integration.category[locale]}
-                </p>
-                <p className="font-semibold">{integration.system}</p>
-                <p className="text-[var(--muted)]">
-                  → {integration.purpose[locale]}
-                </p>
-              </div>
-            ))}
-          </div>
-        </Chapter>
+        {project.behindInterface ? (
+          <Chapter title={t("behindInterface")}>
+            <p className="tech-label text-[11px] text-[var(--signal)]">
+              {t("surfaceAction")}
+            </p>
+            <p className="font-display mt-3 text-3xl md:text-4xl">
+              {project.behindInterface.surfaceAction[locale]}
+            </p>
+            <ol className="mt-8 max-w-xl space-y-3 border-s border-[var(--line)] ps-5">
+              {project.behindInterface.chain.map((step, index) => (
+                <li key={step.en} className="text-[var(--muted)]">
+                  <span className="tech-label me-2 text-[10px] text-[var(--signal)]">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  {step[locale]}
+                </li>
+              ))}
+            </ol>
+            <p className="font-display mt-10 max-w-2xl text-2xl text-[var(--navy)]">
+              {project.behindInterface.punchline[locale]}
+            </p>
+          </Chapter>
+        ) : null}
 
         <Chapter title={t("technology")}>
+          <p className="mb-6 max-w-2xl text-sm text-[var(--muted)]">
+            {t("technologyWhy")}
+          </p>
           <div className="divide-y divide-[var(--line)] border-y border-[var(--line)]">
-            {project.stack.map((layer) => (
-              <div key={layer.layer} className="grid gap-2 py-4 md:grid-cols-[10rem_1fr]">
-                <p className="tech-label text-[10px] text-[var(--muted)]">
-                  {layer.layer.toUpperCase()}
-                </p>
-                <p>{layer.items.join(" / ")}</p>
+            {(project.techRationale ?? project.stack.map((layer) => ({
+              why: {
+                ar: layer.layer,
+                en: layer.layer.toUpperCase(),
+              },
+              detail: undefined,
+              tech: layer.items,
+            }))).map((item) => (
+              <div key={item.why.en} className="grid gap-2 py-5 md:grid-cols-[1fr_auto]">
+                <div>
+                  <p className="font-medium">{item.why[locale]}</p>
+                  {item.detail ? (
+                    <p className="mt-2 text-sm text-[var(--muted)]">
+                      {item.detail[locale]}
+                    </p>
+                  ) : null}
+                </div>
+                {item.tech?.length ? (
+                  <p className="tech-label text-[10px] text-[var(--muted)] md:text-end">
+                    {item.tech.join(" · ")}
+                  </p>
+                ) : null}
               </div>
             ))}
           </div>
+          {project.stack.length ? (
+            <div className="mt-8 divide-y divide-[var(--line)] border-y border-[var(--line)] opacity-70">
+              {project.stack.map((layer) => (
+                <div key={layer.layer} className="grid gap-2 py-3 md:grid-cols-[10rem_1fr]">
+                  <p className="tech-label text-[10px] text-[var(--muted)]">
+                    {layer.layer.toUpperCase()}
+                  </p>
+                  <p className="text-sm">{layer.items.join(" / ")}</p>
+                </div>
+              ))}
+            </div>
+          ) : null}
         </Chapter>
+
+        {project.integrations.length ? (
+          <Chapter title={t("integrations")}>
+            <div className="divide-y divide-[var(--line)] border-y border-[var(--line)]">
+              {project.integrations.map((integration) => (
+                <div
+                  key={integration.id}
+                  className="grid gap-2 py-5 md:grid-cols-[10rem_8rem_1fr]"
+                >
+                  <p className="tech-label text-[10px] text-[var(--muted)]">
+                    {integration.category[locale]}
+                  </p>
+                  <p className="font-semibold">{integration.system}</p>
+                  <p className="text-[var(--muted)]">
+                    → {integration.purpose[locale]}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </Chapter>
+        ) : null}
 
         <Chapter title={t("systemMass")}>
           <dl className="grid gap-3 sm:grid-cols-2 md:grid-cols-3">
             {Object.entries(project.mass).map(([key, value]) =>
               value == null ? null : (
-                <div
-                  key={key}
-                  className="border border-[var(--line)] px-4 py-5"
-                >
+                <div key={key} className="border border-[var(--line)] px-4 py-5">
                   <dt className="tech-label text-[10px] text-[var(--muted)]">
                     {key.toUpperCase()}
                   </dt>
@@ -364,8 +454,9 @@ export function ControlRoom({ project, nextProject }: Props) {
           </dl>
         </Chapter>
 
-        <Chapter title={t("outcomes")}>
-          <div className="space-y-3">
+        <Chapter title={t("impact")}>
+          <p className="max-w-2xl text-[var(--muted)]">{project.impact[locale]}</p>
+          <div className="mt-8 space-y-3">
             {project.outcomes.map((outcome) => (
               <p key={outcome.from.en} className="tech-label text-sm">
                 <span className="text-[var(--muted)]">{outcome.from[locale]}</span>
@@ -374,9 +465,6 @@ export function ControlRoom({ project, nextProject }: Props) {
               </p>
             ))}
           </div>
-          <p className="mt-6 max-w-2xl text-[var(--muted)]">
-            {project.impact[locale]}
-          </p>
         </Chapter>
 
         <Chapter title={t("scope")}>
@@ -409,6 +497,15 @@ export function ControlRoom({ project, nextProject }: Props) {
         ) : null}
       </div>
     </article>
+  );
+}
+
+function RoleFacet({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="border border-[var(--line)] bg-[var(--surface)] px-4 py-5">
+      <p className="tech-label text-[10px] text-[var(--signal)]">{label}</p>
+      <p className="mt-2 text-sm text-[var(--muted)]">{value}</p>
+    </div>
   );
 }
 
