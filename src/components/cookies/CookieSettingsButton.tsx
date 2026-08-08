@@ -10,7 +10,7 @@ export function CookieSettingsButton() {
     <button
       type="button"
       onClick={openCookiePreferences}
-      className="font-semibold text-[var(--signal)] underline-offset-2 hover:underline"
+      className="inline-flex min-h-11 items-center font-semibold text-[var(--signal)] underline-offset-2 hover:underline"
     >
       {t("manage")}
     </button>

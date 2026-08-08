@@ -1,6 +1,23 @@
+import { Accordion } from "@/components/admin/Accordion";
+import { ConfirmSubmit } from "@/components/admin/ConfirmSubmit";
+import { PhotoPathPreview } from "@/components/admin/PhotoPathPreview";
+import { SubmitButton } from "@/components/admin/SubmitButton";
+import {
+  AdminBadge,
+  AdminCard,
+  AdminEmpty,
+  AdminFlash,
+  AdminHeader,
+  AdminPage,
+  FieldLabel,
+} from "@/components/admin/ui";
 import { requireAdmin } from "@/lib/admin/auth";
 import type { TeamRow } from "@/lib/content/types";
 import { deleteTeamMemberAction, saveTeamMemberAction } from "../actions";
+
+export const metadata = {
+  title: "الفريق",
+};
 
 const pillars = [
   "product",
@@ -12,6 +29,165 @@ const pillars = [
   "design",
   "ops",
 ];
+
+function MemberFields({ member }: { member?: Partial<TeamRow> }) {
+  return (
+    <>
+      <div className="grid gap-3 md:grid-cols-2">
+        <label className="block">
+          <FieldLabel>الاسم عربي</FieldLabel>
+          <input
+            name="name_ar"
+            defaultValue={member?.name?.ar ?? ""}
+            className="field-input"
+            required
+          />
+        </label>
+        <label className="block">
+          <FieldLabel>Name EN</FieldLabel>
+          <input
+            name="name_en"
+            defaultValue={member?.name?.en ?? ""}
+            className="field-input"
+            required
+          />
+        </label>
+        <label className="block">
+          <FieldLabel>الدور عربي</FieldLabel>
+          <input
+            name="role_ar"
+            defaultValue={member?.role?.ar ?? ""}
+            className="field-input"
+            required
+          />
+        </label>
+        <label className="block">
+          <FieldLabel>Role EN</FieldLabel>
+          <input
+            name="role_en"
+            defaultValue={member?.role?.en ?? ""}
+            className="field-input"
+            required
+          />
+        </label>
+        <label className="block md:col-span-2">
+          <FieldLabel>نبذة عربي</FieldLabel>
+          <textarea
+            name="bio_ar"
+            defaultValue={member?.bio?.ar ?? ""}
+            className="field-input min-h-20"
+            rows={3}
+          />
+        </label>
+        <label className="block md:col-span-2">
+          <FieldLabel>Bio EN</FieldLabel>
+          <textarea
+            name="bio_en"
+            defaultValue={member?.bio?.en ?? ""}
+            className="field-input min-h-20"
+            rows={3}
+          />
+        </label>
+        <label className="block md:col-span-2">
+          <FieldLabel>بيعمل إيه (عربي)</FieldLabel>
+          <textarea
+            name="focus_ar"
+            defaultValue={member?.focus?.ar ?? ""}
+            className="field-input min-h-20"
+            rows={3}
+          />
+        </label>
+        <label className="block md:col-span-2">
+          <FieldLabel>Focus EN</FieldLabel>
+          <textarea
+            name="focus_en"
+            defaultValue={member?.focus?.en ?? ""}
+            className="field-input min-h-20"
+            rows={3}
+          />
+        </label>
+      </div>
+      <div className="grid gap-3 md:grid-cols-2">
+        <label className="block">
+          <FieldLabel>LinkedIn</FieldLabel>
+          <input
+            name="linkedin"
+            type="url"
+            placeholder="https://"
+            defaultValue={member?.links?.linkedin ?? ""}
+            className="field-input"
+            dir="ltr"
+          />
+        </label>
+        <label className="block">
+          <FieldLabel>GitHub</FieldLabel>
+          <input
+            name="github"
+            type="url"
+            placeholder="https://"
+            defaultValue={member?.links?.github ?? ""}
+            className="field-input"
+            dir="ltr"
+          />
+        </label>
+        <label className="block">
+          <FieldLabel>X</FieldLabel>
+          <input
+            name="x"
+            type="url"
+            placeholder="https://"
+            defaultValue={member?.links?.x ?? ""}
+            className="field-input"
+            dir="ltr"
+          />
+        </label>
+        <label className="block">
+          <FieldLabel>Website</FieldLabel>
+          <input
+            name="website"
+            type="url"
+            placeholder="https://"
+            defaultValue={member?.links?.website ?? ""}
+            className="field-input"
+            dir="ltr"
+          />
+        </label>
+      </div>
+      <div className="grid gap-3 md:grid-cols-3">
+        <label className="block">
+          <FieldLabel>Pillar</FieldLabel>
+          <select
+            name="pillar"
+            defaultValue={member?.pillar ?? "product"}
+            className="field-input"
+          >
+            {pillars.map((p) => (
+              <option key={p} value={p}>
+                {p}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label className="block">
+          <FieldLabel>ترتيب</FieldLabel>
+          <input
+            name="sort_order"
+            type="number"
+            defaultValue={member?.sort_order ?? 0}
+            className="field-input"
+          />
+        </label>
+        <div className="md:col-span-2">
+          <PhotoPathPreview defaultValue={member?.photo_path ?? ""} />
+        </div>
+      </div>
+      <label className="flex items-center gap-2 text-sm font-medium">
+        <input type="checkbox" name="active" defaultChecked={member?.active ?? true} />
+        ظاهر على الموقع
+      </label>
+    </>
+  );
+}
 
 export default async function AdminTeamPage({
   searchParams,
@@ -28,154 +204,75 @@ export default async function AdminTeamPage({
   const members = (data ?? []) as TeamRow[];
 
   return (
-    <main className="px-6 py-10">
-      <div className="mx-auto max-w-4xl space-y-10">
-        <div>
-          <h1 className="font-display text-3xl font-semibold">الفريق</h1>
-          <p className="mt-2 text-sm text-[var(--muted)]">
-            إدارة أعضاء الاستوديو وترتيبهم وصورهم
-          </p>
-          {sp.ok ? (
-            <p className="mt-3 text-sm text-[var(--ok)]">تم الحفظ.</p>
-          ) : null}
-        </div>
+    <AdminPage>
+      <AdminHeader
+        eyebrow="Studio / Team"
+        title="الفريق"
+        description={`${members.length} عضو — افتح البطاقة للتعديل دون ازدحام الصفحة.`}
+      />
+      <AdminFlash
+        ok={sp.ok}
+        error={sp.error}
+        errorText="تعذّر الحفظ. راجع الحقول والروابط (HTTPS فقط)."
+      />
 
-        <ul className="space-y-6">
-          {members.map((member) => (
-            <li
-              key={member.id}
-              className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-5"
-            >
-              <form action={saveTeamMemberAction} className="space-y-3">
-                <input type="hidden" name="id" value={member.id} />
-                <div className="grid gap-3 md:grid-cols-2">
-                  <label className="block">
-                    <span className="mb-1 block text-xs text-[var(--muted)]">الاسم عربي</span>
-                    <input
-                      name="name_ar"
-                      defaultValue={member.name.ar}
-                      className="field-input"
-                      required
-                    />
-                  </label>
-                  <label className="block">
-                    <span className="mb-1 block text-xs text-[var(--muted)]">Name EN</span>
-                    <input
-                      name="name_en"
-                      defaultValue={member.name.en}
-                      className="field-input"
-                      required
-                    />
-                  </label>
-                  <label className="block">
-                    <span className="mb-1 block text-xs text-[var(--muted)]">الدور عربي</span>
-                    <input
-                      name="role_ar"
-                      defaultValue={member.role.ar}
-                      className="field-input"
-                      required
-                    />
-                  </label>
-                  <label className="block">
-                    <span className="mb-1 block text-xs text-[var(--muted)]">Role EN</span>
-                    <input
-                      name="role_en"
-                      defaultValue={member.role.en}
-                      className="field-input"
-                      required
-                    />
-                  </label>
-                </div>
-                <div className="grid gap-3 md:grid-cols-3">
-                  <label className="block">
-                    <span className="mb-1 block text-xs text-[var(--muted)]">Pillar</span>
-                    <select
-                      name="pillar"
-                      defaultValue={member.pillar}
-                      className="field-input"
-                    >
-                      {pillars.map((p) => (
-                        <option key={p} value={p}>
-                          {p}
-                        </option>
-                      ))}
-                    </select>
-                  </label>
-                  <label className="block">
-                    <span className="mb-1 block text-xs text-[var(--muted)]">ترتيب</span>
-                    <input
-                      name="sort_order"
-                      type="number"
-                      defaultValue={member.sort_order}
-                      className="field-input"
-                    />
-                  </label>
-                  <label className="block">
-                    <span className="mb-1 block text-xs text-[var(--muted)]">
-                      مسار الصورة (من الوسائط)
-                    </span>
-                    <input
-                      name="photo_path"
-                      defaultValue={member.photo_path ?? ""}
-                      className="field-input"
-                    />
-                  </label>
-                </div>
-                <label className="flex items-center gap-2 text-sm">
-                  <input type="checkbox" name="active" defaultChecked={member.active} />
-                  نشط
-                </label>
-                <div className="flex gap-2">
-                  <button type="submit" className="btn-primary">
-                    حفظ
-                  </button>
-                </div>
-              </form>
-              <form action={deleteTeamMemberAction} className="mt-3">
-                <input type="hidden" name="id" value={member.id} />
-                <button type="submit" className="text-sm text-[var(--danger)]">
-                  حذف العضو
-                </button>
-              </form>
+      {members.length === 0 ? (
+        <AdminEmpty
+          title="لا أعضاء بعد"
+          description="أضف أول عضو في الفريق من النموذج بالأسفل."
+        />
+      ) : (
+        <ul className="space-y-3">
+          {members.map((member, index) => (
+            <li key={member.id}>
+              <Accordion
+                defaultOpen={index === 0}
+                title={member.name?.ar || member.name?.en || member.id}
+                subtitle={`${member.role?.ar || member.role?.en || "—"} · ${member.id}`}
+                badge={
+                  <span className="flex gap-1.5">
+                    {member.active ? (
+                      <AdminBadge tone="ok">نشط</AdminBadge>
+                    ) : (
+                      <AdminBadge>مخفي</AdminBadge>
+                    )}
+                    <AdminBadge>{member.pillar}</AdminBadge>
+                  </span>
+                }
+              >
+                <form action={saveTeamMemberAction} className="space-y-3">
+                  <input type="hidden" name="id" value={member.id} />
+                  <MemberFields member={member} />
+                  <div className="flex flex-wrap items-center gap-3 border-t border-[var(--line)] pt-4">
+                    <SubmitButton>حفظ العضو</SubmitButton>
+                  </div>
+                </form>
+                <form action={deleteTeamMemberAction} className="mt-3">
+                  <input type="hidden" name="id" value={member.id} />
+                  <ConfirmSubmit
+                    message={`حذف «${member.name?.ar ?? member.id}» من الفريق؟`}
+                    className="text-sm text-[var(--danger)] hover:underline"
+                  >
+                    حذف العضو
+                  </ConfirmSubmit>
+                </form>
+              </Accordion>
             </li>
           ))}
         </ul>
+      )}
 
-        <section className="rounded-2xl border border-dashed border-[var(--line)] bg-[var(--surface)] p-5">
-          <h2 className="font-display text-xl">إضافة عضو</h2>
-          <form action={saveTeamMemberAction} className="mt-4 space-y-3">
-            <div className="grid gap-3 md:grid-cols-2">
-              <input name="name_ar" placeholder="الاسم عربي" className="field-input" required />
-              <input name="name_en" placeholder="Name EN" className="field-input" required />
-              <input name="role_ar" placeholder="الدور عربي" className="field-input" required />
-              <input name="role_en" placeholder="Role EN" className="field-input" required />
-            </div>
-            <div className="grid gap-3 md:grid-cols-3">
-              <select name="pillar" className="field-input" defaultValue="product">
-                {pillars.map((p) => (
-                  <option key={p} value={p}>
-                    {p}
-                  </option>
-                ))}
-              </select>
-              <input
-                name="sort_order"
-                type="number"
-                defaultValue={members.length}
-                className="field-input"
-              />
-              <input name="photo_path" placeholder="photo path" className="field-input" />
-            </div>
-            <label className="flex items-center gap-2 text-sm">
-              <input type="checkbox" name="active" defaultChecked />
-              نشط
-            </label>
-            <button type="submit" className="btn-primary">
-              إضافة
-            </button>
+      <section className="space-y-3">
+        <h2 className="font-display text-xl font-semibold">إضافة عضو</h2>
+        <AdminCard className="border-dashed border-[color-mix(in_oklab,var(--volt)_35%,var(--line))]">
+          <form action={saveTeamMemberAction} className="space-y-3">
+            <MemberFields
+              member={{ sort_order: members.length, active: true, pillar: "product" }}
+            />
+            <SubmitButton pendingLabel="جارٍ الإضافة…">إضافة عضو</SubmitButton>
           </form>
-        </section>
-      </div>
-    </main>
+        </AdminCard>
+      </section>
+    </AdminPage>
   );
 }

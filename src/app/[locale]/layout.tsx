@@ -1,23 +1,49 @@
 import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
-import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
-import { IBM_Plex_Sans_Arabic } from "next/font/google";
-import { GeistMono } from "geist/font/mono";
-import { GeistSans } from "geist/font/sans";
+import { getMessages, setRequestLocale } from "next-intl/server";
+import {
+  IBM_Plex_Mono,
+  IBM_Plex_Sans_Arabic,
+  Manrope,
+  Syne,
+} from "next/font/google";
 import { SkipLink } from "@/components/a11y/SkipLink";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { AppShell } from "@/components/providers/AppShell";
 import { OrganizationJsonLd } from "@/components/seo/OrganizationJsonLd";
 import { routing, type AppLocale } from "@/i18n/routing";
+import { clampDescription } from "@/lib/seo";
+import { getSeoCopy } from "@/lib/seo-messages";
 import { siteConfig } from "@/lib/site";
 import "../globals.css";
+
+const syne = Syne({
+  subsets: ["latin"],
+  weight: ["500", "600", "700", "800"],
+  variable: "--font-syne",
+  display: "swap",
+});
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-manrope",
+  display: "swap",
+});
 
 const arabic = IBM_Plex_Sans_Arabic({
   subsets: ["arabic", "latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-arabic",
+  display: "swap",
+});
+
+const plexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-plex-mono",
   display: "swap",
 });
 
@@ -33,7 +59,7 @@ export function generateStaticParams() {
 export const viewport: Viewport = {
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#f3f5f8" },
-    { media: "(prefers-color-scheme: dark)", color: "#0b1f3a" },
+    { media: "(prefers-color-scheme: dark)", color: "#0b1220" },
   ],
   width: "device-width",
   initialScale: 1,
@@ -46,16 +72,17 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "Meta" });
   const loc = locale as AppLocale;
+  const seo = await getSeoCopy(locale, "Meta");
+  const description = clampDescription(seo.description);
 
   return {
     metadataBase: new URL(siteConfig.url),
     title: {
-      default: t("title"),
+      default: seo.title,
       template: `%s · ${siteConfig.name[loc]}`,
     },
-    description: t("description"),
+    description,
     applicationName: siteConfig.legalName,
     authors: [{ name: siteConfig.legalName }],
     creator: siteConfig.legalName,
@@ -66,8 +93,8 @@ export async function generateMetadata({
       telephone: false,
     },
     openGraph: {
-      title: t("title"),
-      description: t("description"),
+      title: seo.title,
+      description,
       url: `${siteConfig.url}/${loc}`,
       siteName: siteConfig.legalName,
       locale: loc === "ar" ? "ar_EG" : "en_US",
@@ -76,8 +103,8 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: t("title"),
-      description: t("description"),
+      title: seo.title,
+      description,
     },
     robots: {
       index: true,
@@ -104,6 +131,14 @@ export async function generateMetadata({
     },
     manifest: "/manifest.webmanifest",
     category: "technology",
+    keywords: [
+      loc === "ar" ? "أنظمة رقمية" : "digital systems",
+      loc === "ar" ? "بناء منتجات" : "product engineering",
+      loc === "ar" ? "منصات تشغيل" : "operations platforms",
+      "ERP",
+      "SaaS",
+      loc === "ar" ? "أركان" : "Arkan",
+    ],
   };
 }
 
@@ -119,7 +154,7 @@ export default async function LocaleLayout({ children, params }: Props) {
     <html
       lang={locale}
       dir={dir}
-      className={`${GeistSans.variable} ${GeistMono.variable} ${arabic.variable} h-full`}
+      className={`${syne.variable} ${manrope.variable} ${arabic.variable} ${plexMono.variable} h-full`}
     >
       <body className="min-h-full bg-background text-foreground antialiased">
         <NextIntlClientProvider messages={messages}>

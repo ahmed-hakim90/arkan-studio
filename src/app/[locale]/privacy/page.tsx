@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { getSiteConfig } from "@/lib/content/settings";
 import { pageMetadata } from "@/lib/seo";
+import { getSeoCopy } from "@/lib/seo-messages";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -11,13 +12,15 @@ export async function generateMetadata({
   params,
 }: Props): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "Legal" });
-  const site = await getSiteConfig();
+  const seo = await getSeoCopy(locale, "Legal", {
+    title: ["privacySeoTitle", "privacyTitle"],
+    description: ["privacySeoDescription", "privacyIntro"],
+  });
   return pageMetadata({
     locale,
     path: "/privacy",
-    title: t("privacyTitle"),
-    description: t("privacyIntro", { email: site.email }),
+    title: seo.title,
+    description: seo.description,
   });
 }
 

@@ -11,6 +11,7 @@ import type {
   TechLayer,
   Workflow,
   Integration,
+  TeamLinks,
   TeamMember,
 } from "@/content/types";
 
@@ -61,6 +62,9 @@ export type TeamRow = {
   photo_path: string | null;
   sort_order: number;
   active: boolean;
+  bio?: LocalizedString | null;
+  focus?: LocalizedString | null;
+  links?: TeamLinks | null;
 };
 
 export type SiteSettingsRow = {
@@ -91,6 +95,8 @@ export type MediaRow = {
   created_at: string;
 };
 
+const emptyL = (): LocalizedString => ({ ar: "", en: "" });
+
 export function rowToProject(row: ProjectRow): Project {
   const payload = row.payload ?? {};
   const mass = payload.mass ?? {};
@@ -101,6 +107,20 @@ export function rowToProject(row: ProjectRow): Project {
     integrations: mass.integrations ?? 0,
   };
 
+  const roles: Role[] = (payload.roles ?? []).map((role) => ({
+    ...role,
+    needs: role.needs ?? emptyL(),
+    sees: role.sees ?? emptyL(),
+    can: role.can ?? emptyL(),
+  }));
+
+  const modules: Module[] = (payload.modules ?? []).map((module) => ({
+    ...module,
+    solves: module.solves ?? emptyL(),
+    how: module.how ?? emptyL(),
+    connects: module.connects ?? emptyL(),
+  }));
+
   return {
     id: row.id,
     slug: row.slug,
@@ -109,13 +129,13 @@ export function rowToProject(row: ProjectRow): Project {
     summary: row.summary,
     context: row.context,
     challenge: row.challenge,
-    thinking: payload.thinking ?? { ar: "", en: "" },
+    thinking: payload.thinking ?? emptyL(),
     solution: row.solution,
     impact: row.impact,
     behindInterface: payload.behindInterface ?? {
-      surfaceAction: { ar: "", en: "" },
+      surfaceAction: emptyL(),
       chain: [],
-      punchline: { ar: "", en: "" },
+      punchline: emptyL(),
     },
     techRationale: payload.techRationale ?? [],
     sector: row.sector,
@@ -124,8 +144,8 @@ export function rowToProject(row: ProjectRow): Project {
     featured: row.featured,
     region: row.region ?? undefined,
     liveUrl: row.live_url ?? undefined,
-    roles: payload.roles ?? [],
-    modules: payload.modules ?? [],
+    roles,
+    modules,
     workflows: payload.workflows ?? [],
     integrations: payload.integrations ?? [],
     stack: payload.stack ?? [],
@@ -183,11 +203,23 @@ export function projectToRow(project: Project, sortOrder = 0, published = true) 
 }
 
 export function rowToTeam(row: TeamRow): TeamMember & { photoPath?: string } {
+  const bio = row.bio;
+  const focus = row.focus;
+  const links = row.links ?? undefined;
+  const hasBio = Boolean(bio?.ar?.trim() || bio?.en?.trim());
+  const hasFocus = Boolean(focus?.ar?.trim() || focus?.en?.trim());
+
   return {
     id: row.id,
     name: row.name,
     role: row.role,
     pillar: row.pillar,
     photoPath: row.photo_path ?? undefined,
+    bio: hasBio && bio ? bio : undefined,
+    focus: hasFocus && focus ? focus : undefined,
+    links:
+      links && (links.linkedin || links.github || links.x || links.website)
+        ? links
+        : undefined,
   };
 }

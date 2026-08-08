@@ -6,11 +6,11 @@ export default async function NotFound() {
 
   return (
     <section className="section-pad flex min-h-[55vh] items-center py-20">
-      <div className="mx-auto max-w-6xl">
+      <div className="canvas">
         <p className="tech-label text-[11px] text-[var(--signal)]">
           ERR / 404
         </p>
-        <h1 className="font-display mt-4 text-4xl md:text-5xl">
+        <h1 className="font-display type-h1 mt-4">
           {t("notFoundTitle")}
         </h1>
         <p className="mt-4 max-w-xl text-[var(--muted)]">{t("notFoundBody")}</p>

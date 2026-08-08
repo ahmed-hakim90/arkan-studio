@@ -9,6 +9,7 @@ import { isLeadStatus, type LeadStatus } from "@/lib/leads";
 import { createClient } from "@/lib/supabase/server";
 import type { Project } from "@/content/types";
 import { CAPABILITIES, SECTORS, STATUSES, SYSTEM_TYPES } from "@/content/projects";
+import { sanitizeTeamLinks } from "@/lib/security/safe-url";
 
 function revalidatePublic() {
   revalidatePath("/", "layout");
@@ -19,6 +20,8 @@ function revalidatePublic() {
   revalidatePath("/en/work");
   revalidatePath("/ar/studio");
   revalidatePath("/en/studio");
+  revalidatePath("/ar/team");
+  revalidatePath("/en/team");
   revalidatePath("/ar/start");
   revalidatePath("/en/start");
 }
@@ -59,7 +62,7 @@ export async function loginAction(formData: FormData) {
     redirect("/admin/login?error=unauthorized");
   }
 
-  redirect("/admin/leads");
+  redirect("/admin");
 }
 
 export async function logoutAction() {
@@ -68,20 +71,41 @@ export async function logoutAction() {
   redirect("/admin/login");
 }
 
-export async function updateLeadStatusAction(formData: FormData) {
+async function persistLeadStatus(formData: FormData) {
   const id = String(formData.get("id") ?? "");
   const status = String(formData.get("status") ?? "");
   const notes = String(formData.get("admin_notes") ?? "").slice(0, 4000);
 
-  if (!id || !isLeadStatus(status)) return;
+  if (!id || !isLeadStatus(status)) {
+    return { ok: false as const, reason: "invalid" as const };
+  }
 
   const { supabase } = await requireAdmin();
-  await supabase
+  const { error } = await supabase
     .from("leads")
     .update({ status: status as LeadStatus, admin_notes: notes })
     .eq("id", id);
 
+  if (error) {
+    return { ok: false as const, reason: "save" as const };
+  }
+
+  revalidatePath("/admin");
   revalidatePath("/admin/leads");
+  return { ok: true as const };
+}
+
+export async function updateLeadStatusAction(formData: FormData) {
+  const result = await persistLeadStatus(formData);
+  if (!result.ok) {
+    redirect(`/admin/leads?error=${result.reason}`);
+  }
+  redirect("/admin/leads?ok=1");
+}
+
+/** Client-friendly: updates without redirect (for quick status chips). */
+export async function quickUpdateLeadStatusAction(formData: FormData) {
+  return persistLeadStatus(formData);
 }
 
 function parseJsonField<T>(raw: string, fallback: T): T {
@@ -139,9 +163,15 @@ export async function saveProjectAction(formData: FormData) {
     solution: localized(formData, "solution"),
     impact: localized(formData, "impact"),
     behindInterface: (() => {
+      const empty = { ar: "", en: "" };
+      const fallback = {
+        surfaceAction: empty,
+        chain: [] as { ar: string; en: string }[],
+        punchline: empty,
+      };
       const raw = String(formData.get("behind_json") ?? "").trim();
-      if (!raw || raw === "null") return undefined;
-      return parseJsonField(raw, undefined);
+      if (!raw || raw === "null") return fallback;
+      return parseJsonField(raw, fallback);
     })(),
     techRationale: parseJsonField(
       String(formData.get("tech_rationale_json") ?? "[]"),
@@ -211,6 +241,36 @@ export async function deleteProjectAction(formData: FormData) {
   redirect("/admin/projects");
 }
 
+export async function toggleProjectPublishedAction(formData: FormData) {
+  const id = String(formData.get("id") ?? "");
+  if (!id) {
+    redirect("/admin/projects?error=invalid");
+  }
+
+  const { supabase } = await requireAdmin();
+  const { data, error } = await supabase
+    .from("projects")
+    .select("published")
+    .eq("id", id)
+    .maybeSingle();
+
+  if (error || !data) {
+    redirect("/admin/projects?error=save");
+  }
+
+  const { error: updateError } = await supabase
+    .from("projects")
+    .update({ published: !data.published })
+    .eq("id", id);
+
+  if (updateError) {
+    redirect("/admin/projects?error=save");
+  }
+
+  revalidatePublic();
+  redirect("/admin/projects");
+}
+
 export async function saveTeamMemberAction(formData: FormData) {
   const { supabase } = await requireAdmin();
   const id =
@@ -221,11 +281,21 @@ export async function saveTeamMemberAction(formData: FormData) {
       .replace(/[^a-z0-9]+/g, "-") ||
     randomUUID();
 
+  const links = sanitizeTeamLinks({
+    linkedin: formData.get("linkedin"),
+    github: formData.get("github"),
+    x: formData.get("x"),
+    website: formData.get("website"),
+  });
+
   const { error } = await supabase.from("team_members").upsert(
     {
       id,
       name: localized(formData, "name"),
       role: localized(formData, "role"),
+      bio: localized(formData, "bio"),
+      focus: localized(formData, "focus"),
+      links,
       pillar: String(formData.get("pillar") ?? "product"),
       photo_path: String(formData.get("photo_path") ?? "").trim() || null,
       sort_order: Number(formData.get("sort_order") ?? 0) || 0,
@@ -286,9 +356,11 @@ export async function saveCopyAction(formData: FormData) {
   const key = String(formData.get("key") ?? "");
   const namespace = String(formData.get("namespace") ?? "");
   const path = String(formData.get("path") ?? "");
-  if (!key || !namespace || !path) return;
+  if (!key || !namespace || !path) {
+    redirect("/admin/copy?error=invalid");
+  }
 
-  await supabase.from("site_copy").upsert(
+  const { error } = await supabase.from("site_copy").upsert(
     {
       key,
       namespace,
@@ -299,8 +371,13 @@ export async function saveCopyAction(formData: FormData) {
     { onConflict: "key" },
   );
 
+  if (error) {
+    redirect(`/admin/copy?ns=${encodeURIComponent(namespace)}&error=save`);
+  }
+
   revalidatePublic();
   revalidatePath("/admin/copy");
+  redirect(`/admin/copy?ns=${encodeURIComponent(namespace)}&ok=1`);
 }
 
 export async function uploadMediaAction(formData: FormData) {

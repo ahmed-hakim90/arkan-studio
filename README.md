@@ -37,7 +37,17 @@ Open [http://localhost:3000](http://localhost:3000) — redirects to `/ar`.
 
 ## Admin
 
-Open `/admin` after setting Supabase env vars. Sections: leads, projects (rich model), team, site settings, copy, media.
+Open `/admin` after setting Supabase env vars (auth user must exist in `admin_users`).
+
+| Path | Control |
+|------|---------|
+| `/admin` | Dashboard — stats, latest leads, shortcuts |
+| `/admin/leads` | Pipeline + quick status chips + notes |
+| `/admin/projects` | Filters, publish toggle, Control Room editor tabs |
+| `/admin/team` | Accordion members + photo path preview |
+| `/admin/settings` | Brand/contact/social + sticky save + preview |
+| `/admin/copy` | Namespaced bilingual copy (sticky chips + accordion) |
+| `/admin/media` | Drag-drop upload + path/URL copy |
 
 ## Information architecture
 
@@ -47,6 +57,7 @@ Open `/admin` after setting Supabase env vars. Sections: leads, projects (rich m
 - `/capabilities` — Capability anatomy
 - `/approach` — How a system becomes operational
 - `/studio` — Six Arkan + team network
+- `/team` — Who we are, what we do, how we work, links
 - `/start` — Project Builder + live blueprint
 
 ## Content
@@ -56,6 +67,6 @@ File fallbacks: [`src/content/projects.ts`](src/content/projects.ts), [`src/cont
 
 ## Brand
 
-- Light architectural editorial interface (`#F3F5F8` / navy `#0B1F3A` / signal `#D7042A`)
-- Typography: Geist Sans + IBM Plex Sans Arabic + Geist Mono
-- Signal red = action / selection / flow — not decoration
+- Blueprint Lab interface (`#F3F5F8` paper / `#0B1220` ink / signal `#155EEF`)
+- Typography: Syne (display) + Manrope (body) + IBM Plex Sans Arabic + IBM Plex Mono
+- Volt blue = action / selection / flow — not decoration

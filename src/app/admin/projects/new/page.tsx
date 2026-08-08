@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { ProjectEditor } from "@/components/admin/ProjectEditor";
+import { AdminBackLink, AdminHeader, AdminPage } from "@/components/admin/ui";
 import { requireAdmin } from "@/lib/admin/auth";
 import type { Project } from "@/content/types";
 
@@ -14,8 +14,15 @@ function emptyProject(): Project {
     summary: L,
     context: L,
     challenge: L,
+    thinking: L,
     solution: L,
     impact: L,
+    behindInterface: {
+      surfaceAction: L,
+      chain: [],
+      punchline: L,
+    },
+    techRationale: [],
     sector: "operations",
     systemType: "platform",
     status: "concept",
@@ -43,21 +50,13 @@ export default async function AdminNewProjectPage() {
   const project = emptyProject();
 
   return (
-    <main className="px-6 py-10">
-      <div className="mx-auto max-w-4xl">
-        <Link href="/admin/projects" className="text-sm text-[var(--muted)] hover:text-[var(--fg)]">
-          ← المشاريع
-        </Link>
-        <h1 className="font-display mt-3 text-3xl font-semibold">مشروع جديد</h1>
-        <div className="mt-8">
-          <ProjectEditor
-            project={project}
-            published
-            sortOrder={99}
-            isNew
-          />
-        </div>
-      </div>
-    </main>
+    <AdminPage>
+      <AdminBackLink href="/admin/projects" label="المشاريع" />
+      <AdminHeader
+        title="مشروع جديد"
+        description="أدخل الأساسيات أولًا، ثم أكمل النموذج الغني للـ Control Room."
+      />
+      <ProjectEditor project={project} published sortOrder={99} isNew />
+    </AdminPage>
   );
 }

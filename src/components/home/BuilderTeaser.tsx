@@ -2,89 +2,82 @@
 
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { useMemo, useState } from "react";
 import { Link } from "@/i18n/navigation";
 import { usePrefersReducedMotion } from "@/lib/motion";
 
-const options = [
-  "business",
-  "platform",
-  "commerce",
-  "operations",
-  "ai",
-  "experience",
+const chips = [
+  { id: "operations", type: "operations" },
+  { id: "commerce", type: "commerce" },
+  { id: "platform", type: "platform" },
 ] as const;
+
+const nodes = ["USERS", "WORKFLOWS", "INTEGRATIONS", "BLUEPRINT"] as const;
 
 export function BuilderTeaser() {
   const t = useTranslations("Home.builder");
-  const [selected, setSelected] = useState<(typeof options)[number] | null>(
-    null,
-  );
   const reduced = usePrefersReducedMotion();
 
-  const nodes = useMemo(() => {
-    if (!selected) return ["CORE"];
-    const map: Record<(typeof options)[number], string[]> = {
-      business: ["USERS", "MODULES", "DATA", "REPORTS"],
-      platform: ["TENANTS", "ROLES", "APIS", "BILLING"],
-      commerce: ["CATALOG", "CHECKOUT", "PAYMENTS", "FULFILL"],
-      operations: ["INTAKE", "DISPATCH", "FIELD", "CONTROL"],
-      ai: ["INTAKE", "MODELS", "WORKFLOWS", "HUMAN"],
-      experience: ["CONTENT", "INTERFACE", "JOURNEY", "ANALYTICS"],
-    };
-    return map[selected];
-  }, [selected]);
-
   return (
-    <section className="section-pad py-20 md:py-28">
-      <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-        <div>
-          <p className="tech-label text-[11px] text-[var(--signal)]">
-            {t("eyebrow")}
+    <section className="section-pad bg-[var(--surface)] py-20 md:py-28">
+      <div className="canvas grid gap-10 lg:grid-cols-12 lg:items-center">
+        <div className="lg:col-span-6">
+          <p className="tech-label text-[11px] text-[var(--muted)]">
+            PROJECT BUILDER
           </p>
-          <h2 className="font-display mt-3 text-4xl md:text-5xl">
+          <h2 className="font-display mt-3 text-4xl tracking-[-0.025em] text-[var(--carbon)] md:text-5xl">
             {t("title")}
           </h2>
+          <p className="mt-5 max-w-md text-lg text-[var(--muted)]">
+            {t("support")}
+          </p>
+          <p className="mt-3 max-w-lg text-base leading-relaxed text-[var(--muted)]">
+            {t("body")}
+          </p>
           <div className="mt-8 flex flex-wrap gap-2">
-            {options.map((option) => (
-              <button
-                key={option}
-                type="button"
-                onClick={() => setSelected(option)}
-                className={`rounded-[var(--radius-sm)] border px-3 py-2 text-sm font-medium transition ${
-                  selected === option
-                    ? "border-[var(--signal)] bg-[var(--signal)] text-white"
-                    : "border-[var(--line)] bg-[var(--surface)] text-[var(--foreground)] hover:border-[var(--signal)]"
-                }`}
+            {chips.map((chip) => (
+              <Link
+                key={chip.id}
+                href={`/start?type=${chip.type}`}
+                className="inline-flex min-h-11 items-center border border-[var(--line-strong)] bg-[var(--paper-soft)] px-4 text-sm font-medium text-[var(--foreground)] transition hover:border-[var(--volt)]"
               >
-                {t(`options.${option}`)}
-              </button>
+                {t(`options.${chip.id}`)}
+              </Link>
             ))}
           </div>
-          <Link href="/start" className="btn-primary mt-10">
+          <Link href="/start" className="btn-primary mt-10 inline-flex">
             {t("cta")}
           </Link>
         </div>
 
-        <div className="border border-[var(--line)] bg-[var(--surface)] p-6">
+        <div className="border border-[var(--line)] bg-[var(--paper-soft)] p-6 lg:col-span-6 lg:min-h-[260px]">
           <p className="tech-label text-[10px] text-[var(--muted)]">
             LIVE BLUEPRINT
           </p>
-          <div className="mt-6 flex flex-wrap items-center gap-3">
+          <div className="mt-8 grid gap-3 sm:grid-cols-2">
             {nodes.map((node, index) => (
               <motion.div
-                key={`${selected ?? "none"}-${node}`}
-                initial={reduced ? false : { opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: reduced ? 0 : index * 0.05 }}
-                className="flex items-center gap-3"
+                key={node}
+                initial={reduced ? false : { opacity: 0, y: 6 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{
+                  delay: reduced ? 0 : index * 0.08,
+                  duration: 0.35,
+                }}
+                className={`border px-3 py-3 tech-label text-[10px] ${
+                  index === nodes.length - 1
+                    ? "border-[var(--oxide)] text-[var(--carbon)]"
+                    : "border-[var(--line)] text-[var(--muted)]"
+                }`}
               >
-                <span className="rounded-[var(--radius-xs)] border border-[var(--line-signal)] bg-[color-mix(in_oklab,var(--signal-soft)_40%,white)] px-3 py-2 tech-label text-[10px] text-[var(--signal)]">
+                <span className="flex items-center gap-2">
+                  {index === nodes.length - 1 ? (
+                    <span className="size-1.5 bg-[var(--oxide)]" />
+                  ) : (
+                    <span className="size-1.5 bg-[var(--carbon)]/30" />
+                  )}
                   {node}
                 </span>
-                {index < nodes.length - 1 ? (
-                  <span className="h-px w-4 bg-[var(--signal)]" aria-hidden />
-                ) : null}
               </motion.div>
             ))}
           </div>

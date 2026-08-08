@@ -1,13 +1,16 @@
 {
   "Meta": {
     "title": "Arkan — From idea to a working system",
-    "description": "Arkan is a studio for building digital systems and products — from project discovery and product design to engineering, integrations, AI, and operations."
+    "description": "Arkan is a studio for building digital systems and products — from project discovery and product design to engineering, integrations, AI, and operations under one accountable team.",
+    "seoTitle": "Arkan Studio | Digital Systems from Business Problem to Working Product",
+    "seoDescription": "Turn a business problem into a working digital system. Arkan builds operations platforms, commerce, SaaS, and AI workflows — product, engineering, and ops as one team."
   },
   "Nav": {
     "work": "Systems",
     "capabilities": "Capabilities",
     "approach": "Approach",
     "studio": "Studio",
+    "team": "Team",
     "start": "Start your project",
     "home": "Home"
   },
@@ -16,11 +19,14 @@
     "brand": "ARKAN",
     "tagline": "Your idea is bigger than a website.",
     "supporting": "We turn complex ideas and operations into clear, connected, scalable digital systems. From project discovery and product design to interfaces, engineering, integrations, AI, and operations — one team owns the full picture.",
-    "ctaPrimary": "Start your project",
-    "ctaSecondary": "Explore what we’ve built"
+    "ctaExplore": "Explore what we’ve built →",
+    "ctaStart": "Start your project →",
+    "ctaPrimary": "Explore what we’ve built →",
+    "ctaSecondary": "Start your project →",
+    "definition": "Arkan is not a traditional development shop. Arkan is a studio for building digital systems and products. We work with companies and founders to turn a new idea, a complex operating process, or a set of fragmented tools into one clear digital product. We do not start from the screen. We start from the work itself."
   },
   "Atlas": {
-    "eyebrow": "Systems Atlas",
+    "eyebrow": "SYSTEMS ATLAS",
     "title": "Systems we’ve built.",
     "subtitle": "Different industries. Different scales. One common starting point: a real business problem that needed a real system.",
     "filterAll": "All",
@@ -76,215 +82,485 @@
     "empty": "NO SYSTEMS MATCH THIS FILTER",
     "reset": "Reset filters",
     "complexity": "Complexity",
-    "scale": "System Mass"
+    "scale": "System Mass",
+    "showing": "SHOWING",
+    "of": "/",
+    "mapView": "MAP",
+    "listView": "LIST",
+    "locations": "Locations",
+    "seoTitle": "Systems We’ve Built | Digital Operations Portfolio | Arkan",
+    "seoDescription": "Explore systems Arkan has built across operations, ERP, commerce, platforms, and AI — each case starts from a real business problem and ends as a working digital system.",
+    "lead": "This is not a gallery of screenshots. It is an atlas of operating systems — roles, workflows, modules, integrations, and the outcomes that matter on the ground.",
+    "body": "Browse by sector, system type, and mass to see how Arkan turns fragmented tools and manual work into connected products. Every entry explains the business context, the operating problem, how we thought about the system, and what changed after it went live."
   },
   "Home": {
+    "sectorStrip": {
+      "aria": "What Arkan builds",
+      "items": {
+        "productSystems": "PRODUCT SYSTEMS",
+        "operations": "OPERATIONS",
+        "commerce": "COMMERCE",
+        "platforms": "PLATFORMS",
+        "ai": "AI",
+        "experiences": "DIGITAL EXPERIENCES"
+      }
+    },
+    "brandStatement": {
+      "headline": "We don’t only build what the user sees.",
+      "support": "Behind every good screen sits a system the user never sees.",
+      "body": "Business rules. Permissions. Data. Processes. Integrations. Automation. Decisions. So we don’t treat a project as a set of pages. We treat it as a system. We map how work starts, how data moves, who decides, what can be automated, and what must happen when the project grows. Then we build the interface on a foundation that can run it.",
+      "footer": "The interface is what you see. The system is what makes it work."
+    },
+    "operatingFlow": {
+      "aria": "How operations become systems",
+      "eyebrow": "OPERATING MODEL",
+      "steps": {
+        "business": "BUSINESS",
+        "people": "PEOPLE",
+        "process": "PROCESS",
+        "data": "DATA",
+        "system": "SYSTEM"
+      }
+    },
+    "signalStory": {
+      "aria": "How Arkan thinks about systems",
+      "eyebrow": "HOW ARKAN THINKS",
+      "meta": {
+        "focus": "FOCUS",
+        "output": "OUTPUT"
+      },
+      "steps": {
+        "business": {
+          "eyebrow": "01 / BUSINESS",
+          "title": "We don't start with the screen.",
+          "description": "We start with the business itself: the goal, the problem, the constraints and how the operation works today.",
+          "focus": "Goal · problem · constraints",
+          "output": "Operating context"
+        },
+        "people": {
+          "eyebrow": "02 / PEOPLE",
+          "title": "Who operates the system?",
+          "description": "Customers, employees, managers, operators and partners can each require a different path, responsibility and level of access.",
+          "focus": "Roles · access · paths",
+          "output": "Role model"
+        },
+        "process": {
+          "eyebrow": "03 / PROCESS",
+          "title": "What actually needs to happen?",
+          "description": "We turn daily actions, decisions and exceptions into a clear operational workflow.",
+          "focus": "Steps · decisions · exceptions",
+          "output": "Workflow"
+        },
+        "data": {
+          "eyebrow": "04 / DATA",
+          "title": "What does the system need to know?",
+          "description": "We define what enters the system, where it lives, who can change it and what depends on it.",
+          "focus": "Entities · ownership · dependence",
+          "output": "Data relationships"
+        },
+        "system": {
+          "eyebrow": "05 / SYSTEM",
+          "title": "Only then do we build the system.",
+          "description": "An interface built on clear logic, connected data and operations designed to run and grow.",
+          "focus": "Business · people · process · data",
+          "output": "Coherent architecture"
+        }
+      },
+      "nodes": {
+        "goal": "GOAL",
+        "problem": "PROBLEM",
+        "constraint": "CONSTRAINT",
+        "operation": "CURRENT OP",
+        "system": "SYSTEM",
+        "customer": "CUSTOMER",
+        "staff": "STAFF",
+        "manager": "MANAGER",
+        "operator": "OPERATOR",
+        "partner": "PARTNER",
+        "request": "REQUEST",
+        "validate": "VALIDATE",
+        "process": "PROCESS",
+        "decision": "DECISION",
+        "complete": "COMPLETE",
+        "user": "USER",
+        "status": "STATUS",
+        "transaction": "TRANSACTION",
+        "location": "LOCATION",
+        "business": "BUSINESS",
+        "people": "PEOPLE",
+        "processLayer": "PROCESS",
+        "data": "DATA"
+      }
+    },
     "reframe": {
-      "a": "A business problem?",
-      "b": "A clear system.",
-      "c": "That works.",
-      "final": "From problem to a working system — under one team’s responsibility."
+      "a": "A website?",
+      "b": "A platform.",
+      "c": "An operating system.",
+      "final": "The real system is bigger than the screen you see."
     },
     "whatWeBuild": {
-      "eyebrow": "What we build",
-      "title": "Business systems — not a services menu",
+      "eyebrow": "SCOPE / WHAT WE BUILD",
+      "title": "Operational digital systems",
+      "support": "Six system families — each one is a real operating layer with modules, roles, and integrations, not a service label.",
+      "explore": "Open capability",
+      "modules": "Modules",
+      "integrations": "Integrations",
+      "solves": "Solves",
+      "builds": "We build",
+      "proof": "In portfolio",
+      "count": "06 families",
       "items": {
         "business": {
           "title": "Business Systems",
-          "hint": "ERP · Internal tools · Finance · CRM",
-          "body": "We build systems that connect a company’s internal operations in one place — finance, sales, inventory, approvals, reporting, and team operations. The solution may be a new system, an ops layer on an existing ERP, or integrations that turn separate tools into one organism.",
-          "nodes": [
-            "ERP",
-            "Finance",
-            "CRM",
+          "line": "Internal tools, approvals, finance, management systems.",
+          "solves": "Fragmented ops, finance, inventory and approvals with no single source of truth.",
+          "builds": "ERP layers, internal tools, reporting, permissions and control rooms.",
+          "modules": [
+            "Roles",
             "Approvals",
-            "Reporting"
-          ]
+            "Reporting",
+            "Finance",
+            "Inventory"
+          ],
+          "integrations": [
+            "ERP",
+            "Odoo",
+            "Accounting",
+            "Identity"
+          ],
+          "proof": "Nexora ERP"
         },
         "operations": {
-          "title": "Operations Systems",
-          "hint": "Field · Dispatch · Assets · Tracking",
-          "body": "When work happens in the field, the system must be there too. We build systems for people, sites, vehicles, requests, assets, and tasks — turning daily movement into a workflow you can follow, measure, and manage.",
-          "nodes": [
+          "title": "Operations",
+          "line": "Field teams, locations, assets, tickets, dispatch.",
+          "solves": "Field work without visibility across people, sites, vehicles and requests.",
+          "builds": "Dispatch, tickets, tracking, tasks and measurable operating states.",
+          "modules": [
+            "Intake",
             "Dispatch",
             "Locations",
             "Assets",
-            "Tickets",
-            "Workforce"
-          ]
+            "Tracking"
+          ],
+          "integrations": [
+            "Messaging",
+            "Payments",
+            "Maps",
+            "ERP"
+          ],
+          "proof": "MASAR Valet"
         },
         "platforms": {
           "title": "Platforms & SaaS",
-          "hint": "Multi-role · Subscriptions · Admin",
-          "body": "One idea. Multiple roles. A product built to scale. We design roles, permissions, subscriptions, operations, and administration from the start so the platform is ready to grow.",
-          "nodes": [
-            "SaaS",
-            "Marketplaces",
-            "Portals",
+          "line": "Multi-role products, portals, tenant models.",
+          "solves": "One product that needs multiple roles, subscriptions and admin at scale.",
+          "builds": "Multi-tenant platforms, portals, billing and operator consoles.",
+          "modules": [
+            "Roles",
             "Subscriptions",
-            "Admin"
-          ]
+            "Portals",
+            "Admin",
+            "Tenants"
+          ],
+          "integrations": [
+            "Payments",
+            "Auth",
+            "APIs",
+            "Webhooks"
+          ],
+          "proof": "Platform cores"
         },
         "commerce": {
           "title": "Commerce",
-          "hint": "Order · Pay · Stock · Fulfil",
-          "body": "Selling is not just checkout. We build commerce as a full system — product, order, payment, inventory, merchant, delivery, support, and reporting — from the customer journey to back-office operations.",
-          "nodes": [
-            "Ordering",
+          "line": "Catalogs, checkout, payments, inventory, merchants.",
+          "solves": "Selling disconnected from inventory, fulfilment and support.",
+          "builds": "Commerce systems from journey through fulfilment and reporting.",
+          "modules": [
+            "Catalog",
+            "Orders",
             "Payments",
             "Inventory",
-            "Merchants",
             "Delivery"
-          ]
+          ],
+          "integrations": [
+            "Gateway",
+            "Logistics",
+            "POS",
+            "Accounting"
+          ],
+          "proof": "Merchant stacks"
         },
         "ai": {
           "title": "AI & Automation",
-          "hint": "When it does real work",
-          "body": "We don’t add AI for its own sake. We use it when it removes a manual step, reads a document, understands an image, extracts data, assists staff, or improves a decision. AI is not the product. Sometimes it’s the part that makes the product smarter.",
-          "nodes": [
+          "line": "Extraction, assistants, workflow automation.",
+          "solves": "Manual documents, images and slow decisions inside live processes.",
+          "builds": "Extraction, vision, assistants and automation inside the operating system.",
+          "modules": [
             "Documents",
             "Vision",
             "Assistants",
-            "Extraction",
-            "Automation"
-          ]
+            "Automation",
+            "Decisions"
+          ],
+          "integrations": [
+            "Vision APIs",
+            "Messaging",
+            "Internal APIs"
+          ],
+          "proof": "Automation layers"
         },
         "experiences": {
           "title": "Digital Experiences",
-          "hint": "Impression · Content · Interaction",
-          "body": "Sometimes the experience is the product. We build websites and digital experiences when impression, content, and interaction are part of the project’s value — with strategy, design systems, engineering, and performance.",
-          "nodes": [
-            "Corporate",
-            "Product sites",
-            "Portals",
-            "Design systems"
-          ]
+          "line": "Product sites, portals, interactive interfaces.",
+          "solves": "When impression, content and interaction are part of system value.",
+          "builds": "Product sites, portals and design systems with the same systems method.",
+          "modules": [
+            "Strategy",
+            "Design system",
+            "Interfaces",
+            "Performance"
+          ],
+          "integrations": [
+            "CMS",
+            "Analytics",
+            "Auth"
+          ],
+          "proof": "ARKAN itself"
         }
-      }
+      },
+      "lead": "From internal business systems to field operations, platforms, commerce, AI inside workflows, and digital experiences — Arkan builds what the operation needs to run.",
+      "body": "Explore the families below, then open Capabilities for deeper anatomy, or Atlas for proof inside real systems we have already put into operation."
     },
     "featured": {
-      "body": "The interface is only what you see. Under it: intake, operations, teams, parking, dispatch, payment, management, and accounting.",
-      "cta": "ENTER SYSTEM →",
+      "eyebrow": "SYSTEM",
+      "cta": "Enter system",
+      "atlas": "View in Atlas",
       "nodes": {
-        "customer": "CUSTOMER",
-        "intake": "INTAKE",
-        "operations": "OPERATIONS",
-        "staff": "STAFF",
-        "parking": "PARKING",
-        "dispatch": "DISPATCH",
-        "payment": "PAYMENT",
-        "management": "MANAGEMENT",
-        "accounting": "ACCOUNTING"
+        "ticket": "Ticket",
+        "dispatch": "Dispatch",
+        "payment": "Payment",
+        "ops": "Ops"
       }
+    },
+    "xray": {
+      "eyebrow": "INTERFACE X-RAY",
+      "title": "One control. The whole chain.",
+      "support": "Press a single surface action and watch what the system actually runs underneath.",
+      "surface": "SURFACE ACTION",
+      "reveal": "REVEAL CHAIN →",
+      "collapse": "COLLAPSE"
     },
     "invisible": {
+      "eyebrow": "WHAT’S UNDER THE INTERFACE?",
       "title": "We don’t only build what the user sees.",
-      "body": "Behind every good screen sits a system the user never sees. Business rules. Permissions. Data. Processes. Integrations. Automation. Decisions. So we don’t treat a project as a set of pages. We treat it as a system. We map how work starts, how data moves, who decides, what can be automated, and what must happen when the project grows. Then we build the interface on a foundation that can run it.",
       "footer": "The interface is what you see. The system is what makes it work.",
       "layers": {
-        "interface": "INTERFACE",
-        "workflow": "WORKFLOW",
-        "application": "APPLICATION",
-        "data": "DATA",
-        "automation": "AUTOMATION",
-        "integrations": "INTEGRATIONS",
-        "infrastructure": "INFRASTRUCTURE"
-      }
+        "interface": "Interface",
+        "workflow": "Workflow",
+        "modules": "Modules",
+        "users": "Users",
+        "data": "Data",
+        "integrations": "Integrations",
+        "automation": "Automation",
+        "architecture": "Architecture"
+      },
+      "hints": {
+        "interface": "What users see and interact with.",
+        "workflow": "How state moves through the operation.",
+        "modules": "System capabilities and boundaries.",
+        "users": "Roles and permissions.",
+        "data": "Records, relationships, operational truth.",
+        "integrations": "Connected external systems.",
+        "automation": "What runs without manual work.",
+        "architecture": "The structure that holds it together."
+      },
+      "lead": "Behind every good screen sits a system the user never sees.",
+      "body": "Business rules, permissions, data, processes, integrations, automation, and decisions. That is why we do not treat a project as a set of pages. We treat it as a system — then we build the interface on a foundation that can run it."
     },
     "selected": {
-      "eyebrow": "Selected systems",
-      "title": "Systems we’ve built",
-      "explore": "Explore the system"
+      "eyebrow": "SELECTED WORK",
+      "title": "Systems with mass",
+      "atlas": "Open Atlas →",
+      "explore": "Enter system →",
+      "support": "Selected systems that show how Arkan turns a real operating problem into a working product — not a concept deck.",
+      "lead": "Each system started with friction on the ground: manual steps, fragmented tools, or a product idea that needed structure across roles."
+    },
+    "capabilityMatrix": {
+      "eyebrow": "CAPABILITIES / EVIDENCE",
+      "title": "Where each capability actually ran",
+      "support": "Not a service list — a matrix of capabilities proven inside real systems.",
+      "capability": "CAPABILITY",
+      "usedIn": "USED IN"
     },
     "oneTeam": {
-      "lines": [
-        "You shouldn’t need six companies to build one product.",
-        "Product thinking in one place.",
-        "Design in another.",
-        "Engineering somewhere else.",
-        "ERP with a different vendor.",
-        "AI with another team.",
-        "And operations falling between everyone."
-      ],
-      "final": "Arkan brings the whole system under one responsibility."
+      "title": "You don’t need six companies to build one product.",
+      "support": "Arkan brings the whole system under one responsibility.",
+      "body": "Product idea in one place. Design in another. Engineering somewhere else. ERP with a different vendor. AI with another team. Operations falling between everyone. That is how systems fragment. Arkan gathers product, experience, engineering, operations, and growth as one accountable spine.",
+      "lines": {
+        "idea": "Product idea in one place.",
+        "design": "Design in another.",
+        "eng": "Engineering somewhere else.",
+        "erp": "ERP with a different vendor.",
+        "ai": "AI with another team.",
+        "ops": "Operations falling between everyone."
+      }
     },
     "six": {
-      "eyebrow": "Six Arkan",
-      "title": "Six pillars. One team.",
-      "subtitle": "Product understands the work. Experience turns complexity into clarity. Engineering turns experience into a system. Operations connects the system to reality."
+      "eyebrow": "Six pillars. One team.",
+      "title": "The Six Arkan",
+      "items": {
+        "product": {
+          "title": "Product",
+          "line": "Turns a business problem into a buildable product.",
+          "body": "We define users, roles, processes, priorities, MVP scope, and the evolution map before the first production slice."
+        },
+        "experience": {
+          "title": "Experience",
+          "line": "Turns complexity into understandable workflows.",
+          "body": "Journeys, interfaces, states, and a design system so every role knows what to do next — including empty, error, and exception paths."
+        },
+        "frontend": {
+          "title": "Frontend",
+          "line": "Builds the interaction layer users touch.",
+          "body": "Fast, responsive, accessible interfaces designed to carry many states and grow with the product — not a disposable mock layer."
+        },
+        "backend": {
+          "title": "Backend",
+          "line": "Builds logic, services, and data foundations.",
+          "body": "Data models, permissions, APIs, processes, services, and integration edges that keep operational truth consistent."
+        },
+        "operations": {
+          "title": "Operations",
+          "line": "Connects software to real business execution.",
+          "body": "Great software fails if it does not work with people and processes on the ground. Operations keeps the system honest after launch."
+        },
+        "growth": {
+          "title": "Growth",
+          "line": "Ensures the system can support adoption and scale.",
+          "body": "The product’s job does not end at launch. We watch usage, friction, and the next stage the business needs to reach."
+        }
+      },
+      "support": "Each discipline feeds the next — product frames, experience clarifies, engineering builds, operations grounds, growth sustains."
+    },
+    "integration": {
+      "eyebrow": "THE INTEGRATION LAYER",
+      "title": "What connects the system",
+      "support": "Payments, messaging, ERP, identity — the connective tissue between modules and the outside world."
     },
     "how": {
-      "eyebrow": "Approach",
+      "eyebrow": "APPROACH",
       "title": "From a problem to a working system.",
+      "fullApproach": "Full approach →",
+      "input": "INPUT",
+      "activity": "ACTIVITY",
+      "output": "OUTPUT",
       "stages": {
         "discover": {
           "title": "Understand",
-          "body": "We start with the work itself — the problem, users, processes, current systems, and business goal."
+          "input": "Business problem, users, current systems, goal",
+          "activity": "Process interviews, friction mapping, success criteria",
+          "output": "Clear problem and operating context"
         },
         "map": {
           "title": "Map",
-          "body": "We turn the work into a map: roles, flows, data, modules, and integrations."
+          "input": "Shared problem understanding",
+          "activity": "Roles, flows, data, modules, integrations",
+          "output": "System map of the operating model"
+        },
+        "architect": {
+          "title": "Architect",
+          "input": "Constraints, roles, workflows, systems map",
+          "activity": "Define modules, data, interfaces, edges",
+          "output": "System architecture and delivery slices"
+        },
+        "prototype": {
+          "title": "Prototype",
+          "input": "Highest-risk workflow slice",
+          "activity": "Interactive prototype of critical path",
+          "output": "Validated flow and open questions"
         },
         "design": {
           "title": "Design",
-          "body": "We build an experience that makes the system clear for every user."
+          "input": "System map and critical workflows",
+          "activity": "Journeys, states, design system, RTL",
+          "output": "Clear experience for every role"
         },
         "build": {
           "title": "Build",
-          "body": "We turn design into a real product — not a prototype."
+          "input": "Design, architecture, delivery slices",
+          "activity": "Frontend, backend, data, authz, tests",
+          "output": "Working product increments in staging"
         },
         "integrate": {
           "title": "Connect",
-          "body": "Payments. ERP. APIs. AI. Messaging. Whatever the system needs."
+          "input": "External systems and contracts",
+          "activity": "Payments, ERP, APIs, AI, messaging",
+          "output": "Connected paths with failure modes"
+        },
+        "validate": {
+          "title": "Validate",
+          "input": "Staging system and real scenarios",
+          "activity": "UAT, security, accessibility, performance",
+          "output": "Launch checklist with blockers cleared"
         },
         "launch": {
           "title": "Launch",
-          "body": "Testing. Data. Permissions. Deployment. Training when needed."
+          "input": "Tested system, checklist, owners",
+          "activity": "Deploy, monitor, train, hand off",
+          "output": "Live system in the real business"
         },
         "evolve": {
           "title": "Evolve",
-          "body": "We watch real usage and build the next stage from reality."
+          "input": "Real usage, friction, growth priorities",
+          "activity": "Measure friction, automate, expand",
+          "output": "Versioned evolution plan"
         }
-      }
+      },
+      "support": "A short view of how Arkan moves from a business problem to a working system. Open the full approach for stage-by-stage detail."
     },
     "spectrum": {
-      "title": "From idea to a working system.",
-      "claim": "You don’t need six vendors.",
-      "claimSub": "You need one team responsible for the whole system.",
-      "items": {
-        "idea": "IDEA",
-        "strategy": "PRODUCT STRATEGY",
-        "ux": "UX",
-        "designSystem": "DESIGN SYSTEM",
-        "frontend": "FRONTEND",
-        "backend": "BACKEND",
-        "data": "DATA",
-        "infrastructure": "INFRASTRUCTURE",
-        "integrations": "INTEGRATIONS",
-        "ai": "AI",
-        "deployment": "DEPLOYMENT",
-        "operations": "OPERATIONS",
-        "growth": "GROWTH"
+      "title": "From zero to operating.",
+      "support": "You don’t need six vendors. You need one accountable system partner.",
+      "from": "FROM ZERO",
+      "to": "TO OPERATING",
+      "cta": "Start a Project",
+      "ticks": {
+        "idea": "Idea",
+        "mvp": "MVP",
+        "platform": "Platform",
+        "operations": "Operations",
+        "scale": "Scale"
       }
     },
     "builder": {
-      "eyebrow": "Project builder",
       "title": "Let’s understand the system you need.",
+      "support": "Answer a few short questions. We’ll turn your answers into an initial project picture before we talk.",
       "cta": "Start →",
-      "hint": "Answer a few short questions. We’ll turn them into an initial picture before we talk.",
+      "hint": "Every answer reshapes the live blueprint.",
       "options": {
-        "business": "Business System",
-        "platform": "Platform",
-        "commerce": "Commerce",
         "operations": "Operations",
-        "ai": "AI / Automation",
-        "experience": "Digital Experience"
-      }
+        "commerce": "Commerce",
+        "platform": "Platform"
+      },
+      "body": "No technical jargon required. Pick what is closest to your idea, who will use it, what must happen inside, and what it should connect to — then send a blueprint to Arkan."
+    },
+    "studio": {
+      "eyebrow": "STUDIO / OPERATING MODEL",
+      "title": "One team. Six arkan. Shared responsibility.",
+      "support": "Product, experience, engineering, operations, and growth run as one operating model — not a relay of vendors.",
+      "cta": "Enter the Studio",
+      "modelLabel": "CAPABILITY NETWORK / ACCOUNTABLE SPINE",
+      "body": "Enter the studio to see how the six pillars hand work to each other, and why one accountable unit builds clearer systems than a stack of separate agencies."
     },
     "finalCta": {
+      "eyebrow": "NEXT SYSTEM",
       "title": "Every large system started with a problem.",
       "subtitle": "What’s the problem you need to solve?",
-      "cta": "Start your project"
+      "ctaStart": "Start your project →",
+      "ctaExplore": "Explore systems →",
+      "nextNode": "NODE / NEW",
+      "yourSystem": "Your system",
+      "body": "Tell us about the operation, the idea, or the fragmentation you are living with. We’ll help turn it into a clear system picture — then a working product."
     }
   },
   "ControlRoom": {
@@ -293,6 +569,8 @@
     "context": "Business context",
     "challenge": "Challenge",
     "architecture": "System architecture",
+    "systemMap": "System map",
+    "systemMapLead": "Modules, live path, and operating mass in one view.",
     "experience": "Experience",
     "xray": "System X-Ray",
     "experienceMode": "EXPERIENCE",
@@ -351,8 +629,9 @@
     "opsDesc": "Connects software to real business execution."
   },
   "Capabilities": {
-    "title": "What we build",
-    "subtitle": "Systems — not service cards.",
+    "title": "What we put into operation.",
+    "subtitle": "Not a menu of services — a map of system families that companies actually need to run and grow.",
+    "index": "INDEX",
     "exploreWork": "Explore related systems",
     "startWith": "Start with this",
     "whatSolves": "What it solves",
@@ -361,11 +640,12 @@
     "commonModules": "Common modules",
     "commonIntegrations": "Common integrations",
     "related": "Related systems",
+    "ctaBlueprint": "Start with a blueprint →",
     "items": {
       "business": {
         "title": "Business Systems",
-        "solves": "Complex operations, fragmented tools, finance/inventory/approvals without a single source of truth.",
-        "builds": "New ERP or an ops layer on an existing ERP, internal tools, reporting, permissions.",
+        "solves": "Complex operations, fragmented tools, and finance/inventory/approvals without a single source of truth.",
+        "builds": "New ERP cores or ops layers on existing ERP, internal tools, reporting, permissions, and control rooms.",
         "users": "Managers, finance, admins, department operators",
         "modules": [
           "Roles",
@@ -379,12 +659,14 @@
           "Odoo",
           "Accounting",
           "Identity"
-        ]
+        ],
+        "lead": "Systems that connect internal company operations in one place.",
+        "body": "When finance, sales, inventory, approvals, and reporting live in separate tools — or in spreadsheets — decisions slow down and truth fragments. We build business systems that unify roles, permissions, workflows, and reporting: a new ERP, an operating layer on an existing ERP, or internal tools that give managers a single source of truth."
       },
       "operations": {
         "title": "Operations Systems",
-        "solves": "Field work without visibility: people, sites, vehicles, requests, assets.",
-        "builds": "Dispatch, tickets, tracking, tasks, and measurable operating states.",
+        "solves": "Field work without visibility across people, sites, vehicles, requests, and assets.",
+        "builds": "Dispatch, tickets, tracking, tasks, and measurable operating states for field and back-office roles.",
         "users": "Field teams, supervisors, ops, customers",
         "modules": [
           "Intake",
@@ -398,12 +680,14 @@
           "Payments",
           "Maps",
           "ERP"
-        ]
+        ],
+        "lead": "When work happens in the field, the system must be there too.",
+        "body": "People, sites, vehicles, tickets, assets, and requests need a measurable workflow — not phone calls and paper. We build operations platforms that turn daily movement into dispatch, tracking, and accountability so supervisors and field teams share one live operating picture."
       },
       "platforms": {
         "title": "Platforms & SaaS",
-        "solves": "One idea that needs multiple roles, subscriptions, and scalable administration.",
-        "builds": "Multi-role platforms, portals, subscriptions, and admin systems.",
+        "solves": "One product that needs multiple roles, subscriptions, and scalable administration.",
+        "builds": "Multi-role platforms, portals, subscription models, and operator admin systems.",
         "users": "Customers, operators, partners, platform admins",
         "modules": [
           "Roles",
@@ -415,12 +699,14 @@
           "Payments",
           "Auth",
           "APIs"
-        ]
+        ],
+        "lead": "One idea. Multiple roles. A product ready to grow.",
+        "body": "Marketplaces, portals, and multi-tenant products fail when roles, subscriptions, and admin are bolted on late. We design the permission model, workflows, and administration from day one so customers, operators, partners, and admins can share one coherent platform."
       },
       "commerce": {
         "title": "Commerce",
-        "solves": "Selling disconnected from inventory, delivery, and support.",
-        "builds": "A commerce system from customer journey through fulfilment and reporting.",
+        "solves": "Selling disconnected from inventory, delivery, support, and reporting.",
+        "builds": "Commerce systems from customer journey through payments, fulfilment, merchants, and reporting.",
         "users": "Customers, merchants, couriers, ops, finance",
         "modules": [
           "Catalog",
@@ -434,13 +720,15 @@
           "Logistics",
           "POS",
           "Accounting"
-        ]
+        ],
+        "lead": "Selling is not checkout alone.",
+        "body": "Catalog, order, payment, inventory, merchants, delivery, support, and reporting must work as one commerce system. We build from the customer journey through fulfilment and finance so growth does not break operations behind the storefront."
       },
       "ai": {
         "title": "AI & Automation",
-        "solves": "Manual steps, documents, images, and slow decisions inside a real process.",
-        "builds": "Extraction, vision, assistants, automation, and decision support — inside the system, not as an AI agency.",
-        "users": "Ops, support, intake, management",
+        "solves": "Manual documents, images, repetitive steps, and slow decisions inside live processes.",
+        "builds": "Document intelligence, vision, assistants, extraction, and automation inside the operating system.",
+        "users": "Operators, support, analysts, managers",
         "modules": [
           "Documents",
           "Vision",
@@ -452,12 +740,14 @@
           "Vision",
           "Messaging",
           "Internal APIs"
-        ]
+        ],
+        "lead": "Intelligence when it has real work to do.",
+        "body": "We do not add AI for decoration. We use it when it can remove a manual step, read a document, understand an image, extract data, assist an operator, or improve a decision inside an existing workflow. AI is not always the product — sometimes it is the part that makes the product smarter."
       },
       "experiences": {
         "title": "Digital Experiences",
-        "solves": "When impression, content, and interaction are part of the project’s value.",
-        "builds": "Corporate sites, product experiences, portals, and design systems — with the same systems method.",
+        "solves": "When impression, content, and interaction are part of system value — not decoration after the product.",
+        "builds": "Corporate sites, product experiences, portals, and design systems with the same systems method.",
         "users": "Visitors, customers, operators",
         "modules": [
           "Strategy",
@@ -469,13 +759,25 @@
           "CMS",
           "Analytics",
           "Auth"
-        ]
+        ],
+        "lead": "Sometimes the experience itself is part of the product’s value.",
+        "body": "Corporate sites, product experiences, and high-signal portals still need a systems method: strategy, design system, performance, and content structure. We build digital experiences when impression and interaction matter — without abandoning the operating foundation underneath."
       }
-    }
+    },
+    "seoTitle": "Digital System Capabilities | Business, Operations, Commerce, AI | Arkan",
+    "seoDescription": "Arkan builds business systems, operations platforms, multi-role SaaS, commerce stacks, AI inside real workflows, and digital experiences — with modules, roles, and integrations designed as one system.",
+    "lead": "Clients rarely buy “development.” They buy relief from fragmented tools, invisible field work, broken commerce ops, or an idea that needs a real product structure.",
+    "body": "These six families describe the kinds of systems we put into operation. Each one can stand alone or combine with another — the method stays the same: understand the work, map the system, design for every role, build, connect, launch, and evolve."
   },
   "Approach": {
     "title": "From a problem to a working system.",
-    "subtitle": "Every stage has an input, activity, output, and decision gate.",
+    "subtitle": "Arkan’s approach turns a business problem into a digital system through seven clear stages — each with an input, activity, output, and decision gate.",
+    "seoTitle": "Product Approach: From Business Problem to Working Digital System | Arkan",
+    "seoDescription": "How Arkan designs and builds digital systems: understand the work, map roles and data, design experiences, engineer the product, connect integrations, launch operations, and evolve from real usage.",
+    "eyebrow": "APPROACH",
+    "lead": "We do not start from screens. We start from the work that must run — then design and engineer the system that makes it operational.",
+    "body": "Whether you need a business system, operations platform, marketplace, commerce stack, or intelligence inside a real workflow, the path stays the same: clarify the problem, map the operating model, design for every role, build a working product, connect the systems around it, launch with confidence, and keep evolving from real usage.",
+    "cta": "Start with a blueprint →",
     "input": "Input",
     "activity": "Activity",
     "output": "Output",
@@ -483,60 +785,83 @@
     "stages": {
       "discover": {
         "title": "Understand",
-        "input": "Business problem, users, current systems, goal",
-        "activity": "Process interviews, friction mapping, success criteria",
-        "output": "Clear problem and operating context",
-        "gate": "Is the problem clear enough to map a system?"
+        "lead": "We start with the work itself.",
+        "body": "Before frameworks or dashboards, we frame the business problem: who is affected, how work happens today, which systems already exist, and what success must look like. This discovery stage protects the build from solving the wrong problem — and gives product, design, and engineering one shared operating context.",
+        "input": "Business problem, users, current systems, constraints, and commercial goal",
+        "activity": "Process interviews, friction mapping, stakeholder alignment, and success criteria definition",
+        "output": "A clear problem statement and operating context the whole team can build from",
+        "gate": "Is the problem clear enough to map a system with confidence?"
       },
       "map": {
         "title": "Map",
-        "input": "Problem understanding",
-        "activity": "Roles · Flows · Data · Modules · Integrations",
-        "output": "System map",
-        "gate": "Do we know who does what and how data moves?"
+        "lead": "We turn the work into a system map.",
+        "body": "Roles, workflows, data, modules, and integrations become visible before any interface polish. Mapping shows who does what, where decisions sit, how information moves, and which edges connect to ERP, payments, messaging, or existing tools — so architecture follows reality, not assumptions.",
+        "input": "Shared problem understanding and current operating context",
+        "activity": "Map roles, flows, data objects, modules, exception paths, and integration edges",
+        "output": "A system map that explains people, process, and data as one operating model",
+        "gate": "Do we know who does what, and how data moves across the system?"
       },
       "design": {
         "title": "Design",
-        "input": "System map",
-        "activity": "Journeys, interfaces, states, design system",
-        "output": "A clear experience for every role",
-        "gate": "Does every user understand what to do?"
+        "lead": "We design an experience every role can understand.",
+        "body": "With the map in place, we design journeys, interfaces, states, and a design system that make complex operations feel clear. Each role — customer, operator, manager, finance, admin — gets a path that matches responsibility and permission, not a generic dashboard.",
+        "input": "Approved system map, roles, and critical workflows",
+        "activity": "Journey design, interface states, empty/error paths, RTL readiness, and design-system foundations",
+        "output": "A clear product experience for every role, ready for engineering",
+        "gate": "Does every user understand what to do next in the system?"
       },
       "build": {
         "title": "Build",
-        "input": "Design and architecture",
-        "activity": "Frontend, backend, data, tests",
-        "output": "A real working product",
-        "gate": "Does the increment work operationally?"
+        "lead": "We turn design into a real working product.",
+        "body": "Engineering delivers frontend, backend, data models, permissions, and tests as operational increments — not throwaway prototypes. Each slice should be usable in staging, grounded in the architecture, and ready to connect to the systems the business already depends on.",
+        "input": "Experience design, architecture, and delivery slices",
+        "activity": "Frontend, backend, data model, authorization, automated tests, and staging increments",
+        "output": "A real working product increment that can run the core workflow",
+        "gate": "Does this increment work operationally for the roles that need it?"
       },
       "integrate": {
         "title": "Connect",
-        "input": "Required external systems",
-        "activity": "Payments · ERP · APIs · AI · Messaging",
-        "output": "Connected paths",
-        "gate": "Are integrations reliable under failure?"
+        "lead": "We connect the system to the tools the business already runs on.",
+        "body": "Payments, ERP, APIs, messaging, and AI only help when they sit inside reliable paths. We integrate external systems with clear contracts, failure modes, and monitoring — so operations do not break silently when a sync, webhook, or third-party service fails.",
+        "input": "Required external systems, contracts, and operating dependencies",
+        "activity": "Payments, ERP, APIs, AI, messaging, and other integrations with failure handling",
+        "output": "Connected paths the product can trust under real operating load",
+        "gate": "Are integrations reliable when something fails upstream or downstream?"
       },
       "launch": {
         "title": "Launch",
-        "input": "Tested system",
-        "activity": "Testing · Data · Permissions · Deployment · Training",
-        "output": "A live system in reality",
-        "gate": "Do real users succeed?"
+        "lead": "We put the system into reality with the people who will run it.",
+        "body": "Launch is more than deploy. We cover testing, data readiness, permissions, deployment, monitoring, and training where needed — so real users can succeed on day one and the team has a clear support and rollback path.",
+        "input": "Tested system, launch checklist, and operational owners",
+        "activity": "UAT, data migration readiness, permissions review, deployment, monitoring, and training handoff",
+        "output": "A live digital system operating in the real business environment",
+        "gate": "Do real users succeed with the core workflows after go-live?"
       },
       "evolve": {
         "title": "Evolve",
-        "input": "Real usage",
-        "activity": "Watch friction and build the next stage",
-        "output": "The system’s next increment",
-        "gate": "What should grow next?"
+        "lead": "The first version is not the end of the system.",
+        "body": "After launch we watch real usage, friction, and growth signals. The next increment comes from operations — not from a fixed feature list — so the product expands modules, automation, and scale where the business actually needs it.",
+        "input": "Real usage, friction signals, backlog, and growth priorities",
+        "activity": "Measure friction, refine journeys, automate high-cost steps, and plan the next system increment",
+        "output": "A versioned evolution plan grounded in how the system is actually used",
+        "gate": "What should grow next to reduce friction or unlock the next stage of the business?"
       }
     }
   },
   "Studio": {
     "title": "The system that builds systems.",
-    "subtitle": "Arkan is not a set of specialties working side by side.",
-    "body": "We build the team around the project itself. Product understands the work. Design turns complexity into experience. Engineering turns experience into a system. Operations connects the system to reality. Every decision shapes the next — so we work as one team from the start.",
+    "subtitle": "Arkan is not a set of specialties working side by side. It is one multidisciplinary unit that owns the outcome.",
+    "body": "Product understands the work. Experience turns complexity into clarity. Engineering turns experience into a system. Operations connects that system to reality. Growth keeps it alive after launch. Every decision shapes the next, so we work as one accountable team from the start.",
+    "eyebrow": "STUDIO",
+    "sixEyebrow": "Six disciplines. One system.",
+    "sixTitle": "The Six Arkan",
+    "sixSupport": "Each discipline expands into how it feeds the next — product frames, experience clarifies, engineering builds, operations grounds, growth sustains.",
+    "sixCollaborate": "Input → handoff → output across the operating model",
+    "networkLead": "Network first — profiles second. Hover a discipline to isolate the path.",
+    "input": "Input",
+    "output": "Output",
     "teamTitle": "The team",
+    "teamPageLink": "Full team page →",
     "methodTitle": "Why Arkan?",
     "network": {
       "client": "CLIENT",
@@ -549,27 +874,27 @@
     "why": {
       "workFirst": {
         "title": "We understand the work before the technology.",
-        "body": "We don’t start by picking a framework or a dashboard look. We start by understanding the process."
+        "body": "We don’t start by picking a framework or a dashboard look. We start by understanding the process: who acts, what breaks, which data matters, and what success looks like in the business — then technology serves that reality."
       },
       "systemBeforeScreens": {
         "title": "We design the system before the screens.",
-        "body": "Roles, data, and workflows come before visual detail."
+        "body": "Roles, data, permissions, and workflows come before visual detail. Screens are how people enter the system — they are not the system. Designing the operating model first prevents beautiful interfaces that cannot run the work."
       },
       "whatIsNeeded": {
         "title": "We build what the project needs.",
-        "body": "Not every project needs an app. Not every project needs AI."
+        "body": "Not every project needs a mobile app. Not every project needs AI. Not every project needs a full ERP on day one. We size the first increment to the real problem so you get a working system, not a catalogue of unused features."
       },
       "operations": {
         "title": "We think about operations from day one.",
-        "body": "Who will use it? Who will run it? What happens on error? How will it grow?"
+        "body": "Who will use it? Who will run it? What happens on error? How will it grow across sites, roles, or volume? Operational questions belong in discovery and architecture — not as surprises after launch."
       },
       "oneResponsibility": {
         "title": "One responsibility.",
-        "body": "Instead of managing multiple vendors, you work with one team accountable for the whole product."
+        "body": "Instead of managing multiple vendors for product, design, engineering, ERP, AI, and ops, you work with one team accountable for the whole product — from problem framing to a system that runs in reality."
       },
       "afterLaunch": {
         "title": "We stay after launch.",
-        "body": "Because the first version of a system is not its end."
+        "body": "The first version of a system is not its end. We watch real usage, friction, and growth signals, then build the next increment from how the business actually operates — not from a frozen feature list."
       }
     },
     "steps": {
@@ -589,7 +914,52 @@
         "title": "Connect & launch",
         "body": "Deploy and operate until the system works in reality."
       }
-    }
+    },
+    "seoTitle": "Arkan Studio | Product, Design, Engineering & Operations Under One Team",
+    "seoDescription": "Meet the Arkan studio model: product, experience, frontend, backend, operations, and growth working as one system — from understanding the work to launching and evolving a digital product.",
+    "lead": "We build the team around the project itself — not around a menu of disconnected services."
+  },
+  "Team": {
+    "eyebrow": "TEAM",
+    "title": "The team that builds systems.",
+    "subtitle": "Not specialties sitting side by side — one unit accountable for the product from understanding to operations.",
+    "whoEyebrow": "Who we are",
+    "whoTitle": "A systems studio, not a screens agency.",
+    "whoBody": "Arkan is a small team that works as one spine: product, experience, interfaces, and backend/operations. Every decision passes through the rest — so the system stays coherent and actually runs the work.",
+    "membersEyebrow": "Members",
+    "membersTitle": "Who does what.",
+    "membersLead": "Each member owns a clear layer and hands off inside the same accountability.",
+    "bioLabel": "Who",
+    "focusLabel": "What they do",
+    "howEyebrow": "How we work",
+    "howTitle": "How work moves inside Arkan.",
+    "howBody": "From the first meeting we operate as one team on the same system — not a chain of vendors. The full method lives on the Approach page.",
+    "how": {
+      "workFirst": {
+        "title": "We understand the work before the technology.",
+        "body": "We start with process, roles, and friction — not framework shopping."
+      },
+      "systemBeforeScreens": {
+        "title": "We design the system before the screens.",
+        "body": "Data, permissions, and workflows come before visual detail."
+      },
+      "oneResponsibility": {
+        "title": "One responsibility end to end.",
+        "body": "Product, experience, engineering, and operations share one commitment to the outcome."
+      },
+      "afterLaunch": {
+        "title": "We stay after launch.",
+        "body": "The first version is not the end — we watch usage and build the next stage."
+      }
+    },
+    "howCtaApproach": "See the full approach",
+    "howCtaStudio": "Studio & Six Arkan",
+    "ctaTitle": "Ready to understand your system.",
+    "ctaBody": "Send a project picture — and we start from clarity instead of zero.",
+    "seoTitle": "Arkan Team | Product, Experience, Engineering & Operations",
+    "seoDescription": "Meet the Arkan team behind digital systems — product, experience, frontend, backend, operations, and growth working as one accountable unit from discovery to launch.",
+    "lead": "Arkan is people who can hold the whole picture: the business problem, the experience, the engineering, and the operating reality after go-live.",
+    "body": "You will not get a relay of handoffs between agencies. You get a studio that frames the problem, maps the system, designs for every role, builds the product, connects integrations, and stays responsible when the system meets real users."
   },
   "Start": {
     "title": "Let’s understand the system you need.",
@@ -603,18 +973,40 @@
     "successTitle": "We received the project.",
     "successBody": "We won’t start from zero. The picture you built reached the team, and we’ll use it as the starting point to understand the project and review the next step.",
     "error": "We couldn’t send that. Try again or contact us directly.",
-    "architecting": "We’ve got the picture…",
+    "architecting": "Architecting your brief…",
+    "buildEyebrow": "BUILD SEQUENCE",
+    "buildTitle": "Arkan is assembling your system.",
+    "buildSupport": "Watch the map form, then the brief write itself into a real markdown file — step by step.",
+    "buildFileLabel": "blueprint-{id}.md",
+    "buildWriting": "WRITING",
+    "buildDone": "READY",
+    "buildWaiting": "waiting for system map…",
+    "buildMdTitle": "Blueprint file",
+    "buildDownload": "Download .md",
+    "buildStepFrame": "Frame the project type",
+    "buildStepUsers": "Map who will use it",
+    "buildStepFlows": "Wire the core workflows",
+    "buildStepIntegrations": "Connect outside systems",
+    "buildStepIntelligence": "Place the intelligence layer",
+    "buildStepMarkdown": "Write blueprint.md",
+    "buildStepSeal": "Seal the system map",
     "blueprintTitle": "We’ve got the picture.",
     "blueprintLead": "Based on your answers, this is an initial picture of the system you seem to need.",
     "interpretationTitle": "How we read the project",
     "recommendationTitle": "Where should we start?",
     "convertTitle": "Continue from here?",
     "convertBody": "Send the picture to Arkan and we’ll review it before the first conversation.",
+    "pendingBadge": "DRAFT · NOT SENT YET",
+    "pendingHint": "Your blueprint is ready on this page only. Arkan has not received it until you confirm.",
+    "stickySubmitHint": "Still a draft — confirm to send it to Arkan.",
     "matched": "Closest system we’ve built",
     "matchedBody": "A system with similar operating layers.",
     "exploreRelated": "Explore the system ←",
     "privacy": "Your answers are only used to prepare a project brief for Arkan. No account needed.",
-    "liveBlueprint": "Live picture",
+    "liveBlueprint": "Live blueprint",
+    "briefReady": "BRIEF READY",
+    "blueprintExpand": "Expand",
+    "blueprintCollapse": "Collapse",
     "complexity": "Complexity",
     "complexityLevels": {
       "low": "Low",
@@ -623,7 +1015,7 @@
     },
     "steps": {
       "type": {
-        "title": "What do you want to build?",
+        "title": "What are we building together?",
         "helper": "You don’t need the technical name. Pick the closest match.",
         "options": {
           "business": "Business system",
@@ -637,24 +1029,26 @@
         }
       },
       "stage": {
-        "title": "Where is the project now?",
+        "title": "Where are you now?",
         "options": {
           "idea": "Just an idea",
           "existing": "Running business",
           "system": "Existing system",
           "replace": "Replacing a system",
-          "scale": "Scaling up"
+          "scale": "Scaling up",
+          "newBusiness": "New business"
         },
         "descriptions": {
           "idea": "I have an idea and want to turn it into a product.",
           "existing": "The company already operates and needs a new system.",
           "system": "I have a product or system and want to evolve it.",
           "replace": "The current system no longer fits.",
-          "scale": "The business grew and the current system can’t carry the next stage."
+          "scale": "The business grew and the current system can’t carry the next stage.",
+          "newBusiness": "Starting a new business that needs a system from day one."
         }
       },
       "roles": {
-        "title": "Who will use the system?",
+        "title": "Who will use it?",
         "helper": "Select every party that will interact with the system.",
         "options": {
           "customers": "Customers",
@@ -666,10 +1060,11 @@
           "finance": "Finance",
           "admins": "Administrators",
           "custom": "Other"
-        }
+        },
+        "customLabel": "Custom role (max 40 characters)"
       },
       "workflows": {
-        "title": "What must happen inside it?",
+        "title": "What needs to happen?",
         "options": {
           "orders": "Orders",
           "payments": "Payments",
@@ -690,7 +1085,7 @@
       },
       "integrations": {
         "title": "What should it connect to?",
-        "hint": "Leaving this empty is fine — you can continue without integrations.",
+        "hint": "We'll confirm fit during discovery — this is a preliminary map.",
         "empty": "No integrations selected",
         "options": {
           "erp": "ERP",
@@ -708,7 +1103,7 @@
         }
       },
       "intelligence": {
-        "title": "Where can intelligence help?",
+        "title": "Where could intelligence help?",
         "options": {
           "documents": "Reading documents",
           "images": "Understanding images",
@@ -745,7 +1140,7 @@
         }
       },
       "priorities": {
-        "title": "If the project succeeds, what matters most to change?",
+        "title": "What matters most?",
         "options": {
           "lessTime": "Less time in operations",
           "fewerErrors": "Fewer errors",
@@ -791,7 +1186,10 @@
           "none": "No",
           "partial": "Scattered tools",
           "system": "An existing system"
-        }
+        },
+        "narrative": "Anything else about the operation? (optional)",
+        "narrativePlaceholder": "Constraints, current pain, or how work happens today…",
+        "helper": "Budget is optional. Skip anything you don't know yet."
       },
       "contact": {
         "title": "Continue from here?",
@@ -806,7 +1204,8 @@
           "email": "Email",
           "whatsapp": "WhatsApp",
           "either": "Either"
-        }
+        },
+        "consent": "I agree that Arkan may use these answers to prepare a project brief and contact me about it."
       }
     },
     "blueprint": {
@@ -837,7 +1236,12 @@
       "ai": "We recommend picking one high-impact manual step inside an existing workflow, applying intelligence there, then measuring before expanding.",
       "experience": "We recommend defining the business goal of the experience and the content/design system before full visual build-out.",
       "default": "We recommend a short discovery session to turn this picture into a system map and a clear MVP."
-    }
+    },
+    "seoTitle": "Start Your Project | System Blueprint Builder | Arkan",
+    "seoDescription": "Describe your business problem in a few steps. Arkan turns your answers into an initial system blueprint — roles, workflows, integrations, and a recommended starting point — before the first conversation.",
+    "eyebrow": "BUILD WITH ARKAN",
+    "lead": "You don’t need a perfect brief. You need a clear picture of the work, the people, and what must change.",
+    "body": "This builder is designed to think like a systems studio: what you are building, where the project stands, who will use it, what must happen inside, what it should connect to, and where intelligence or automation might help. At the end you get a readable blueprint you can send to Arkan as a real starting point — not a blank contact form."
   },
   "Footer": {
     "rights": "All rights reserved.",
@@ -845,7 +1249,8 @@
     "terms": "Terms",
     "cookies": "Cookies",
     "email": "Email",
-    "built": "SYSTEM STATUS / READY"
+    "built": "SYSTEM STATUS / READY",
+    "locale": "Language"
   },
   "Legal": {
     "privacyTitle": "Privacy policy",
@@ -870,7 +1275,11 @@
     "termsEngageBody": "Submitting a blueprint does not create a contract. Scope, pricing, and timeline are defined in a written agreement before work begins.",
     "termsLiabilityTitle": "Liability",
     "termsLiabilityBody": "We take reasonable care with marketing accuracy but do not warrant error-free materials. We are not liable for losses from relying on showcase content alone.",
-    "termsBody": "Site content and project showcases are for marketing clarity. Scope, pricing, and delivery terms are defined in a separate agreement before any engagement begins."
+    "termsBody": "Site content and project showcases are for marketing clarity. Scope, pricing, and delivery terms are defined in a separate agreement before any engagement begins.",
+    "privacySeoTitle": "Privacy Policy | Arkan",
+    "privacySeoDescription": "How Arkan handles data on this website: contact forms, cookies, retention periods, and your rights to access, correct, or delete personal information.",
+    "termsSeoTitle": "Terms of Use | Arkan",
+    "termsSeoDescription": "Terms for using the Arkan website and its content. Project engagements are governed by separate agreements — covering use, intellectual property, and liability limits."
   },
   "Cookies": {
     "title": "Privacy control",
@@ -890,7 +1299,9 @@
     "preferences": "Preferences",
     "preferencesDesc": "Remember non-essential UI choices to improve your experience.",
     "analytics": "Analytics",
-    "analyticsDesc": "Help us understand usage in aggregate. Loaded only after you opt in."
+    "analyticsDesc": "Help us understand usage in aggregate. Loaded only after you opt in.",
+    "seoTitle": "Cookie Preferences | Arkan",
+    "seoDescription": "Manage privacy preferences on the Arkan website: essential, analytics, and preference cookies, with the ability to update your choice at any time."
   },
   "Splash": {
     "brand": "ARKAN",
@@ -904,6 +1315,7 @@
     "mobileNav": "Mobile menu",
     "footerNav": "Footer links",
     "menu": "Open menu",
+    "closeMenu": "Close menu",
     "newTab": " (opens in a new tab)"
   },
   "Errors": {

@@ -92,18 +92,18 @@ export type Role = {
   name: LocalizedString;
   modules?: string[];
   workflows?: string[];
-  needs?: LocalizedString;
-  sees?: LocalizedString;
-  can?: LocalizedString;
+  needs: LocalizedString;
+  sees: LocalizedString;
+  can: LocalizedString;
 };
 
 export type Module = {
   id: string;
   name: LocalizedString;
   description: LocalizedString;
-  solves?: LocalizedString;
-  how?: LocalizedString;
-  connects?: LocalizedString;
+  solves: LocalizedString;
+  how: LocalizedString;
+  connects: LocalizedString;
 };
 
 export type Workflow = {
@@ -139,11 +139,11 @@ export type Project = {
   summary: LocalizedString;
   context: LocalizedString;
   challenge: LocalizedString;
-  thinking?: LocalizedString;
+  thinking: LocalizedString;
   solution: LocalizedString;
   impact: LocalizedString;
-  behindInterface?: BehindInterface;
-  techRationale?: TechRationale[];
+  behindInterface: BehindInterface;
+  techRationale: TechRationale[];
 
   sector: Sector;
   systemType: SystemType;
@@ -170,11 +170,21 @@ export type Project = {
   atlas: { x: number; y: number };
 };
 
+export type TeamLinks = {
+  linkedin?: string;
+  github?: string;
+  x?: string;
+  website?: string;
+};
+
 export type TeamMember = {
   id: string;
   name: LocalizedString;
   role: LocalizedString;
   pillar: PillarId;
+  bio?: LocalizedString;
+  focus?: LocalizedString;
+  links?: TeamLinks;
 };
 
 export type PillarId =

@@ -1,13 +1,22 @@
 "use client";
 
-import dynamic from "next/dynamic";
-import { PageSkeleton } from "@/components/loading/Skeleton";
+import { Suspense } from "react";
+import type { Project } from "@/content/types";
+import { SystemsAtlas } from "./SystemsAtlas";
 
-export const SystemsAtlasLazy = dynamic(
-  () =>
-    import("@/components/atlas/SystemsAtlas").then((mod) => mod.SystemsAtlas),
-  {
-    loading: () => <PageSkeleton />,
-    ssr: true,
-  },
-);
+type Props = {
+  preview?: boolean;
+  projects: Project[];
+};
+
+export function SystemsAtlasLazy(props: Props) {
+  return (
+    <Suspense
+      fallback={
+        <div className="h-64 animate-pulse border border-[var(--line)] bg-[var(--surface)]" />
+      }
+    >
+      <SystemsAtlas {...props} />
+    </Suspense>
+  );
+}

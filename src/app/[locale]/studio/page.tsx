@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import { getLocale, getTranslations, setRequestLocale } from "next-intl/server";
-import { PillarsGrid } from "@/components/studio/PillarsGrid";
+import { SixArkanDeep } from "@/components/studio/SixArkanDeep";
+import { TeamNetwork } from "@/components/studio/TeamNetwork";
+import { Link } from "@/i18n/navigation";
 import { getTeam } from "@/lib/content/team";
 import { pageMetadata } from "@/lib/seo";
+import { getSeoCopy } from "@/lib/seo-messages";
 import type { LocaleKey } from "@/lib/site";
 
 type Props = {
@@ -13,12 +16,12 @@ export async function generateMetadata({
   params,
 }: Props): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "Studio" });
+  const seo = await getSeoCopy(locale, "Studio");
   return pageMetadata({
     locale,
     path: "/studio",
-    title: t("title"),
-    description: t("subtitle"),
+    title: seo.title,
+    description: seo.description,
   });
 }
 
@@ -31,42 +34,70 @@ export default async function StudioPage({ params }: Props) {
   const team = await getTeam();
 
   return (
-    <section className="section-pad py-12 md:py-16">
-      <div className="mx-auto max-w-6xl space-y-20">
-        <div className="bg-[var(--navy)] px-6 py-14 text-white md:px-10">
-          <p className="tech-label text-[11px] text-[var(--signal-hot)]">
-            STUDIO
-          </p>
-          <h1 className="font-display mt-4 text-5xl md:text-6xl">{t("title")}</h1>
-          <p className="mt-3 text-lg text-white/70">{t("subtitle")}</p>
-          <p className="mt-4 max-w-3xl text-white/60">{t("body")}</p>
-        </div>
+    <section className="section-pad py-14 md:py-20">
+      <div className="canvas space-y-20">
+        <header className="grid gap-8 border-b border-[var(--line)] pb-12 lg:grid-cols-12 lg:items-end">
+          <div className="lg:col-span-7">
+            <p className="tech-label text-[11px] text-[var(--volt)]">
+              {t("eyebrow")}
+            </p>
+            <h1 className="type-display mt-4 max-w-[12ch] text-[var(--ink)]">
+              {t("title")}
+            </h1>
+          </div>
+          <div className="lg:col-span-5">
+            <p className="type-body-l text-[var(--muted)]">{t("subtitle")}</p>
+            <p className="mt-4 text-base font-semibold text-[var(--ink)]">
+              {t("lead")}
+            </p>
+            <p className="mt-3 text-base leading-relaxed text-[var(--muted)]">
+              {t("body")}
+            </p>
+          </div>
+        </header>
+
+        <SixArkanDeep />
 
         <div>
-          <h2 className="font-display text-3xl md:text-4xl">{t("teamTitle")}</h2>
-          <div className="mt-10 flex flex-col items-center gap-4 text-center">
-            <NetworkNode label={t("network.client")} />
-            <span className="h-8 w-px bg-[var(--signal)]" aria-hidden />
-            <NetworkNode label={t("network.product")} active />
-            <div className="flex flex-wrap items-start justify-center gap-6">
-              <NetworkNode label={t("network.ux")} />
-              <NetworkNode label={t("network.engineering")} />
-              <NetworkNode label={t("network.operations")} />
-            </div>
-            <span className="h-8 w-px bg-[var(--signal)]" aria-hidden />
-            <NetworkNode label={t("network.delivery")} active />
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <h2 className="type-h2">{t("teamTitle")}</h2>
+            <Link
+              href="/team"
+              className="text-sm font-semibold text-[var(--volt)] underline decoration-[var(--line-signal)] underline-offset-4"
+            >
+              {t("teamPageLink")}
+            </Link>
+          </div>
+          <div className="mt-10">
+            <TeamNetwork />
           </div>
 
-          <div className="mt-14 divide-y divide-[var(--line)] border-y border-[var(--line)]">
-            {team.map((member) => (
+          <div className="mt-10 grid gap-3 sm:grid-cols-2">
+            {team.map((member, index) => (
               <div
                 key={member.id}
-                className="grid gap-2 py-5 md:grid-cols-[1fr_1fr_auto] md:items-center"
+                className={`border p-5 ${
+                  index % 2 === 0
+                    ? "border-[var(--line)] bg-[var(--surface)]"
+                    : "border-[var(--ink)] bg-[var(--ink)] text-white"
+                }`}
               >
-                <h3 className="font-display text-xl">{member.name[loc]}</h3>
-                <p className="text-sm text-[var(--muted)]">{member.role[loc]}</p>
-                <p className="tech-label text-[10px] text-[var(--signal)]">
+                <p
+                  className={`tech-label text-[10px] ${
+                    index % 2 === 0 ? "text-[var(--volt)]" : "text-[var(--volt-hot)]"
+                  }`}
+                >
                   {tp(member.pillar)}
+                </p>
+                <h3 className="font-display mt-3 text-2xl">
+                  {member.name[loc]}
+                </h3>
+                <p
+                  className={`mt-2 text-sm ${
+                    index % 2 === 0 ? "text-[var(--muted)]" : "text-white/65"
+                  }`}
+                >
+                  {member.role[loc]}
                 </p>
               </div>
             ))}
@@ -74,20 +105,8 @@ export default async function StudioPage({ params }: Props) {
         </div>
 
         <div>
-          <h2 className="font-display text-3xl md:text-4xl">
-            {tp("product")} · {tp("experience")} · {tp("frontend")} ·{" "}
-            {tp("backend")} · {tp("operations")} · {tp("growth")}
-          </h2>
-          <div className="mt-8">
-            <PillarsGrid />
-          </div>
-        </div>
-
-        <div>
-          <h2 className="font-display text-3xl md:text-4xl">
-            {t("methodTitle")}
-          </h2>
-          <div className="mt-10 divide-y divide-[var(--line)] border-y border-[var(--line)]">
+          <h2 className="type-h2">{t("methodTitle")}</h2>
+          <div className="mt-8 space-y-3">
             {(
               [
                 "workFirst",
@@ -97,47 +116,42 @@ export default async function StudioPage({ params }: Props) {
                 "oneResponsibility",
                 "afterLaunch",
               ] as const
-            ).map((key, index) => (
-              <div
-                key={key}
-                className="grid gap-4 py-8 md:grid-cols-[5rem_1fr]"
-              >
-                <p className="tech-label text-[11px] text-[var(--muted)]">
-                  {String(index + 1).padStart(2, "0")}
-                </p>
-                <div>
-                  <h3 className="font-display text-2xl">
-                    {t(`why.${key}.title`)}
-                  </h3>
-                  <p className="mt-2 max-w-2xl text-[var(--muted)]">
-                    {t(`why.${key}.body`)}
+            ).map((key, index) => {
+              const odd = index % 2 === 1;
+              return (
+                <div
+                  key={key}
+                  className={`grid gap-4 border p-5 md:grid-cols-[5rem_1fr] md:p-7 ${
+                    odd
+                      ? "border-[var(--ink)] bg-[var(--ink)] text-white"
+                      : "border-[var(--line)] bg-[var(--surface)]"
+                  }`}
+                >
+                  <p
+                    className={`tech-label text-[11px] ${
+                      odd ? "text-[var(--volt-hot)]" : "text-[var(--muted)]"
+                    }`}
+                  >
+                    {String(index + 1).padStart(2, "0")}
                   </p>
+                  <div>
+                    <h3 className="font-display text-2xl">
+                      {t(`why.${key}.title`)}
+                    </h3>
+                    <p
+                      className={`mt-2 max-w-2xl ${
+                        odd ? "text-white/65" : "text-[var(--muted)]"
+                      }`}
+                    >
+                      {t(`why.${key}.body`)}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
     </section>
-  );
-}
-
-function NetworkNode({
-  label,
-  active,
-}: {
-  label: string;
-  active?: boolean;
-}) {
-  return (
-    <div
-      className={`min-w-36 border px-4 py-3 tech-label text-[11px] ${
-        active
-          ? "border-[var(--signal)] text-[var(--signal)]"
-          : "border-[var(--line)] text-[var(--muted)]"
-      }`}
-    >
-      {label}
-    </div>
   );
 }

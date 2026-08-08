@@ -1,24 +1,21 @@
+import { LeadCard } from "@/components/admin/LeadCard";
+import { SubmitButton } from "@/components/admin/SubmitButton";
+import {
+  AdminChip,
+  AdminEmpty,
+  AdminFlash,
+  AdminHeader,
+  AdminPage,
+  AdminToolbar,
+} from "@/components/admin/ui";
 import { LEAD_STATUSES, type Lead } from "@/lib/leads";
 import { requireAdmin } from "@/lib/admin/auth";
-import { updateLeadStatusAction } from "../actions";
+
+export const metadata = {
+  title: "الطلبات",
+};
 
 const labels: Record<string, string> = {
-  erp: "ERP",
-  pos: "POS",
-  ops: "تشغيل",
-  commerce: "تجارة",
-  ai: "AI",
-  other: "أخرى",
-  egypt: "مصر",
-  saudi: "السعودية",
-  gulf: "الخليج",
-  global: "عالمي",
-  mvp: "MVP",
-  growth: "نمو",
-  enterprise: "مؤسسات",
-  ar: "عربي",
-  en: "English",
-  both: "عربي + English",
   new: "جديد",
   seen: "اتشاف",
   contacted: "تم التواصل",
@@ -26,24 +23,13 @@ const labels: Record<string, string> = {
   spam: "سبام",
 };
 
-function formatDate(value: string) {
-  try {
-    return new Intl.DateTimeFormat("ar-EG", {
-      dateStyle: "medium",
-      timeStyle: "short",
-    }).format(new Date(value));
-  } catch {
-    return value;
-  }
-}
-
 export default async function AdminLeadsPage({
   searchParams,
 }: {
-  searchParams: Promise<{ q?: string; status?: string }>;
+  searchParams: Promise<{ q?: string; status?: string; ok?: string; error?: string }>;
 }) {
   const { supabase } = await requireAdmin();
-  const { q, status } = await searchParams;
+  const { q, status, ok, error } = await searchParams;
 
   let query = supabase
     .from("leads")
@@ -57,12 +43,13 @@ export default async function AdminLeadsPage({
     query = query.eq("status", status);
   }
 
-  const { data, error } = await query;
-  if (error) {
+  const { data, error: loadError } = await query;
+  if (loadError) {
     return (
-      <main className="px-6 py-10">
-        <p className="text-[var(--danger)]">تعذر تحميل الطلبات.</p>
-      </main>
+      <AdminPage>
+        <AdminHeader title="طلبات العرض" />
+        <AdminFlash error="1" errorText="تعذر تحميل الطلبات." />
+      </AdminPage>
     );
   }
 
@@ -73,129 +60,75 @@ export default async function AdminLeadsPage({
       (lead) =>
         lead.name.toLowerCase().includes(needle) ||
         lead.email.toLowerCase().includes(needle) ||
-        lead.message.toLowerCase().includes(needle),
+        lead.message.toLowerCase().includes(needle) ||
+        (lead.source_project ?? "").toLowerCase().includes(needle),
     );
   }
 
-  const newCount = leads.filter((lead) => lead.status === "new").length;
+  // Counts from unfiltered status query for chips — use current result when status filter active
+  const { data: allStatusRows } = await supabase
+    .from("leads")
+    .select("status")
+    .limit(500);
+  const statusRows = (allStatusRows ?? []) as { status: string }[];
+  const counts = Object.fromEntries(
+    LEAD_STATUSES.map((s) => [s, statusRows.filter((l) => l.status === s).length]),
+  ) as Record<string, number>;
+  const newCount = counts.new ?? 0;
 
   return (
-    <main className="px-6 py-10">
-      <div className="mx-auto max-w-5xl">
-        <h1 className="font-display text-3xl font-semibold">طلبات العرض</h1>
-        <p className="mt-2 text-sm text-[var(--muted)]">
-          {leads.length} طلب · {newCount} جديد
-        </p>
+    <AdminPage>
+      <AdminHeader
+        eyebrow="Pipeline / Leads"
+        title="طلبات العرض"
+        description={`${leads.length} طلب ظاهر · ${newCount} جديد بانتظار المراجعة — كل طلب معروض كموجز Blueprint واضح.`}
+      />
 
-        <form className="mt-6 flex flex-wrap gap-3">
+      <AdminFlash ok={ok} error={error} okText="تم تحديث الطلب." />
+
+      <div className="flex flex-wrap gap-2">
+        <AdminChip href="/admin/leads" active={!status}>
+          الكل · {statusRows.length}
+        </AdminChip>
+        {LEAD_STATUSES.map((s) => (
+          <AdminChip
+            key={s}
+            href={`/admin/leads?status=${s}${q ? `&q=${encodeURIComponent(q)}` : ""}`}
+            active={status === s}
+          >
+            {labels[s] ?? s}
+            {counts[s] ? ` · ${counts[s]}` : ""}
+          </AdminChip>
+        ))}
+      </div>
+
+      <AdminToolbar>
+        <form className="flex w-full flex-wrap gap-3">
           <input
             name="q"
             defaultValue={q ?? ""}
-            placeholder="بحث بالاسم أو الإيميل..."
-            className="field-input max-w-xs"
+            placeholder="بحث بالاسم أو الإيميل أو المشروع..."
+            className="field-input max-w-md flex-1"
           />
-          <select name="status" defaultValue={status ?? ""} className="field-input max-w-[10rem]">
-            <option value="">كل الحالات</option>
-            {LEAD_STATUSES.map((s) => (
-              <option key={s} value={s}>
-                {labels[s] ?? s}
-              </option>
-            ))}
-          </select>
-          <button type="submit" className="btn-primary">
-            تصفية
-          </button>
+          {status ? <input type="hidden" name="status" value={status} /> : null}
+          <SubmitButton pendingLabel="جارٍ البحث…">بحث</SubmitButton>
         </form>
+      </AdminToolbar>
 
-        {leads.length === 0 ? (
-          <div className="mt-10 rounded-2xl border border-[var(--line)] bg-[var(--surface)] px-6 py-10 text-center">
-            <p className="font-medium">لا توجد طلبات</p>
-          </div>
-        ) : (
-          <ul className="mt-8 space-y-4">
-            {leads.map((lead) => (
-              <li
-                key={lead.id}
-                className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-5"
-              >
-                <div className="flex flex-wrap items-start justify-between gap-3">
-                  <div>
-                    <div className="flex flex-wrap items-center gap-2">
-                      <h2 className="text-lg font-semibold">{lead.name}</h2>
-                      <span
-                        className={`rounded-full px-2.5 py-0.5 text-xs ${
-                          lead.status === "new"
-                            ? "bg-[var(--signal-soft)] text-[var(--signal)]"
-                            : "bg-[var(--surface-2)] text-[var(--muted)]"
-                        }`}
-                      >
-                        {labels[lead.status] ?? lead.status}
-                      </span>
-                    </div>
-                    <a
-                      href={`mailto:${lead.email}`}
-                      className="mt-1 block text-sm text-[var(--navy-soft)] underline-offset-2 hover:underline"
-                    >
-                      {lead.email}
-                    </a>
-                    <p className="mt-1 text-xs text-[var(--muted)]">
-                      {formatDate(lead.created_at)}
-                    </p>
-                  </div>
-                  <div className="flex flex-wrap gap-2 text-xs text-[var(--muted)]">
-                    <span className="rounded-lg bg-[var(--surface-2)] px-2 py-1">
-                      {labels[lead.system_type] ?? lead.system_type}
-                    </span>
-                    <span className="rounded-lg bg-[var(--surface-2)] px-2 py-1">
-                      {labels[lead.market] ?? lead.market}
-                    </span>
-                    <span className="rounded-lg bg-[var(--surface-2)] px-2 py-1">
-                      {labels[lead.scale] ?? lead.scale}
-                    </span>
-                  </div>
-                </div>
-
-                {lead.message ? (
-                  <p className="mt-3 whitespace-pre-wrap text-sm leading-relaxed">
-                    {lead.message}
-                  </p>
-                ) : null}
-
-                <form
-                  action={updateLeadStatusAction}
-                  className="mt-4 grid gap-3 sm:grid-cols-[1fr_2fr_auto]"
-                >
-                  <input type="hidden" name="id" value={lead.id} />
-                  <label className="block">
-                    <span className="mb-1 block text-xs text-[var(--muted)]">الحالة</span>
-                    <select name="status" defaultValue={lead.status} className="field-input">
-                      {LEAD_STATUSES.map((s) => (
-                        <option key={s} value={s}>
-                          {labels[s] ?? s}
-                        </option>
-                      ))}
-                    </select>
-                  </label>
-                  <label className="block">
-                    <span className="mb-1 block text-xs text-[var(--muted)]">ملاحظات</span>
-                    <input
-                      name="admin_notes"
-                      defaultValue={lead.admin_notes}
-                      className="field-input"
-                      maxLength={4000}
-                    />
-                  </label>
-                  <div className="flex items-end">
-                    <button type="submit" className="btn-primary w-full sm:w-auto">
-                      حفظ
-                    </button>
-                  </div>
-                </form>
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
-    </main>
+      {leads.length === 0 ? (
+        <AdminEmpty
+          title="لا توجد طلبات"
+          description="جرّب تغيير الفلتر أو أرسل طلبًا تجريبيًا من /start."
+        />
+      ) : (
+        <ul className="space-y-4">
+          {leads.map((lead) => (
+            <li key={lead.id}>
+              <LeadCard lead={lead} />
+            </li>
+          ))}
+        </ul>
+      )}
+    </AdminPage>
   );
 }

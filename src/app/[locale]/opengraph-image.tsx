@@ -22,7 +22,7 @@ export default async function Image({
           flexDirection: "column",
           justifyContent: "flex-end",
           padding: 72,
-          background: "#0b1f3a",
+          background: "#0b1220",
           color: "#ffffff",
           position: "relative",
         }}
@@ -32,7 +32,7 @@ export default async function Image({
             position: "absolute",
             inset: 0,
             background:
-              "radial-gradient(700px 380px at 20% 20%, rgba(215,4,42,0.45), transparent 55%)",
+              "radial-gradient(700px 380px at 20% 20%, rgba(21,94,239,0.4), transparent 55%)",
           }}
         />
         <div
@@ -42,11 +42,11 @@ export default async function Image({
             left: 72,
             width: 72,
             height: 6,
-            background: "#d7042a",
+            background: "#155eef",
           }}
         />
         <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
-          <div style={{ fontSize: 96, fontWeight: 500, letterSpacing: -3 }}>
+          <div style={{ fontSize: 96, fontWeight: 700, letterSpacing: -3 }}>
             {isAr ? "أركان" : "Arkan"}
           </div>
           <div style={{ fontSize: 34, color: "rgba(255,255,255,0.72)", maxWidth: 820 }}>

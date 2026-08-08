@@ -18,7 +18,7 @@ export function LocaleSwitcher({ light = false }: Props) {
     <button
       type="button"
       onClick={() => router.replace(pathname, { locale: nextLocale })}
-      className={`rounded-full px-3 py-1.5 text-xs font-semibold uppercase tracking-wide transition ${
+      className={`inline-flex min-h-11 min-w-11 items-center justify-center rounded-full px-3 text-xs font-semibold uppercase tracking-wide transition ${
         light
           ? "border border-white/25 text-white/80 hover:border-white hover:text-white"
           : "border border-[var(--line)] text-[var(--muted)] hover:border-[var(--signal)] hover:text-[var(--fg)]"

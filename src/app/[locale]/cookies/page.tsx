@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { CookieSettingsButton } from "@/components/cookies/CookieSettingsButton";
 import { pageMetadata } from "@/lib/seo";
+import { getSeoCopy } from "@/lib/seo-messages";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -11,12 +12,15 @@ export async function generateMetadata({
   params,
 }: Props): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "Cookies" });
+  const seo = await getSeoCopy(locale, "Cookies", {
+    title: ["seoTitle", "pageTitle"],
+    description: ["seoDescription", "pageIntro"],
+  });
   return pageMetadata({
     locale,
     path: "/cookies",
-    title: t("pageTitle"),
-    description: t("pageIntro"),
+    title: seo.title,
+    description: seo.description,
   });
 }
 

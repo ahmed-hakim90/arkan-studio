@@ -5,7 +5,7 @@ export default function ProjectLoading() {
     <div role="status" aria-busy="true">
       <div className="bg-[var(--navy)]">
         <div className="section-pad py-12 md:py-16">
-          <div className="mx-auto max-w-6xl space-y-4">
+          <div className="canvas space-y-4">
             <Skeleton className="h-4 w-28 bg-white/10" />
             <Skeleton className="h-14 w-[min(100%,28rem)] bg-white/15" />
             <Skeleton className="h-5 w-[min(100%,36rem)] bg-white/10" />
@@ -17,7 +17,7 @@ export default function ProjectLoading() {
         </div>
       </div>
       <div className="section-pad py-12">
-        <div className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-[1.4fr_0.8fr]">
+        <div className="canvas grid gap-6 lg:grid-cols-[1.4fr_0.8fr]">
           <div className="space-y-4">
             <Skeleton className="h-40" />
             <Skeleton className="h-40" />

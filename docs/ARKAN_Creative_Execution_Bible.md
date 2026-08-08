@@ -168,27 +168,28 @@ Soft language (“suggested”, “explore”, “possible”) is forbidden here
 
 ```css
 :root {
-  --background: #F3F5F8;
-  --foreground: #12141A;
-  --muted: #5A6475;
-  --surface: #FFFFFF;
-  --surface-2: #E5EBF3;
-  --navy: #0B1F3A;
-  --navy-soft: #163456;
-  --signal: #D7042A;
-  --signal-hot: #FF2748;
-  --signal-soft: #FFD6DE;
-  --ok: #0F7B5A;
-  --danger: #C62828;
-  --line: rgba(18, 20, 26, 0.10);
-  --line-strong: rgba(18, 20, 26, 0.18);
-  --focus-ring: 0 0 0 3px rgba(215, 4, 42, 0.22);
+  --bone: #E8E4DC;
+  --bone-soft: #F1EEE8;
+  --carbon: #121417;
+  --gunmetal: #2A3038;
+  --gunmetal-soft: #3A424C;
+  --oxide: #C1121F;
+  --oxide-hot: #E63946;
+  --oxide-soft: #F4C4C8;
+  --background: var(--bone-soft);
+  --foreground: var(--carbon);
+  --muted: #5C635C;
+  --surface: #F7F4EE;
+  --surface-2: #DDD8CE;
+  --line: rgba(18, 20, 23, 0.12);
+  --line-strong: rgba(18, 20, 23, 0.2);
+  --focus-ring: 0 0 0 3px rgba(193, 18, 31, 0.22);
 }
 ```
 
-**Balance:** 60–70% light blue-gray/white · 15–25% navy · 10–15% dark type · 3–5% signal red.
+**Balance:** Bone/surface light · Carbon/Gunmetal dark bands · Oxide at 3–5% max.
 
-**Signal rule:** Red = something is happening. Never decorative red fills.
+**Oxide rule:** Red = signal only (active line, CTA, focus, current node, selected). Never headlines or large fills.
 
 ### 2.2 Typography (final pairing)
 
@@ -2043,7 +2044,7 @@ Before approving any scene:
 ```text
 You are executing the ARKAN Creative Execution Bible.
 Concept: SYSTEMS, EXPOSED. Visual language: Architectural Editorial Interface.
-Colors: bg #F3F5F8, navy #0B1F3A, signal #D7042A, foreground #12141A.
+Colors: bg #F3F5F8, navy #0B1F3A, signal #D90429, foreground #12141A.
 Type: Geist Sans + IBM Plex Sans Arabic; mono for system meta.
 Rules: brand-first heroes; no card grids as default; no purple AI aesthetics;
 no fake metrics; Arabic-first RTL; Signal red only for activity;

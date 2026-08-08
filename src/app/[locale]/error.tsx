@@ -18,24 +18,21 @@ export default function LocaleError({ error, reset }: Props) {
 
   return (
     <section className="section-pad flex min-h-[50vh] items-center py-20">
-      <div className="mx-auto max-w-6xl">
-        <p className="text-xs uppercase tracking-[0.2em] text-[var(--signal)]">
+      <div className="canvas">
+        <p className="tech-label text-[11px] text-[var(--signal)]">
           {t("eyebrow")}
         </p>
-        <h1 className="font-display mt-3 text-4xl font-bold">{t("title")}</h1>
+        <h1 className="font-display type-h1 mt-3">{t("title")}</h1>
         <p className="mt-3 max-w-lg text-[var(--muted)]">{t("body")}</p>
         <div className="mt-6 flex flex-wrap gap-3">
           <button
             type="button"
             onClick={reset}
-            className="rounded-sm bg-[var(--bronze)] px-5 py-3 text-sm font-semibold text-[var(--ink)]"
+            className="btn-primary"
           >
             {t("retry")}
           </button>
-          <Link
-            href="/"
-            className="rounded-sm border border-[var(--line)] px-5 py-3 text-sm text-[var(--paper)]"
-          >
+          <Link href="/" className="btn-ghost-dark">
             {t("home")}
           </Link>
         </div>

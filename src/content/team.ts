@@ -9,33 +9,20 @@ export const team: TeamMember[] = [
       en: "Founder · Systems Lead",
     },
     pillar: "product",
-  },
-  {
-    id: "ahmed-shoaib",
-    name: { ar: "أحمد شعيب", en: "Ahmed Shoaib" },
-    role: {
-      ar: "هندسة الواجهات",
-      en: "Frontend Engineering",
+    bio: {
+      ar: "يبني أركان حول فهم العمل قبل التقنية — من اكتشاف العملية إلى تصميم النظام وتشغيله.",
+      en: "Builds Arkan around understanding the work before the tech — from process discovery to system design and operations.",
     },
-    pillar: "frontend",
-  },
-  {
-    id: "kaila-mohamed",
-    name: { ar: "كيلا محمد", en: "Kaila Mohamed" },
-    role: {
-      ar: "تجربة المنتج",
-      en: "Product Experience",
+    focus: {
+      ar: "هيكل المنتج، نطاق النظام، القرارات المعمارية، ومسار التسليم من الفكرة إلى التشغيل.",
+      en: "Product structure, system scope, architectural calls, and the path from idea to operating delivery.",
     },
-    pillar: "experience",
-  },
-  {
-    id: "mohamed-adel",
-    name: { ar: "محمد عادل", en: "Mohamed Adel" },
-    role: {
-      ar: "هندسة الخلفية والتشغيل",
-      en: "Backend & Operations",
+    links: {
+      linkedin:
+        "https://www.linkedin.com/in/ahmed-abdulhakim-sayed-471752174/",
+      github: "https://github.com/ahmed-hakim90",
+      x: "https://x.com/ahmed_hakim900",
     },
-    pillar: "backend",
   },
 ];
 

@@ -165,14 +165,14 @@ export function CookieConsentBanner({ onConsentChange }: Props) {
           <button
             type="button"
             onClick={acceptAll}
-            className="rounded-full bg-[var(--signal)] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[var(--signal-hot)]"
+            className="inline-flex min-h-11 items-center rounded-full bg-[var(--signal)] px-4 text-sm font-semibold text-white transition hover:bg-[var(--signal-hot)]"
           >
             {t("acceptAll")}
           </button>
           <button
             type="button"
             onClick={rejectNonEssential}
-            className="rounded-full border border-[var(--line)] px-4 py-2 text-sm text-[var(--fg)] transition hover:border-[var(--signal)]"
+            className="inline-flex min-h-11 items-center rounded-full border border-[var(--line)] px-4 text-sm text-[var(--fg)] transition hover:border-[var(--signal)]"
           >
             {t("reject")}
           </button>
@@ -180,7 +180,7 @@ export function CookieConsentBanner({ onConsentChange }: Props) {
             <button
               type="button"
               onClick={saveCustom}
-              className="rounded-full border border-[var(--signal)] px-4 py-2 text-sm text-[var(--signal)] transition"
+              className="inline-flex min-h-11 items-center rounded-full border border-[var(--signal)] px-4 text-sm text-[var(--signal)] transition"
             >
               {t("save")}
             </button>
@@ -188,7 +188,7 @@ export function CookieConsentBanner({ onConsentChange }: Props) {
             <button
               type="button"
               onClick={() => setShowDetails(true)}
-              className="rounded-full px-4 py-2 text-sm text-[var(--muted)] underline-offset-2 hover:text-[var(--fg)] hover:underline"
+              className="inline-flex min-h-11 items-center rounded-full px-4 text-sm text-[var(--muted)] underline-offset-2 hover:text-[var(--fg)] hover:underline"
             >
               {t("customize")}
             </button>
