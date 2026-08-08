@@ -66,21 +66,25 @@ export function WhatWeBuild() {
                       duration: 0.3,
                       ease: [0.22, 1, 0.36, 1],
                     }}
-                    onMouseEnter={() => setActive(item.id)}
-                    onFocusCapture={() => setActive(item.id)}
+                    onMouseEnter={() => {
+                      if (
+                        typeof window !== "undefined" &&
+                        window.matchMedia("(hover: hover)").matches
+                      ) {
+                        setActive(item.id);
+                      }
+                    }}
                     className={`border-b border-[var(--line)] transition-colors duration-200 ${
                       on ? "bg-[var(--paper-soft)]" : "bg-transparent"
                     }`}
                   >
-                    <Link
-                      href={`/capabilities#${item.hash}`}
-                      className={`group block border-s-[3px] py-4 ps-5 pe-4 transition-[border-color] duration-200 md:py-5 md:ps-7 md:pe-5 ${
+                    <div
+                      className={`border-s-[3px] py-4 ps-5 pe-4 transition-[border-color] duration-200 md:py-5 md:ps-7 md:pe-5 ${
                         on
                           ? "border-[var(--oxide)]"
-                          : "border-transparent hover:border-[var(--line-strong)]"
+                          : "border-transparent"
                       }`}
                       data-active={on ? "true" : "false"}
-                      aria-current={on ? "true" : undefined}
                     >
                       <div className="grid grid-cols-[2.75rem_minmax(0,1fr)] gap-x-4 md:grid-cols-[3.25rem_minmax(0,1fr)] md:gap-x-5">
                         <span className="tech-label pt-1 text-xs tabular-nums text-[var(--muted)] md:text-sm">
@@ -88,7 +92,13 @@ export function WhatWeBuild() {
                         </span>
 
                         <div className="min-w-0">
-                          <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                          <button
+                            type="button"
+                            onMouseDown={(event) => event.preventDefault()}
+                            onClick={() => setActive(item.id)}
+                            aria-expanded={on}
+                            className="group flex w-full flex-wrap items-baseline justify-between gap-x-4 gap-y-1 text-start"
+                          >
                             <h3 className="font-display text-[1.65rem] leading-tight tracking-tight text-[var(--carbon)] md:text-[2rem]">
                               {t(`items.${item.id}.title`)}
                             </h3>
@@ -98,10 +108,11 @@ export function WhatWeBuild() {
                                   ? "text-[var(--oxide)] opacity-100"
                                   : "opacity-0"
                               }`}
+                              aria-hidden={!on}
                             >
                               {t("explore")} →
                             </span>
-                          </div>
+                          </button>
 
                           <p className="mt-2 max-w-[52ch] text-base leading-snug text-[var(--muted)] md:text-lg md:leading-relaxed">
                             {t(`items.${item.id}.line`)}
@@ -171,12 +182,19 @@ export function WhatWeBuild() {
                                     </p>
                                   </div>
                                 </div>
+
+                                <Link
+                                  href={`/capabilities#${item.hash}`}
+                                  className="mt-5 inline-flex min-h-11 items-center text-sm font-semibold text-[var(--oxide)] underline-offset-4 hover:underline"
+                                >
+                                  {t("explore")} →
+                                </Link>
                               </motion.div>
                             ) : null}
                           </AnimatePresence>
                         </div>
                       </div>
-                    </Link>
+                    </div>
                   </motion.div>
                 </li>
               );
