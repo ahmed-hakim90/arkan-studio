@@ -7,6 +7,8 @@ const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   compress: true,
+  // Allow local IP hosts during `next dev` (Chrome/devtools often use 127.0.0.1).
+  allowedDevOrigins: ["127.0.0.1", "172.20.10.4"],
   images: {
     formats: ["image/avif", "image/webp"],
     minimumCacheTTL: 60 * 60 * 24 * 30,

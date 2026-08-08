@@ -1,5 +1,20 @@
 @import "tailwindcss";
 
+/* Pre-paint splash cover — set by boot script before home can flash.
+   Opaque cover only (do not hide .site-shell — if React splash fails, failsafe clears this). */
+html[data-splash="pending"] {
+  overflow: hidden;
+}
+
+html[data-splash="pending"] body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: #0b1220;
+  pointer-events: auto;
+}
+
 /* ARKAN Design System — Blueprint Lab (cool slate + volt signal) */
 :root {
   /* Canonical names */

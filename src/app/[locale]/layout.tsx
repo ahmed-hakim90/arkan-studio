@@ -17,6 +17,7 @@ import { routing, type AppLocale } from "@/i18n/routing";
 import { clampDescription } from "@/lib/seo";
 import { getSeoCopy } from "@/lib/seo-messages";
 import { siteConfig } from "@/lib/site";
+import { SPLASH_BOOT_SCRIPT } from "@/lib/splash";
 import "../globals.css";
 
 const syne = Syne({
@@ -155,8 +156,14 @@ export default async function LocaleLayout({ children, params }: Props) {
       lang={locale}
       dir={dir}
       className={`${syne.variable} ${manrope.variable} ${arabic.variable} ${plexMono.variable} h-full`}
+      suppressHydrationWarning
     >
       <body className="min-h-full bg-background text-foreground antialiased">
+        {/* Sync boot: set cover attr before site-shell parses (no home flash). */}
+        <script
+          id="arkan-splash-boot"
+          dangerouslySetInnerHTML={{ __html: SPLASH_BOOT_SCRIPT }}
+        />
         <NextIntlClientProvider messages={messages}>
           <AppShell>
             <OrganizationJsonLd />
