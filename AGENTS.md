@@ -18,3 +18,21 @@ This repo is a single Next.js 16 (App Router) app — the ARKAN Studio bilingual
 - `npm ci` does NOT work here: the committed `package-lock.json` is out of sync with `package.json` (e.g. missing `@swc/helpers`). Use `npm install`, which reconciles it. `npm install` under this image's npm also strips `libc` fields the lockfile was authored with, so it always leaves a cosmetic `package-lock.json` diff — leave it uncommitted unless you are intentionally updating deps.
 - Supabase is OPTIONAL for local dev. With no `NEXT_PUBLIC_SUPABASE_*` env set, public pages render from file fallbacks in `src/content/` + `messages/`, and `POST /api/contact` returns `200 {ok:true}` while logging "supabase env missing — request not persisted" (leads are not stored). The `/admin` CMS, lead persistence, and `npm run seed:cms` require a configured hosted Supabase project (URL + anon/publishable key, an Auth user listed in `admin_users`, and a `media` storage bucket). There are no SQL migrations in the repo, so the schema must already exist in that Supabase project.
 - `next dev` rewrites the `BEGIN/END:nextjs-agent-rules` block at the top of this file and `CLAUDE.md`; commit those regenerations with your work to keep the tree clean.
+
+<!-- CODEX-PRODUCT-FOUNDATION:START -->
+# Project Agent Rules
+
+These rules apply to the entire repository. Read the relevant files in `docs/` before changing product UI or shared architecture.
+
+- Understand the affected user journey and business constraints before coding; fix root causes, not visible symptoms.
+- Reuse and extend existing components, tokens, utilities, validation, and domain logic before creating alternatives.
+- Preserve business logic, permissions, data contracts, and integrations unless the task explicitly changes them.
+- Keep the product mobile-first and verify both RTL and LTR whenever localization/direction is supported or plausible.
+- Do not introduce one-off colors, spacing, radii, shadows, typography, duplicated patterns, or “AI-generated” decorative clutter.
+- Cover loading, empty, error, disabled, validation, success, permission, and partial-data states.
+- Maintain semantic HTML, keyboard access, visible focus, contrast, accessible names, touch targets, and reduced-motion behavior.
+- Check performance implications: bundle growth, render churn, asset weight, query behavior, caching, and unnecessary dependencies.
+- Inspect cross-screen impact before modifying shared code. Update permanent decisions in `docs/`.
+- Completion requires targeted tests plus visual QA at mobile, tablet, laptop, and desktop sizes. Compilation alone is not proof.
+- Do not mass-redesign. Follow the staged plan documented in `docs/PRODUCT.md` and preserve working product behavior.
+<!-- CODEX-PRODUCT-FOUNDATION:END -->
